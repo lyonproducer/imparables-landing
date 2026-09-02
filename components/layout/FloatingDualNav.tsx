@@ -26,9 +26,9 @@ export const FloatingDualNav: React.FC = () => {
   }, []);
 
   const imparablesLinks = [
-    { label: "Nosotros", href: isImparables ? "#nosotros" : "/#nosotros" },
-    { label: "Eventos", href: isImparables ? "#eventos" : "/#eventos" },
-    { label: "Contacto", href: isImparables ? "#comunidad" : "/#comunidad" },
+    { label: "Nosotros", href: "/imparables/nosotros" },
+    { label: "Eventos", href: "/imparables/eventos" },
+    { label: "Contacto", href: "/imparables/contacto" },
   ];
 
   const nexusLinks = [
@@ -90,15 +90,22 @@ export const FloatingDualNav: React.FC = () => {
                   className="flex items-center gap-1 pl-1 pr-2 whitespace-nowrap overflow-hidden"
                 >
                   <span className="text-white/20 text-xs select-none">→</span>
-                  {imparablesLinks.map((link) => (
-                    <Link
-                      key={link.label}
-                      href={link.href}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {imparablesLinks.map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        className={`text-xs font-medium px-2.5 py-1 rounded-full transition-colors ${
+                          isActive
+                            ? "bg-white/15 text-[#FFB100] font-semibold"
+                            : "text-muted-foreground hover:text-foreground hover:bg-white/10"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </motion.div>
               )}
             </AnimatePresence>

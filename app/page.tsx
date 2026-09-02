@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { ImparablesHero } from "@/components/sections/imparables/ImparablesHero";
 import { ImparablesPlatform } from "@/components/sections/imparables/ImparablesPlatform";
-import { ImparablesAbout } from "@/components/sections/imparables/ImparablesAbout";
 import { ImparablesTrackDivider } from "@/components/ui/imparables";
-import { ImparablesEvents } from "@/components/sections/imparables/ImparablesEvents";
-import { ImparablesPartners } from "@/components/sections/imparables/ImparablesPartners";
+import { ImparablesFormats } from "@/components/sections/imparables/ImparablesFormats";
 import { ImparablesCommunity } from "@/components/sections/imparables/ImparablesCommunity";
 import { ImparablesInstagramFeed } from "@/components/sections/imparables/ImparablesInstagramFeed";
 import { ImparablesFooter } from "@/components/sections/imparables/ImparablesFooter";
@@ -30,10 +28,8 @@ export default function Home() {
         <ImparablesHero />
         <ImparablesPlatform />
         <ImparablesTrackDivider />
-        <ImparablesAbout />
+        <ImparablesFormats />
         <ImparablesInstagramFeed />
-        {/* <ImparablesEvents />
-        <ImparablesPartners /> */}
         <ImparablesCommunity />
       </main>
       <ImparablesFooter />

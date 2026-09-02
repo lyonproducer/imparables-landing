@@ -57,34 +57,29 @@ export const ImparablesFooter: React.FC = () => {
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm text-muted-foreground">
               <li>
-                <a href="#inicio" className="hover:text-accent transition-colors">
+                <Link href="/" className="hover:text-accent transition-colors">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#esencia" className="hover:text-accent transition-colors">
+                <Link href="/#esencia" className="hover:text-accent transition-colors">
                   Nuestra Esencia & Pilares
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#nosotros" className="hover:text-accent transition-colors">
+                <Link href="/imparables/nosotros" className="hover:text-accent transition-colors">
                   Nosotros & Andersong Trocel
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#eventos" className="hover:text-accent transition-colors">
+                <Link href="/imparables/eventos" className="hover:text-accent transition-colors">
                   Formatos & Trayectoria
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#aliados" className="hover:text-accent transition-colors">
-                  Alianzas Estratégicas
-                </a>
-              </li>
-              <li>
-                <a href="#comunidad" className="hover:text-accent transition-colors">
+                <Link href="/imparables/contacto" className="hover:text-accent transition-colors">
                   Comunidad & Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
