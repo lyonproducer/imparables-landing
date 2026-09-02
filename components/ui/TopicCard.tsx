@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Sparkle,
   Gear,
@@ -13,6 +14,7 @@ import {
   type IconProps,
 } from "@phosphor-icons/react";
 import type { TopicItem } from "@/lib/content/event.config";
+import { scaleUpVariant } from "@/lib/motion/motion-variants";
 
 const iconMap: Record<TopicItem["iconName"], React.ComponentType<IconProps>> = {
   Sparkle,
@@ -32,11 +34,14 @@ export interface TopicCardProps {
 
 export const TopicCard: React.FC<TopicCardProps> = ({ topic, index }) => {
   const IconComponent = iconMap[topic.iconName] || Sparkle;
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div
+    <motion.div
+      variants={scaleUpVariant}
+      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
       tabIndex={0}
-      className="topic-card group relative flex flex-col p-6 rounded-[var(--radius-card)] bg-background-elevated/80 border border-border hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="topic-card group relative flex flex-col p-6 rounded-[var(--radius-card)] bg-background-elevated/80 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {/* Indicador numérico sutil */}
       <span className="absolute top-5 right-6 text-xs font-mono font-semibold text-muted-foreground/40 group-hover:text-accent transition-colors">
@@ -57,6 +62,6 @@ export const TopicCard: React.FC<TopicCardProps> = ({ topic, index }) => {
       <p className="text-sm text-muted-foreground leading-relaxed mt-auto">
         {topic.description}
       </p>
-    </div>
+    </motion.div>
   );
 };

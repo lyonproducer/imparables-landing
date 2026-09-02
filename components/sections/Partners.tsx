@@ -2,14 +2,15 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { eventConfig } from "@/lib/content/event.config";
-import { useSectionReveal } from "@/lib/motion/gsap-hooks";
 import { ArrowUpRight, Handshake } from "@phosphor-icons/react";
+import { staggerContainer, scaleUpVariant, fadeUpVariant } from "@/lib/motion/motion-variants";
 
 export const Partners: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  useSectionReveal(sectionRef);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -26,12 +27,20 @@ export const Partners: React.FC = () => {
           className="mb-12 md:mb-16"
         />
 
-        {/* Logos Grid with Grayscale filter and Color on Hover */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+        {/* Logos Grid with Framer Motion Stagger */}
+        <motion.div
+          variants={staggerContainer}
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12"
+        >
           {eventConfig.partners.map((partner, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group flex flex-col items-center justify-center p-8 rounded-[var(--radius-card)] bg-background-elevated/60 border border-border hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+              variants={scaleUpVariant}
+              whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+              className="group flex flex-col items-center justify-center p-8 rounded-[var(--radius-card)] bg-background-elevated/60 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="relative h-20 w-44 flex items-center justify-center filter grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-300">
                 <Image
@@ -51,12 +60,18 @@ export const Partners: React.FC = () => {
                   {partner.name}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Secondary Partner CTA */}
-        <div className="flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 max-w-2xl mx-auto">
+        {/* Secondary Partner CTA with Framer Motion reveal */}
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUpVariant}
+          className="flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 max-w-2xl mx-auto"
+        >
           <Handshake size={32} weight="duotone" className="text-accent mb-2" aria-hidden="true" />
           <h4 className="font-display font-bold text-lg md:text-xl text-foreground">
             Tu marca también puede ser parte de la experiencia
@@ -72,7 +87,7 @@ export const Partners: React.FC = () => {
             <span>Quiero ser aliado o patrocinante</span>
             <ArrowUpRight size={16} weight="bold" />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,17 +1,15 @@
 "use client";
 
 import React, { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TopicCard } from "@/components/ui/TopicCard";
 import { eventConfig } from "@/lib/content/event.config";
-import { useStaggerReveal, useSectionReveal } from "@/lib/motion/gsap-hooks";
+import { staggerContainer } from "@/lib/motion/motion-variants";
 
 export const Topics: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useSectionReveal(sectionRef);
-  useStaggerReveal(gridRef, ".topic-card");
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -28,15 +26,18 @@ export const Topics: React.FC = () => {
           className="mb-12 md:mb-16"
         />
 
-        {/* Grid: 2 cols on mobile, 4 cols on desktop */}
-        <div
-          ref={gridRef}
+        {/* Grid with Framer Motion whileInView stagger */}
+        <motion.div
+          variants={staggerContainer}
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {eventConfig.topics.map((topic, index) => (
             <TopicCard key={topic.id} topic={topic} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

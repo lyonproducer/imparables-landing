@@ -2,13 +2,16 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Calendar, MapPin, ArrowUpRight, CaretDown } from "@phosphor-icons/react";
 import { eventConfig } from "@/lib/content/event.config";
+import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -30,26 +33,43 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
       </div>
 
-      {/* Floating Centered Glass Card (The single glassmorphism card in Hero viewport) */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto my-auto animate-fadeIn">
+      {/* Floating Centered Glass Card with Framer Motion entrance */}
+      <motion.div
+        initial={shouldReduceMotion ? false : "hidden"}
+        animate="visible"
+        variants={staggerContainer}
+        className="relative z-10 w-full max-w-4xl mx-auto my-auto"
+      >
         <GlassCard className="text-center flex flex-col items-center gap-6">
           {/* Kicker Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/15 border border-accent/30 text-accent font-display font-bold text-xs tracking-[0.25em] uppercase">
+          <motion.div
+            variants={fadeUpVariant}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/15 border border-accent/30 text-accent font-display font-bold text-xs tracking-[0.25em] uppercase"
+          >
             <span>{eventConfig.kicker}</span>
-          </div>
+          </motion.div>
 
           {/* H1 Main Headline */}
-          <h1 className="font-display font-bold text-3xl sm:text-5xl md:text-6xl text-foreground leading-[1.12] tracking-tight max-w-3xl">
+          <motion.h1
+            variants={fadeUpVariant}
+            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl text-foreground leading-[1.12] tracking-tight max-w-3xl"
+          >
             {eventConfig.headline}
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-normal">
+          <motion.p
+            variants={fadeUpVariant}
+            className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-normal"
+          >
             {eventConfig.subheadline}
-          </p>
+          </motion.p>
 
           {/* Event Meta Information Row */}
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-2 text-xs sm:text-sm text-foreground/90">
+          <motion.div
+            variants={fadeUpVariant}
+            className="flex flex-wrap items-center justify-center gap-3 md:gap-6 pt-2 text-xs sm:text-sm text-foreground/90"
+          >
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-white/10 backdrop-blur-xs">
               <Calendar size={18} weight="duotone" className="text-accent shrink-0" aria-hidden="true" />
               <span className="font-medium">{eventConfig.dateLabel}</span>
@@ -59,10 +79,13 @@ export const Hero: React.FC = () => {
               <MapPin size={18} weight="duotone" className="text-accent shrink-0" aria-hidden="true" />
               <span className="font-medium">{eventConfig.venueLabel}</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Call To Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto">
+          <motion.div
+            variants={fadeUpVariant}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto"
+          >
             <a href="#registro" className="w-full sm:w-auto">
               <Button
                 variant="primary"
@@ -84,9 +107,9 @@ export const Hero: React.FC = () => {
                 Conoce los temas
               </Button>
             </a>
-          </div>
+          </motion.div>
         </GlassCard>
-      </div>
+      </motion.div>
 
       {/* Subtle indicator to scroll */}
       <div className="relative z-10 pt-8 flex justify-center text-muted-foreground/60 animate-bounce">

@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { RegisterForm } from "@/components/ui/RegisterForm";
 import { LinesBackground } from "@/components/ui/LinesBackground";
-import { useSectionReveal } from "@/lib/motion/gsap-hooks";
 import { Sparkle, ShieldCheck, Ticket } from "@phosphor-icons/react";
+import { fadeUpVariant } from "@/lib/motion/motion-variants";
 
 export const RegisterCTA: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  useSectionReveal(sectionRef);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -28,7 +29,13 @@ export const RegisterCTA: React.FC = () => {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-        <div className="text-center mb-10 flex flex-col items-center gap-3">
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeUpVariant}
+          className="text-center mb-10 flex flex-col items-center gap-3"
+        >
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs font-semibold uppercase tracking-wider">
             <Sparkle size={14} weight="fill" aria-hidden="true" />
             <span>LISTA DE ESPERA EXCLUSIVA</span>
@@ -53,12 +60,19 @@ export const RegisterCTA: React.FC = () => {
               Cupos prioritarios garantizados
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* The GlassCard containing the RegisterForm */}
-        <GlassCard className="shadow-2xl border-white/20">
-          <RegisterForm />
-        </GlassCard>
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUpVariant}
+        >
+          <GlassCard className="shadow-2xl border-white/20">
+            <RegisterForm />
+          </GlassCard>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SpeakerCard } from "@/components/ui/SpeakerCard";
 import { Button } from "@/components/ui/Button";
 import { eventConfig } from "@/lib/content/event.config";
-import { useSectionReveal } from "@/lib/motion/gsap-hooks";
 import { MicrophoneStage, ArrowUpRight, BellRinging } from "@phosphor-icons/react";
+import { staggerContainer, fadeUpVariant } from "@/lib/motion/motion-variants";
 
 export const Speakers: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  useSectionReveal(sectionRef);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -28,7 +29,13 @@ export const Speakers: React.FC = () => {
         />
 
         {/* Host Highlight Card: Andersong Trocel */}
-        <div className="mb-12 p-6 md:p-8 rounded-[var(--radius-card)] bg-gradient-to-r from-primary/20 via-background-elevated to-background-elevated border border-primary/30 flex flex-col md:flex-row items-center gap-6 md:gap-8">
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeUpVariant}
+          className="mb-12 p-6 md:p-8 rounded-[var(--radius-card)] bg-gradient-to-r from-primary/20 via-background-elevated to-background-elevated border border-primary/30 flex flex-col md:flex-row items-center gap-6 md:gap-8"
+        >
           <div className="w-16 h-16 rounded-2xl bg-accent text-accent-foreground flex items-center justify-center shrink-0 shadow-lg shadow-accent/20">
             <MicrophoneStage size={32} weight="fill" aria-hidden="true" />
           </div>
@@ -48,17 +55,29 @@ export const Speakers: React.FC = () => {
           <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted-foreground shrink-0">
             Director General Imparables
           </span>
-        </div>
+        </motion.div>
 
-        {/* Lineup Grid (Adaptable 1 to N speakers) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Lineup Grid (Adaptable 1 to N speakers) with Framer Motion stagger */}
+        <motion.div
+          variants={staggerContainer}
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+        >
           {eventConfig.speakers.map((speaker, index) => (
             <SpeakerCard key={index} speaker={speaker} index={index} />
           ))}
-        </div>
+        </motion.div>
 
         {/* Placeholder Announcement Banner with CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/10 text-center sm:text-left">
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUpVariant}
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/10 text-center sm:text-left"
+        >
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
               <BellRinging size={24} weight="duotone" aria-hidden="true" />
@@ -83,7 +102,7 @@ export const Speakers: React.FC = () => {
               Enterarme primero
             </Button>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

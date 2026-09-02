@@ -2,8 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { User, Sparkle } from "@phosphor-icons/react";
 import type { SpeakerItem } from "@/lib/content/event.config";
+import { scaleUpVariant } from "@/lib/motion/motion-variants";
 
 export interface SpeakerCardProps {
   speaker: SpeakerItem;
@@ -12,9 +14,14 @@ export interface SpeakerCardProps {
 
 export const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, index }) => {
   const isConfirmed = speaker.isConfirmed && Boolean(speaker.name);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="speaker-card group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+    <motion.div
+      variants={scaleUpVariant}
+      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+      className="speaker-card group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/50 transition-colors duration-300"
+    >
       {/* Contenedor de Imagen o Placeholder */}
       <div className="relative aspect-[4/5] w-full bg-gradient-to-b from-primary/30 to-background-elevated flex items-center justify-center overflow-hidden">
         {isConfirmed && speaker.photoUrl ? (
@@ -56,6 +63,6 @@ export const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, index }) => {
           {speaker.role || "Especialista invitado"}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
