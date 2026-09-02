@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -31,7 +32,18 @@ export const ImparablesCommunity: React.FC = () => {
       ref={sectionRef}
       className="relative py-24 md:py-32 bg-background-elevated/30 border-t border-white/10 overflow-hidden"
     >
-      <div className="absolute inset-0 pointer-events-none select-none bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:32px_32px]" />
+      {/* Background Pattern Image */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        <Image
+          src="/backgrounds/nexus-lines-pattern.jpg"
+          alt="Lines Pattern Background"
+          fill
+          sizes="100vw"
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:32px_32px]" />
+      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12">
         <SectionHeading
