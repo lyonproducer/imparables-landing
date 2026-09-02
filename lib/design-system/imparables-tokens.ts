@@ -1,0 +1,48 @@
+/**
+ * Imparables Design System Tokens
+ * Source of truth for color palette, geometric rules, typography and patterns.
+ */
+
+export const imparablesTokens = {
+  colors: {
+    blue: {
+      core: "#004F9E",
+      dark: "#002B5B",
+      deep: "#001833",
+      light: "#3378BE",
+      gradient: "from-[#003875] via-[#002855] to-[#001733]",
+    },
+    amber: {
+      core: "#FFB100",
+      hover: "#E09800",
+      light: "#FFC640",
+      dark: "#B37A00",
+      gradient: "from-[#FFB100] via-[#E89E00] to-[#C78500]",
+    },
+    neutral: {
+      light: "#F4F4F6",
+      lightMuted: "#E2E2E8",
+      dark: "#0E1015",
+      darkCard: "#14171F",
+      darkElevated: "#1B202A",
+    },
+  },
+  typography: {
+    fontDisplay: "var(--font-display)",
+    fontBody: "var(--font-body)",
+    fontMono: "var(--font-mono, monospace)",
+  },
+  geometry: {
+    rounded: {
+      box: "rounded-2xl",
+      card: "rounded-3xl",
+      pill: "rounded-full",
+      squareBadge: "rounded-lg",
+    },
+    patterns: {
+      linesUrl: "/backgrounds/nexus-lines-pattern.jpg",
+    },
+  },
+} as const;
+
+export type ImparablesColorTheme = "blue" | "amber" | "light" | "dark" | "lines";
