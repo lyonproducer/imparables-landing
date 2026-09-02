@@ -19,7 +19,7 @@ export const ImparablesFooter: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-[#07090D] border-t border-white/10 pt-16 pb-12 overflow-hidden">
+    <footer className="relative bg-[#07090D] border-t border-white/10 pt-16 pb-36 md:pb-44 lg:pb-48 overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-40 bg-[#004F9E]/08 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">

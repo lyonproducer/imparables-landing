@@ -11,7 +11,7 @@ import { eventConfig } from "@/lib/content/event.config";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-background-elevated border-t border-border pt-16 pb-12 overflow-hidden">
+    <footer className="relative bg-background-elevated border-t border-border pt-16 pb-36 md:pb-44 lg:pb-48 overflow-hidden">
       {/* Glow ambiental de fondo */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-48 bg-primary/10 blur-[100px] rounded-full pointer-events-none"
