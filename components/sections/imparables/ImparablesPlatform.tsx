@@ -128,13 +128,13 @@ export const ImparablesPlatform: React.FC = () => {
           </motion.h2>
         </motion.div>
 
-        {/* ================= SINGLE ROW FULL-BLEED INTERLOCKING GRID ================= */}
+        {/* ================= 2x2 ON MOBILE, 4 IN A ROW ON DESKTOP ================= */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 w-full"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5 lg:gap-6 w-full"
         >
           {pillars.map((item) => {
             const isHovered = hoveredCard === item.id;
@@ -159,7 +159,7 @@ export const ImparablesPlatform: React.FC = () => {
                     ? `0 25px 50px -12px ${item.glowColor}`
                     : "0 10px 30px -10px rgba(0,0,0,0.5)",
                 }}
-                className={`group relative flex flex-col justify-between p-7 sm:p-8 lg:p-9 aspect-square border shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
+                className={`group relative flex flex-col justify-between p-4 sm:p-8 lg:p-9 aspect-square border shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
               >
                 {/* INTERLOCKING GEOMETRIC KEYS (STATIC BRAND PUZZLE PATTERN IN 1 ROW) */}
                 {item.rightKeyColor && (
@@ -179,30 +179,30 @@ export const ImparablesPlatform: React.FC = () => {
                 )}
 
                 {/* Card Header Row */}
-                <div className="relative z-10 flex items-center justify-between gap-4">
+                <div className="relative z-10 flex items-center justify-between gap-2">
                   <span
-                    className={`text-xs font-mono font-bold tracking-widest uppercase ${item.tagClass}`}
+                    className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase ${item.tagClass}`}
                   >
                     {item.tag}
                   </span>
                   <span
-                    className={`text-xs font-mono font-bold tracking-widest uppercase select-none ${item.numberClass}`}
+                    className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase select-none ${item.numberClass}`}
                   >
                     {item.number}
                   </span>
                 </div>
 
                 {/* Card Main Body */}
-                <div className="relative z-10 my-auto py-2">
-                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl tracking-tight leading-none">
+                <div className="relative z-10 my-auto py-1 sm:py-2">
+                  <h3 className="font-display font-extrabold text-base sm:text-3xl lg:text-3xl tracking-tight leading-snug sm:leading-none">
                     {item.title}
                   </h3>
 
                   <div
-                    className={`w-10 h-1 mt-3.5 mb-4 rounded-full group-hover:w-16 transition-all duration-300 ${item.accentBar}`}
+                    className={`w-8 sm:w-10 h-0.5 sm:h-1 mt-2 sm:mt-3.5 mb-2 sm:mb-4 rounded-full group-hover:w-16 transition-all duration-300 ${item.accentBar}`}
                   />
                   <p
-                    className={`text-sm sm:text-base leading-relaxed min-h-[3rem] sm:min-h-[3.25rem] flex items-start ${item.textClass}`}
+                    className={`text-xs sm:text-base leading-tight sm:leading-relaxed flex items-start ${item.textClass}`}
                   >
                     {item.desc}
                   </p>
