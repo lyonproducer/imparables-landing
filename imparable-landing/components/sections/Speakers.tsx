@@ -15,10 +15,12 @@ export const Speakers: React.FC = () => {
 
   return (
     <section
-      id="ponentes"
+      id="expertos"
       ref={sectionRef}
       className="relative py-20 md:py-32 bg-background-elevated/30 border-t border-border overflow-hidden"
     >
+      {/* Anchor alias for backwards compatibility */}
+      <div id="ponentes" className="absolute -top-24" />
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <SectionHeading
           kicker="PANELISTAS & PONENTES"

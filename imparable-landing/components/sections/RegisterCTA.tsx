@@ -14,10 +14,12 @@ export const RegisterCTA: React.FC = () => {
 
   return (
     <section
-      id="registro"
+      id="reserva"
       ref={sectionRef}
       className="relative py-24 md:py-36 bg-background-elevated/50 border-t border-border overflow-hidden"
     >
+      {/* Anchor alias for backwards compatibility */}
+      <div id="registro" className="absolute -top-24" />
       {/* Background abstract lines and glowing orbs */}
       <div className="absolute inset-0 pointer-events-none select-none opacity-40">
         <LinesBackground className="w-full h-full" />
