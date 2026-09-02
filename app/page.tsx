@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { ImparablesHero } from "@/components/sections/imparables/ImparablesHero";
 import { ImparablesPlatform } from "@/components/sections/imparables/ImparablesPlatform";
 import { ImparablesAbout } from "@/components/sections/imparables/ImparablesAbout";
+import { ImparablesTrackDivider } from "@/components/ui/imparables";
 import { ImparablesEvents } from "@/components/sections/imparables/ImparablesEvents";
 import { ImparablesPartners } from "@/components/sections/imparables/ImparablesPartners";
 import { ImparablesCommunity } from "@/components/sections/imparables/ImparablesCommunity";
@@ -28,11 +29,12 @@ export default function Home() {
       <main className="flex-1">
         <ImparablesHero />
         <ImparablesPlatform />
+        <ImparablesTrackDivider />
         <ImparablesAbout />
-        <ImparablesEvents />
-        <ImparablesPartners />
-        <ImparablesCommunity />
         <ImparablesInstagramFeed />
+        {/* <ImparablesEvents />
+        <ImparablesPartners /> */}
+        <ImparablesCommunity />
       </main>
       <ImparablesFooter />
     </div>

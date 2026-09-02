@@ -90,7 +90,7 @@ export const ImparablesPlatform: React.FC = () => {
     <section
       id="esencia"
       ref={containerRef}
-      className="relative py-24 md:py-32 bg-[#F0F2F6] text-neutral-950 border-b border-neutral-300/80 overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#F0F2F6] text-neutral-950 overflow-hidden"
     >
       {/* Dynamic Light Background Ambience */}
       <div className="absolute inset-0 pointer-events-none select-none">

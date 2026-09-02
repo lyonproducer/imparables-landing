@@ -4,17 +4,8 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ImparablesInterlock } from "@/components/ui/imparables";
-import { Quotes, Sparkle } from "@phosphor-icons/react";
+import { Quotes } from "@phosphor-icons/react";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
-
-const formatPills = [
-  "Conferencias",
-  "Experiencias empresariales",
-  "Tecnología",
-  "Formación",
-  "Networking",
-  "Historias reales",
-];
 
 export const ImparablesAbout: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -66,39 +57,10 @@ export const ImparablesAbout: React.FC = () => {
               {/* Subtitle / Description */}
               <motion.p
                 variants={fadeUpVariant}
-                className="text-base sm:text-lg md:text-xl text-neutral-600 font-normal leading-relaxed mb-8"
+                className="text-base sm:text-lg md:text-xl text-neutral-600 font-normal leading-relaxed mb-10"
               >
                 Desde entonces hemos creado diferentes formatos para hablar de aquello que nos mueve, nos desafía y nos impulsa a crecer.
               </motion.p>
-
-              {/* Formats Pills */}
-              <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-2.5 sm:gap-3 mb-10">
-                {formatPills.map((pill) => (
-                  <span
-                    key={pill}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-neutral-900 border border-neutral-300/80 text-xs sm:text-sm font-semibold shadow-sm hover:border-[#004F9E]/40 hover:shadow-md transition-all duration-200"
-                  >
-                    <Sparkle size={14} weight="fill" className="text-[#FFB100]" />
-                    <span>{pill}</span>
-                  </span>
-                ))}
-              </motion.div>
-
-              {/* Belief / Purpose Card */}
-              <motion.div
-                variants={fadeUpVariant}
-                className="relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-300/80 shadow-lg mb-10 overflow-hidden group"
-              >
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#004F9E] to-[#FFB100]" />
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-[#004F9E]/10 text-[#004F9E] flex items-center justify-center shrink-0">
-                    <Quotes size={22} weight="fill" />
-                  </div>
-                  <blockquote className="font-display font-semibold text-base sm:text-lg text-neutral-900 leading-relaxed italic">
-                    “Porque creemos que detrás de cada sueño existe una persona que decidió creer antes de tener todas las respuestas.”
-                  </blockquote>
-                </div>
-              </motion.div>
             </div>
 
             {/* Bottom-Left Image (Matches Reference Layout) */}

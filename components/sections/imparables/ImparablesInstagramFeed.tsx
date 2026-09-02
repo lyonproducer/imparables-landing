@@ -37,7 +37,7 @@ export const ImparablesInstagramFeed: React.FC = () => {
           transition={{
             repeat: Infinity,
             repeatType: "loop",
-            duration: 35,
+            duration: 75,
             ease: "linear",
           }}
           className="flex flex-nowrap items-center w-max"
@@ -48,7 +48,7 @@ export const ImparablesInstagramFeed: React.FC = () => {
               href="https://www.instagram.com/imparables.ia/"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group block shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 aspect-square border-r border-white/10 overflow-hidden bg-neutral-900"
+              className="relative group block shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 h-72 sm:h-80 md:h-[360px] lg:h-[420px] border-r border-white/10 overflow-hidden bg-neutral-900"
             >
               <Image
                 src={photo.src}
