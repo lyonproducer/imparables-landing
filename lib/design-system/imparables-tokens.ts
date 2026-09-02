@@ -43,6 +43,22 @@ export const imparablesTokens = {
       linesUrl: "/backgrounds/nexus-lines-pattern.jpg",
     },
   },
+  layout: {
+    platformGrid: {
+      mobile: "grid-cols-2",
+      desktop: "lg:grid-cols-4",
+      gap: "gap-2.5 sm:gap-4 md:gap-5 lg:gap-6",
+    },
+    footerPaddingBottom: "pb-36 md:pb-44 lg:pb-48",
+  },
+  motion: {
+    marqueeDuration: 75,
+    springHover: { type: "spring", stiffness: 350, damping: 22 },
+    scrollExpand: {
+      distanceMultiplier: 3.2,
+      expansionThreshold: 0.35,
+    },
+  },
 } as const;
 
 export type ImparablesColorTheme = "blue" | "amber" | "light" | "dark" | "lines";
