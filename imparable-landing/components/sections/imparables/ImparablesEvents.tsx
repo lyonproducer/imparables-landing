@@ -61,7 +61,7 @@ export const ImparablesEvents: React.FC = () => {
             </div>
 
             <div className="shrink-0 w-full lg:w-auto">
-              <Link href="/">
+              <Link href="/nexus">
                 <Button
                   variant="primary"
                   size="lg"

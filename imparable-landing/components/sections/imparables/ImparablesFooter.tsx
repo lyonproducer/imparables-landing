@@ -87,7 +87,7 @@ export const ImparablesFooter: React.FC = () => {
               Descubre la landing dedicada a nuestro conversatorio sobre Inteligencia Artificial, sistemas y tecnología aplicada a empresas.
             </p>
             <Link
-              href="/"
+              href="/nexus"
               className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-primary/20 text-foreground border border-primary/40 hover:bg-primary/30 hover:border-accent/50 transition-all w-fit mt-1"
             >
               <span>Ir a Imparables Nexus</span>

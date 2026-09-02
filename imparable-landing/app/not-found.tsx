@@ -14,12 +14,12 @@ export default function NotFound() {
         La página que buscas no existe o ha sido reubicada.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-4">
-        <Link href="/">
+        <Link href="/nexus">
           <Button variant="primary" size="md">
             Ir a Nexus
           </Button>
         </Link>
-        <Link href="/imparables">
+        <Link href="/">
           <Button variant="outline" size="md">
             Ir a Imparables
           </Button>

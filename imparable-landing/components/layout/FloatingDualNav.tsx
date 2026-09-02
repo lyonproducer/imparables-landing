@@ -9,8 +9,8 @@ import { List, X, Sparkle } from "@phosphor-icons/react";
 
 export const FloatingDualNav: React.FC = () => {
   const pathname = usePathname();
-  const isImparables = pathname?.startsWith("/imparables");
-  const isNexus = !isImparables;
+  const isNexus = pathname?.startsWith("/nexus");
+  const isImparables = !isNexus;
 
   const { mobileNavOpen, setMobileNavOpen } = useUIStore();
   const [hoveredWorld, setHoveredWorld] = useState<"imparables" | "nexus" | null>(null);
@@ -25,15 +25,15 @@ export const FloatingDualNav: React.FC = () => {
   }, []);
 
   const imparablesLinks = [
-    { label: "Home", href: isImparables ? "#inicio" : "/imparables" },
-    { label: "Nosotros", href: isImparables ? "#nosotros" : "/imparables#nosotros" },
-    { label: "Eventos", href: isImparables ? "#eventos" : "/imparables#eventos" },
+    { label: "Home", href: isImparables ? "#inicio" : "/" },
+    { label: "Nosotros", href: isImparables ? "#nosotros" : "/#nosotros" },
+    { label: "Eventos", href: isImparables ? "#eventos" : "/#eventos" },
   ];
 
   const nexusLinks = [
-    { label: "Home", href: isNexus ? "#hero" : "/" },
-    { label: "Expertos", href: isNexus ? "#expertos" : "/#expertos" },
-    { label: "Reserva", href: isNexus ? "#reserva" : "/#reserva" },
+    { label: "Home", href: isNexus ? "#hero" : "/nexus" },
+    { label: "Expertos", href: isNexus ? "#expertos" : "/nexus#expertos" },
+    { label: "Reserva", href: isNexus ? "#reserva" : "/nexus#reserva" },
   ];
 
   const showImparablesSub = hoveredWorld === "imparables" || (hoveredWorld === null && isImparables);
@@ -60,9 +60,9 @@ export const FloatingDualNav: React.FC = () => {
         >
           {/* Logo Trigger */}
           <Link
-            href="/imparables"
+            href="/"
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label="Mundo Imparables - Ir a inicio de Imparables"
+            aria-label="Mundo Imparables - Ir a la raíz del sitio"
           >
             <div className="flex items-center gap-1.5">
               <span className="flex items-center justify-center bg-accent text-accent-foreground font-black text-xs px-1.5 py-0.5 rounded-md tracking-tight group-hover:scale-105 transition-transform">
@@ -115,7 +115,7 @@ export const FloatingDualNav: React.FC = () => {
         >
           {/* Nexus Badge Trigger */}
           <Link
-            href="/"
+            href="/nexus"
             className="flex items-center gap-1.5 px-3 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Mundo Nexus - Ir a evento Nexus"
           >
@@ -184,7 +184,7 @@ export const FloatingDualNav: React.FC = () => {
                   parables
                 </span>
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider ml-auto font-mono">
-                  Mundo Organizador
+                  Plataforma Matriz (/)
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-2 pt-1">
@@ -209,7 +209,7 @@ export const FloatingDualNav: React.FC = () => {
                   NEXUS
                 </span>
                 <span className="text-[10px] text-accent uppercase tracking-wider ml-auto font-mono">
-                  Evento Nov 2026
+                  Evento (/nexus)
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-2 pt-1">

@@ -114,7 +114,7 @@ export const ImparablesHero: React.FC = () => {
             </a>
 
             {/* Direct Portal to Nexus World */}
-            <Link href="/" className="w-full sm:w-auto">
+            <Link href="/nexus" className="w-full sm:w-auto">
               <Button
                 variant="ghost"
                 size="lg"
