@@ -1,43 +1,19 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ImparablesLinesBackground, ImparablesInterlock } from "@/components/ui/imparables";
-import { MicrophoneStage, Compass, Lightbulb, Target, UsersThree, RocketLaunch, Quotes } from "@phosphor-icons/react";
-import { fadeUpVariant, staggerContainer, scaleUpVariant } from "@/lib/motion/motion-variants";
+import { ImparablesInterlock } from "@/components/ui/imparables";
+import { Quotes, Sparkle } from "@phosphor-icons/react";
+import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
-const methodSteps = [
-  {
-    num: "01",
-    name: "Descubre",
-    desc: "Identifica aquello que quieres desarrollar, comunicar o transformar.",
-    icon: Compass,
-  },
-  {
-    num: "02",
-    name: "Aprende",
-    desc: "Obtén herramientas prácticas, conocimientos y nuevas perspectivas.",
-    icon: Lightbulb,
-  },
-  {
-    num: "03",
-    name: "Practica",
-    desc: "Lleva lo aprendido a situaciones reales, dinámicas y retos concretos.",
-    icon: Target,
-  },
-  {
-    num: "04",
-    name: "Comparte",
-    desc: "Encuentra personas con historias, ideas y objetivos diferentes para potenciarte.",
-    icon: UsersThree,
-  },
-  {
-    num: "05",
-    name: "Atrévete",
-    desc: "Da el paso decisivo que antes parecía demasiado grande o lejano.",
-    icon: RocketLaunch,
-  },
+const formatPills = [
+  "Conferencias",
+  "Experiencias empresariales",
+  "Tecnología",
+  "Formación",
+  "Networking",
+  "Historias reales",
 ];
 
 export const ImparablesAbout: React.FC = () => {
@@ -48,119 +24,120 @@ export const ImparablesAbout: React.FC = () => {
     <section
       id="nosotros"
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-background border-t border-white/10 overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-36 bg-[#F0F2F6] text-neutral-950 border-b border-neutral-300/80 overflow-hidden"
     >
-      <ImparablesLinesBackground opacity={0.25} />
+      {/* Dynamic Ambient Glows */}
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <div className="absolute top-1/3 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-[#004F9E]/06 blur-[180px] rounded-full" />
+        <div className="absolute bottom-1/4 right-1/4 w-[550px] h-[550px] bg-[#FFB100]/06 blur-[180px] rounded-full" />
+        <div className="absolute inset-0 bg-[radial-gradient(#0000000a_1px,transparent_1px)] [background-size:32px_32px]" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <SectionHeading
-          kicker="UNA MARCA QUE NACIÓ PARA IMPULSAR"
-          title="Una idea que sigue creciendo"
-          subtitle="Imparables nació en 2024 con una convicción clara: recordarle a las personas que siempre existe una posibilidad real de avanzar y transformar su entorno."
-          align="center"
-          className="mb-16"
-        />
-
-        {/* Founder Spotlight: Andersong Trocel */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          variants={fadeUpVariant}
-          className="mb-20"
+          variants={staggerContainer}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
         >
-          <div className="relative p-8 md:p-12 rounded-3xl bg-[#0E1015]/90 border border-white/15 shadow-2xl backdrop-blur-xl imparables-corner-accent overflow-hidden">
-            {/* Ambient subtle glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#004F9E]/15 rounded-full blur-3xl pointer-events-none" />
+          {/* ================= LEFT COLUMN: EDITORIAL CONTENT & BOTTOM-LEFT IMAGE ================= */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
+            <div>
+              {/* Kicker */}
+              <motion.div variants={fadeUpVariant} className="flex items-center gap-2 mb-4">
+                <ImparablesInterlock size="sm" />
+                <span className="text-xs font-mono font-bold tracking-[0.25em] text-[#004F9E] uppercase">
+                  UNA MARCA QUE NACIÓ PARA IMPULSAR
+                </span>
+              </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div className="w-20 h-20 rounded-2xl bg-accent/20 border border-accent/30 text-accent flex items-center justify-center mb-5 shadow-lg shadow-accent/10">
-                  <MicrophoneStage size={40} weight="duotone" aria-hidden="true" />
-                </div>
-                <div className="flex items-center gap-2 mb-2">
-                  <ImparablesInterlock size="sm" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-accent">
-                    Creador & Director General
+              {/* Main Headline */}
+              <motion.h2
+                variants={fadeUpVariant}
+                className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-neutral-950 leading-[1.12] tracking-tight mb-6"
+              >
+                Imparables nació en 2024 con una idea muy sencilla:{" "}
+                <span className="text-[#004F9E]">
+                  recordarle a las personas que siempre existe una posibilidad de avanzar.
+                </span>
+              </motion.h2>
+
+              {/* Subtitle / Description */}
+              <motion.p
+                variants={fadeUpVariant}
+                className="text-base sm:text-lg md:text-xl text-neutral-600 font-normal leading-relaxed mb-8"
+              >
+                Desde entonces hemos creado diferentes formatos para hablar de aquello que nos mueve, nos desafía y nos impulsa a crecer.
+              </motion.p>
+
+              {/* Formats Pills */}
+              <motion.div variants={fadeUpVariant} className="flex flex-wrap gap-2.5 sm:gap-3 mb-10">
+                {formatPills.map((pill) => (
+                  <span
+                    key={pill}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-neutral-900 border border-neutral-300/80 text-xs sm:text-sm font-semibold shadow-sm hover:border-[#004F9E]/40 hover:shadow-md transition-all duration-200"
+                  >
+                    <Sparkle size={14} weight="fill" className="text-[#FFB100]" />
+                    <span>{pill}</span>
                   </span>
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-extrabold text-foreground">
-                  Andersong Trocel
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Comunicador, locutor y director creativo con más de 15 años de trayectoria.
-                </p>
-              </div>
+                ))}
+              </motion.div>
 
-              <div className="lg:col-span-8 flex flex-col gap-5 text-muted-foreground text-sm sm:text-base leading-relaxed border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
-                <p>
-                  Después de años trabajando frente a micrófonos, escenarios, marcas y audiencias, nació la necesidad de crear un espacio donde la comunicación pudiera convertirse en algo más: una herramienta viva para conectar personas, contar historias y abrir oportunidades.
-                </p>
-                <p>
-                  Su experiencia frente a diferentes audiencias lo llevó a entender que comunicar no significa únicamente hablar: <strong className="text-foreground font-semibold">comunicar es conectar</strong>. Desde esa visión nació Imparables: una plataforma donde las personas encuentran escenarios para aprender, compartir y atreverse.
-                </p>
-
-                {/* Quote Box */}
-                <div className="relative mt-2 p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex items-start gap-3.5">
-                  <Quotes size={24} weight="fill" className="text-accent shrink-0 mt-1" />
-                  <blockquote className="text-foreground font-medium italic text-sm md:text-base">
-                    “No queremos decirle a las personas que todo será fácil. Queremos recordarles que siempre pueden hacer algo.”
+              {/* Belief / Purpose Card */}
+              <motion.div
+                variants={fadeUpVariant}
+                className="relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-300/80 shadow-lg mb-10 overflow-hidden group"
+              >
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#004F9E] to-[#FFB100]" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-2xl bg-[#004F9E]/10 text-[#004F9E] flex items-center justify-center shrink-0">
+                    <Quotes size={22} weight="fill" />
+                  </div>
+                  <blockquote className="font-display font-semibold text-base sm:text-lg text-neutral-900 leading-relaxed italic">
+                    “Porque creemos que detrás de cada sueño existe una persona que decidió creer antes de tener todas las respuestas.”
                   </blockquote>
                 </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* El Método Imparable */}
-        <div className="mb-16 text-center">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-accent block mb-2">
-            NUESTRA METODOLOGÍA
-          </span>
-          <h3 className="font-display text-2xl md:text-4xl font-extrabold text-foreground mb-4">
-            El Método Imparable
-          </h3>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
-            Aprender. Practicar. Exponer. Transformar. Las habilidades no se desarrollan únicamente escuchando; nuestras experiencias llevan de la inspiración a la acción.
-          </p>
-        </div>
-
-        {/* 5 Steps Grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial={shouldReduceMotion ? false : "hidden"}
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5"
-        >
-          {methodSteps.map((step) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.num}
-                variants={scaleUpVariant}
-                whileHover={shouldReduceMotion ? undefined : { y: -6 }}
-                className="flex flex-col p-6 rounded-2xl bg-[#0E1015]/90 border border-white/10 hover:border-accent/40 shadow-xl transition-all duration-300 imparables-corner-accent"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
-                    <Icon size={22} weight="duotone" />
-                  </div>
-                  <span className="font-mono text-xs font-bold text-accent">
-                    {step.num}
-                  </span>
-                </div>
-                <h4 className="font-display text-lg font-bold text-foreground mb-2">
-                  {step.name}
-                </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {step.desc}
-                </p>
               </motion.div>
-            );
-          })}
+            </div>
+
+            {/* Bottom-Left Image (Matches Reference Layout) */}
+            <motion.div
+              variants={fadeUpVariant}
+              className="relative w-full aspect-[16/10] rounded-3xl sm:rounded-[2.25rem] overflow-hidden shadow-2xl border border-neutral-300/80 group"
+            >
+              <Image
+                src="/images/imparables-about-2.webp"
+                alt="Imparables Formación y Encuentros"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+            </motion.div>
+          </div>
+
+          {/* ================= RIGHT COLUMN: TALL PORTRAIT HERO IMAGE (Matches Reference Layout) ================= */}
+          <div className="lg:col-span-6 w-full sticky top-28">
+            <motion.div
+              variants={fadeUpVariant}
+              className="relative w-full h-[520px] sm:h-[640px] md:h-[700px] lg:h-[760px] rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-neutral-300/80 group bg-neutral-200"
+            >
+              <Image
+                src="/images/imparables-about-1.webp"
+                alt="Andersong Trocel Imparables"
+                fill
+                sizes="(max-width: 1024px) 100vw, 48vw"
+                priority
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-50" />
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
+
+export default ImparablesAbout;
