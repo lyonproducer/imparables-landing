@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "nextjs-15": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/nextjs-15/SKILL.md",
+      "computedHash": "cf11a02af6aaaa8cd35e761630e3a337397f8632b25e2f214ab34ba5a32563e7"
+    },
+    "react-19": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/react-19/SKILL.md",
+      "computedHash": "87b435fb37e724299d923a050da323172eb257699a35f9095f9c181bdf336361"
+    },
+    "tailwind-4": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/tailwind-4/SKILL.md",
+      "computedHash": "4bb97fbac3793910156beb0d722dfba529a68bec74de8f9cfc7333867d77a3f1"
+    },
+    "typescript": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/typescript/SKILL.md",
+      "computedHash": "1693c0e8bf539e479179332543ac9ba13ab2c2dadb04e1f1e4ae0587040de2a0"
+    },
+    "zod-4": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/zod-4/SKILL.md",
+      "computedHash": "dca547373fbf6d3f5d73a20227b6900b33cc321daed3069f872f404ae3d6c498"
+    },
+    "zustand-5": {
+      "source": "gentleman-programming/gentleman-skills",
+      "sourceType": "github",
+      "skillPath": "curated/zustand-5/SKILL.md",
+      "computedHash": "cba1b21bc09eb4771bd0568d7c71e072fae5ce2165abd281c1eabf788d294ea3"
+    }
+  }
+}
