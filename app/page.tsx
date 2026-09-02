@@ -6,8 +6,8 @@ import { ImparablesAbout } from "@/components/sections/imparables/ImparablesAbou
 import { ImparablesEvents } from "@/components/sections/imparables/ImparablesEvents";
 import { ImparablesPartners } from "@/components/sections/imparables/ImparablesPartners";
 import { ImparablesCommunity } from "@/components/sections/imparables/ImparablesCommunity";
+import { ImparablesInstagramFeed } from "@/components/sections/imparables/ImparablesInstagramFeed";
 import { ImparablesFooter } from "@/components/sections/imparables/ImparablesFooter";
-import TextLoop from "@/components/ui/TextLoop";
 
 export const metadata: Metadata = {
   title: "Imparables — Plataforma de Experiencias, Formación y Encuentros",
@@ -32,6 +32,7 @@ export default function Home() {
         <ImparablesEvents />
         <ImparablesPartners />
         <ImparablesCommunity />
+        <ImparablesInstagramFeed />
       </main>
       <ImparablesFooter />
     </div>
