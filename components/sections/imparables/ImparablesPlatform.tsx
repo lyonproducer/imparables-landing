@@ -207,17 +207,6 @@ export const ImparablesPlatform: React.FC = () => {
                     {item.desc}
                   </p>
                 </div>
-
-                {/* Geometric Corner Accent Notch */}
-                <div
-                  className={`absolute bottom-0 right-0 w-7 h-7 pointer-events-none opacity-40 ${
-                    item.id === "conectar"
-                      ? "border-r-2 border-b-2 border-neutral-950"
-                      : item.id === "formar"
-                      ? "border-r-2 border-b-2 border-neutral-800"
-                      : "border-r-2 border-b-2 border-amber-400"
-                  }`}
-                />
               </motion.div>
             );
           })}

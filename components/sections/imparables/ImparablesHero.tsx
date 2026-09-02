@@ -186,7 +186,7 @@ export const ImparablesHero: React.FC = () => {
           ribbonColor="#FFB100"
           ribbonWidth={54}
           bottomFillColor="#F0F2F6"
-          pauseOnHover
+          pauseOnHover={false}
         />
       </div>
     </section>
