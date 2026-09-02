@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -77,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="es-VE" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );
