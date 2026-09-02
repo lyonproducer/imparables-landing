@@ -202,7 +202,7 @@ export const eventConfig = {
   ] as PartnerItem[],
 
   socialLinks: [
-    { name: "Instagram", url: "https://instagram.com" },
+    { name: "Instagram", url: "https://www.instagram.com/imparables.ia/" },
     { name: "TikTok", url: "https://tiktok.com" },
     { name: "YouTube", url: "https://youtube.com" },
     { name: "LinkedIn", url: "https://linkedin.com" },

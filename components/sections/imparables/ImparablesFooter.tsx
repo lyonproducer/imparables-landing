@@ -115,7 +115,7 @@ export const ImparablesFooter: React.FC = () => {
           {/* Social Links */}
           <div className="flex items-center gap-3 text-foreground/80">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/imparables.ia/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-xl bg-white/5 hover:text-accent hover:bg-white/10 transition-colors cursor-pointer"

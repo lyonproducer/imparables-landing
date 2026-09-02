@@ -45,7 +45,7 @@ export const ImparablesInstagramFeed: React.FC = () => {
           {marqueePhotos.map((photo, idx) => (
             <a
               key={`${photo.id}-${idx}`}
-              href="https://instagram.com/imparables.ve"
+              href="https://www.instagram.com/imparables.ia/"
               target="_blank"
               rel="noopener noreferrer"
               className="relative group block shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 aspect-square border-r border-white/10 overflow-hidden bg-neutral-900"
@@ -63,7 +63,7 @@ export const ImparablesInstagramFeed: React.FC = () => {
                 <div className="flex items-center justify-between text-white">
                   <div className="flex items-center gap-1.5 text-xs font-mono font-semibold tracking-wider">
                     <InstagramLogo size={16} weight="bold" className="text-[#FFB100]" />
-                    <span>@imparables.ve</span>
+                    <span>@imparables.ia</span>
                   </div>
                   <ArrowUpRight size={16} weight="bold" className="text-white/80" />
                 </div>
@@ -75,7 +75,7 @@ export const ImparablesInstagramFeed: React.FC = () => {
         {/* Center Floating Instagram Badge */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-20">
           <a
-            href="https://instagram.com/imparables.ve"
+            href="https://www.instagram.com/imparables.ia/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Sigue a Imparables en Instagram"
