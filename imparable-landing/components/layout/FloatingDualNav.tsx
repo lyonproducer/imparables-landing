@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUIStore } from "@/lib/stores/ui-store";
@@ -61,16 +62,18 @@ export const FloatingDualNav: React.FC = () => {
           {/* Logo Trigger */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="flex items-center px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent bg-white/95 hover:bg-white transition-colors"
             aria-label="Mundo Imparables - Ir a la raíz del sitio"
           >
-            <div className="flex items-center gap-1.5">
-              <span className="flex items-center justify-center bg-accent text-accent-foreground font-black text-xs px-1.5 py-0.5 rounded-md tracking-tight group-hover:scale-105 transition-transform">
-                im
-              </span>
-              <span className="font-display font-bold text-sm tracking-tight text-foreground group-hover:text-accent transition-colors">
-                parables
-              </span>
+            <div className="relative h-6 w-[105px] sm:w-[115px] flex items-center">
+              <Image
+                src="/logo/imparables-header-logo.png"
+                alt="Imparables"
+                fill
+                priority
+                sizes="120px"
+                className="object-contain object-left group-hover:scale-105 transition-transform"
+              />
             </div>
           </Link>
 
@@ -177,12 +180,17 @@ export const FloatingDualNav: React.FC = () => {
             {/* Sección Imparables Mobile */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2 pb-2 border-b border-white/10">
-                <span className="flex items-center justify-center bg-accent text-accent-foreground font-black text-xs px-1.5 py-0.5 rounded-md">
-                  im
-                </span>
-                <span className="font-display font-bold text-sm text-foreground">
-                  parables
-                </span>
+                <div className="bg-white/95 px-2 py-0.5 rounded-lg">
+                  <div className="relative h-6 w-28">
+                    <Image
+                      src="/logo/imparables-header-logo.png"
+                      alt="Imparables"
+                      fill
+                      sizes="120px"
+                      className="object-contain object-left"
+                    />
+                  </div>
+                </div>
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider ml-auto font-mono">
                   Plataforma Matriz (/)
                 </span>
