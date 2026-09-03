@@ -1,21 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+const spaceGrotesk = localFont({
+  src: "../public/fonts/SpaceGrotesk-Variable.woff2",
   variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: "300 700",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/DMSans-Variable.woff2",
+      style: "normal",
+      weight: "100 1000",
+    },
+    {
+      path: "../public/fonts/DMSans-Italic-Variable.woff2",
+      style: "italic",
+      weight: "100 1000",
+    },
+  ],
   variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "500", "700"],
 });
 
 export const viewport: Viewport = {
