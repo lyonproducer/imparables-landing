@@ -41,7 +41,7 @@ export const ImparablesCommunity: React.FC = () => {
         overlayScrim={0.75}
         scrollHint="Desliza para contactarnos"
         title={
-          <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-[#0E1015]/95 shadow-2xl border border-white/20 backdrop-blur-xl text-center max-w-sm mx-auto transform hover:scale-105 transition-transform duration-300 overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-[#0E1015]/95 shadow-2xl border border-white/20 backdrop-blur-xl text-center max-w-sm mx-auto hover:scale-105 transition-transform duration-300 overflow-hidden">
             {/* Decorative track lines */}
             <svg
               className="absolute inset-0 w-full h-full pointer-events-none select-none opacity-40"

@@ -66,7 +66,7 @@ export const ImparablesAbout: React.FC = () => {
             {/* Bottom-Left Image (Matches Reference Layout) */}
             <motion.div
               variants={fadeUpVariant}
-              className="relative w-full aspect-[16/10] rounded-3xl sm:rounded-[2.25rem] overflow-hidden shadow-2xl border border-neutral-300/80 group"
+              className="relative w-full aspect-16/10 rounded-3xl sm:rounded-[2.25rem] overflow-hidden shadow-2xl border border-neutral-300/80 group"
             >
               <Image
                 src="/images/imparables-about-2.webp"

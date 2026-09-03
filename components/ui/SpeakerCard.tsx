@@ -20,10 +20,10 @@ export const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, index }) => {
     <motion.div
       variants={scaleUpVariant}
       whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-      className="speaker-card group relative flex flex-col overflow-hidden rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/50 transition-colors duration-300"
+      className="speaker-card group relative flex flex-col overflow-hidden rounded-card bg-background-elevated/70 border border-border hover:border-primary/50 transition-colors duration-300"
     >
       {/* Contenedor de Imagen o Placeholder */}
-      <div className="relative aspect-[4/5] w-full bg-gradient-to-b from-primary/30 to-background-elevated flex items-center justify-center overflow-hidden">
+      <div className="relative aspect-4/5 w-full bg-gradient-to-b from-primary/30 to-background-elevated flex items-center justify-center overflow-hidden">
         {isConfirmed && speaker.photoUrl ? (
           <Image
             src={speaker.photoUrl}

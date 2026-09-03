@@ -41,7 +41,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({ topic, index }) => {
       variants={scaleUpVariant}
       whileHover={shouldReduceMotion ? undefined : { y: -4 }}
       tabIndex={0}
-      className="topic-card group relative flex flex-col p-6 rounded-[var(--radius-card)] bg-background-elevated/80 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="topic-card group relative flex flex-col p-6 rounded-card bg-background-elevated/80 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {/* Indicador numérico sutil */}
       <span className="absolute top-5 right-6 text-xs font-mono font-semibold text-muted-foreground/40 group-hover:text-accent transition-colors">

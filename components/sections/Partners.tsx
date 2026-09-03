@@ -40,7 +40,7 @@ export const Partners: React.FC = () => {
               key={index}
               variants={scaleUpVariant}
               whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-              className="group flex flex-col items-center justify-center p-8 rounded-[var(--radius-card)] bg-background-elevated/60 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-lg hover:shadow-primary/5"
+              className="group flex flex-col items-center justify-center p-8 rounded-card bg-background-elevated/60 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="relative h-20 w-44 flex items-center justify-center filter grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-300">
                 <Image

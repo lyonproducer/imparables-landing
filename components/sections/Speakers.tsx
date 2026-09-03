@@ -36,7 +36,7 @@ export const Speakers: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUpVariant}
-          className="mb-12 p-6 md:p-8 rounded-[var(--radius-card)] bg-gradient-to-r from-primary/20 via-background-elevated to-background-elevated border border-primary/30 flex flex-col md:flex-row items-center gap-6 md:gap-8"
+          className="mb-12 p-6 md:p-8 rounded-card bg-gradient-to-r from-primary/20 via-background-elevated to-background-elevated border border-primary/30 flex flex-col md:flex-row items-center gap-6 md:gap-8"
         >
           <div className="w-16 h-16 rounded-2xl bg-accent text-accent-foreground flex items-center justify-center shrink-0 shadow-lg shadow-accent/20">
             <MicrophoneStage size={32} weight="fill" aria-hidden="true" />

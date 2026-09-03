@@ -74,7 +74,7 @@ export const AboutEvent: React.FC = () => {
 
           {/* Right Column: Decorative Graphic Panel with LinesBackground */}
           <div className="lg:col-span-5 relative">
-            <div className="relative aspect-square w-full rounded-[var(--radius-card)] bg-gradient-to-br from-primary/20 via-background-elevated to-background border border-primary/30 overflow-hidden shadow-2xl flex items-center justify-center p-6">
+            <div className="relative aspect-square w-full rounded-card bg-gradient-to-br from-primary/20 via-background-elevated to-background border border-primary/30 overflow-hidden shadow-2xl flex items-center justify-center p-6">
               {/* Parametric lines background embedded */}
               <LinesBackground className="absolute inset-0 opacity-80" />
 

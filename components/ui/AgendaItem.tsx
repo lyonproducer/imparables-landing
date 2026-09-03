@@ -18,7 +18,7 @@ export const AgendaItem: React.FC<AgendaItemProps> = ({ item }) => {
     <motion.div
       variants={fadeUpVariant}
       whileHover={shouldReduceMotion ? undefined : { x: 4 }}
-      className="agenda-item group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-5 md:p-6 rounded-[var(--radius-card)] bg-background-elevated/60 border border-border hover:border-primary/40 transition-colors duration-300"
+      className="agenda-item group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-5 md:p-6 rounded-card bg-background-elevated/60 border border-border hover:border-primary/40 transition-colors duration-300"
     >
       {/* Badge de Horario */}
       <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-accent font-mono text-xs md:text-sm font-semibold shrink-0 self-start md:self-center">

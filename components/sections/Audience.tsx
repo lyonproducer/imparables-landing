@@ -35,7 +35,7 @@ export const Audience: React.FC = () => {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-            className="flex flex-col p-8 rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
+            className="flex flex-col p-8 rounded-card bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-accent/15 text-accent border border-accent/25 flex items-center justify-center mb-6">
               <Buildings size={26} weight="duotone" aria-hidden="true" />
@@ -55,7 +55,7 @@ export const Audience: React.FC = () => {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-            className="flex flex-col p-8 rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
+            className="flex flex-col p-8 rounded-card bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-primary/25 text-primary-foreground border border-primary/40 flex items-center justify-center mb-6">
               <Code size={26} weight="duotone" aria-hidden="true" />
@@ -74,7 +74,7 @@ export const Audience: React.FC = () => {
           <motion.div
             variants={fadeUpVariant}
             whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-            className="flex flex-col p-8 rounded-[var(--radius-card)] bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
+            className="flex flex-col p-8 rounded-card bg-background-elevated/70 border border-border hover:border-primary/40 transition-colors duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-white/10 text-foreground border border-white/15 flex items-center justify-center mb-6">
               <Handshake size={26} weight="duotone" aria-hidden="true" />

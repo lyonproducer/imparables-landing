@@ -30,7 +30,7 @@ export const AboutImparables: React.FC = () => {
             </p>
 
             {/* Official Quote Box */}
-            <div className="relative p-6 sm:p-8 rounded-[var(--radius-card)] bg-background/80 border border-primary/30 shadow-xl mt-2">
+            <div className="relative p-6 sm:p-8 rounded-card bg-background/80 border border-primary/30 shadow-xl mt-2">
               <Quotes size={32} weight="fill" className="text-accent/60 mb-2" aria-hidden="true" />
               <blockquote className="font-display font-medium text-lg md:text-xl text-foreground italic leading-relaxed">
                 “{eventConfig.aboutImparables.quote}”
