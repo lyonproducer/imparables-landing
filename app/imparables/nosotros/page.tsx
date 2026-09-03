@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { ImparablesAbout } from "@/components/sections/imparables/ImparablesAbout";
 import { ImparablesFooter } from "@/components/sections/imparables/ImparablesFooter";
+import { ImparablesBadge } from "@/components/ui/imparables";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Nosotros & Andersong Trocel — Imparables",
+  title: "Nosotros — Historia y Filosofía de Imparables",
   description:
-    "Conoce la visión, trayectoria e historia detrás de la plataforma Imparables y a su fundador Andersong Trocel.",
+    "Conoce a Andersong Trocel y la visión detrás de Imparables: una plataforma de conferencias, formación y experiencias para el crecimiento empresarial.",
 };
 
 export default function NosotrosPage() {
@@ -17,13 +18,9 @@ export default function NosotrosPage() {
       <main className="flex-1 pt-28 md:pt-36">
         {/* Page Hero Header Banner */}
         <section className="relative px-6 md:px-12 lg:px-16 py-12 md:py-16 text-center max-w-4xl mx-auto overflow-hidden">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/12 text-[#FFB100] text-xs font-mono font-bold tracking-[0.2em] uppercase mb-4">
-            <svg className="w-3.5 h-3.5 fill-[#FFB100]" viewBox="0 0 256 256" aria-hidden="true">
-              <path d="M216,128a88,88,0,0,1-88,88,88,88,0,0,1-88-88,88,88,0,0,1,88-88A88,88,0,0,1,216,128Z" opacity="0.2" />
-              <path d="M240,128a15.79,15.79,0,0,1-10.5,15l-63.44,23.07L143,229.5a16,16,0,0,1-30,0L89.94,166.06,26.5,143a16,16,0,0,1,0-30L90,89.94,113,26.5a16,16,0,0,1,30,0l23.07,63.44L229.5,113A15.79,15.79,0,0,1,240,128Z" />
-            </svg>
-            <span>MUNDO IMPARABLES · NOSOTROS</span>
-          </div>
+          <ImparablesBadge theme="dark" className="mb-4">
+            MUNDO IMPARABLES · NOSOTROS
+          </ImparablesBadge>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.08] mb-6">
             La historia detrás de la{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-amber-500">

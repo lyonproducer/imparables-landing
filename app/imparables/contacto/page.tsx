@@ -4,14 +4,13 @@ import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { ImparablesFooter } from "@/components/sections/imparables/ImparablesFooter";
 import { Button } from "@/components/ui/Button";
-import { ImparablesInterlock } from "@/components/ui/imparables";
+import { ImparablesInterlock, ImparablesBadge } from "@/components/ui/imparables";
 import {
   PaperPlaneRight,
   CheckCircle,
   EnvelopeSimple,
   WhatsappLogo,
   MapPin,
-  Sparkle,
 } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
@@ -49,10 +48,9 @@ export default function ContactoPage() {
             {/* Left Column: Headline & Direct Contact Info */}
             <motion.div variants={fadeUpVariant} className="lg:col-span-5 flex flex-col justify-between h-full">
               <div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/12 text-[#FFB100] text-xs font-mono font-bold tracking-[0.2em] uppercase mb-4">
-                  <Sparkle size={13} weight="fill" />
-                  <span>MUNDO IMPARABLES · CONTACTO</span>
-                </div>
+                <ImparablesBadge theme="dark" className="mb-4">
+                  MUNDO IMPARABLES · CONTACTO
+                </ImparablesBadge>
                 <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-6">
                   Conectemos y hagamos que{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-amber-500">

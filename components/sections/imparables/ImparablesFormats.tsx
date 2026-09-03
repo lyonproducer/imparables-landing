@@ -5,13 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
-  Sparkle,
   ArrowUpRight,
   ArrowsOutSimple,
   X,
   Calendar,
   CheckCircle,
 } from "@phosphor-icons/react";
+import { ImparablesBadge } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 export interface FormatItem {
@@ -39,7 +39,7 @@ const formatsData: FormatItem[] = [
     flyerSrc: "/flyers/464917687_18459870139059362_6820635933111071404_n.webp",
     flyerAlt: "Flyer Conferencias Imparables — Andersong Trocel y Gelson Páez",
     yearOrMetric: "100%",
-    metricLabel: "Historias que inspiran",
+    metricLabel: "Historias reales",
     accentColor: "#004F9E",
     rotation: "-rotate-3 lg:-rotate-2",
   },
@@ -94,18 +94,18 @@ export const ImparablesFormats: React.FC = () => {
   return (
     <section
       id="formatos"
-      className="relative w-full py-24 md:py-32 bg-[#030F1C] overflow-hidden border-t border-white/10"
+      className="relative w-full py-24 md:py-32 bg-[#F4F4F6] text-neutral-900 overflow-hidden border-t border-black/5"
     >
       {/* Anchor for nav link #eventos */}
       <div id="eventos" className="absolute -top-20" aria-hidden="true" />
 
-      {/* Directional atmospheric lighting inspired by reference */}
-      <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[600px] h-[350px] bg-[#004F9E]/15 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-[500px] h-[300px] bg-[#FFB100]/10 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+      {/* Directional atmospheric lighting for light surface */}
+      <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[600px] h-[350px] bg-[#004F9E]/5 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-[500px] h-[300px] bg-[#FFB100]/8 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        {/* ================= EDITORIAL 2-COLUMN HEADER (REFERENCE REPLICA) ================= */}
+        {/* ================= EDITORIAL 2-COLUMN HEADER (LIGHT THEME) ================= */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
@@ -115,13 +115,12 @@ export const ImparablesFormats: React.FC = () => {
         >
           {/* Left Column: Kicker & Display Headline */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-7 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/12 text-[#FFB100] text-xs font-mono font-bold tracking-[0.2em] uppercase mb-5">
-              <Sparkle size={13} weight="fill" />
-              <span>NUESTROS FORMATOS</span>
-            </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.4rem] text-white leading-[1.08] tracking-tight">
+            <ImparablesBadge theme="light" className="mb-5">
+              NUESTROS FORMATOS
+            </ImparablesBadge>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.4rem] text-neutral-950 leading-[1.08] tracking-tight">
               Diferentes escenarios.{" "}
-              <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-amber-500">
+              <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#004F9E] via-[#002B5B] to-[#FFB100]">
                 Una misma esencia.
               </span>
             </h2>
@@ -129,11 +128,11 @@ export const ImparablesFormats: React.FC = () => {
 
           {/* Right Column: Paragraph narrative */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-5 flex flex-col justify-end text-left">
-            <p className="text-white/75 font-normal text-base sm:text-lg leading-relaxed mb-4">
+            <p className="text-neutral-700 font-medium text-base sm:text-lg leading-relaxed mb-4">
               Imparables desarrolla diferentes formatos y experiencias, cada uno diseñado para
               abordar una conversación distinta.
             </p>
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed font-normal">
+            <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed font-normal">
               Desde conferencias transformadoras hasta cumbres empresariales y programas de
               comunicación, cada iniciativa conecta personas, ideas y oportunidades reales.
             </p>
@@ -153,43 +152,40 @@ export const ImparablesFormats: React.FC = () => {
                   viewport={{ once: true, margin: "-40px" }}
                   variants={fadeUpVariant}
                   transition={{ delay: idx * 0.1 }}
-                  className={`group relative flex flex-col justify-between rounded-[2rem] overflow-hidden bg-[#0B121E] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_70px_rgba(0,0,0,0.8)] hover:border-[#FFB100]/40 ${
+                  className={`group relative flex flex-col justify-between rounded-4xl overflow-hidden bg-[#0B121E] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_70px_rgba(0,0,0,0.8)] hover:border-[#FFB100]/40 ${
                     shouldReduceMotion ? "" : item.rotation
                   } hover:rotate-0`}
                   onClick={() => setSelectedFormat(item)}
                 >
                   {/* Aspect Ratio 4:5 Poster Image */}
-                  <div className="relative w-full aspect-[4/5] overflow-hidden bg-neutral-900">
+                  <div className="relative w-full aspect-4/5 overflow-hidden bg-neutral-900">
                     <Image
                       src={item.flyerSrc}
                       alt={item.flyerAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                      className="object-cover object-center group-hover:scale-[1.08] transition-transform duration-700 ease-out"
                     />
 
                     {/* Ambient Gradient Overlays for optimal typography legibility */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B121E] via-[#0B121E]/30 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent opacity-70" />
 
-                    {/* Top Floating Badge & Action */}
-                    <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between gap-2">
-                      <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-[#FFB100] border border-white/15 shadow-md">
-                        {item.tag}
-                      </span>
-                      <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-80 group-hover:opacity-100 group-hover:bg-[#FFB100] group-hover:text-neutral-950 transition-all duration-300">
+                    {/* Top Action Button */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-80 group-hover:opacity-100 group-hover:bg-[#FFB100] group-hover:text-neutral-950 transition-all duration-300 shadow-md">
                         <ArrowsOutSimple size={15} weight="bold" />
                       </div>
                     </div>
 
-                    {/* Big Stat / Hero Metric Floating Badge (as seen in the reference) */}
-                    <div className="absolute top-16 left-4 z-10">
-                      <div className="font-display font-black text-3xl sm:text-4xl text-white drop-shadow-md">
+                    {/* Metrics Anchored to Bottom Gradient */}
+                    <div className="absolute bottom-3.5 left-4 sm:left-5 z-10 flex items-baseline gap-2">
+                      <span className="font-display font-black text-2xl sm:text-3xl text-white drop-shadow-md leading-none">
                         {item.yearOrMetric}
-                      </div>
-                      <div className="text-[11px] font-mono tracking-wider uppercase text-white/70">
+                      </span>
+                      <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase text-[#FFB100] drop-shadow-sm leading-none">
                         {item.metricLabel}
-                      </div>
+                      </span>
                     </div>
                   </div>
 
@@ -228,8 +224,7 @@ export const ImparablesFormats: React.FC = () => {
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent/15 blur-3xl rounded-full pointer-events-none" />
 
           <div className="flex-1 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-[11px] font-bold uppercase mb-2 tracking-wider">
-              <Sparkle size={13} weight="fill" />
+            <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-[11px] font-bold uppercase mb-2 tracking-wider">
               <span>FORMATO TECNOLÓGICO · NOVIEMBRE 2026</span>
             </div>
             <h4 className="font-display font-extrabold text-xl sm:text-2xl text-white mb-1.5">
@@ -281,7 +276,7 @@ export const ImparablesFormats: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
                 {/* Full Flyer Poster Column */}
-                <div className="md:col-span-6 relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900">
+                <div className="md:col-span-6 relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900">
                   <Image
                     src={selectedFormat.flyerSrc}
                     alt={selectedFormat.flyerAlt}

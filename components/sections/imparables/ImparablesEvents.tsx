@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ImparablesCard } from "@/components/ui/imparables";
-import { Calendar, ArrowUpRight, Sparkle, Trophy, Users, Megaphone, TrendUp } from "@phosphor-icons/react";
+import { Calendar, ArrowUpRight, Trophy, Users, Megaphone, TrendUp } from "@phosphor-icons/react";
 import { fadeUpVariant, staggerContainer, scaleUpVariant } from "@/lib/motion/motion-variants";
 
 export const ImparablesEvents: React.FC = () => {
@@ -43,8 +43,7 @@ export const ImparablesEvents: React.FC = () => {
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-xs font-bold uppercase mb-4 tracking-wider">
-                <Sparkle size={14} weight="fill" />
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-xs font-bold uppercase mb-4 tracking-wider backdrop-blur-xl hover:bg-accent/30 transition-colors">
                 <span>NUEVO FORMATO · NOVIEMBRE 2026</span>
               </div>
               <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white mb-3">

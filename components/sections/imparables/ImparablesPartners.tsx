@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Sparkle, ArrowUpRight, Handshake } from "@phosphor-icons/react";
+import { ArrowUpRight, Handshake } from "@phosphor-icons/react";
+import { ImparablesBadge } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 interface PartnerItem {
@@ -108,9 +109,10 @@ export const ImparablesPartners: React.FC = () => {
           variants={staggerContainer}
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
-          <motion.div variants={fadeUpVariant} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/12 text-[#FFB100] text-xs font-mono font-bold tracking-[0.2em] uppercase mb-5">
-            <Sparkle size={13} weight="fill" />
-            <span>ALIANZAS & EMPRESAS</span>
+          <motion.div variants={fadeUpVariant}>
+            <ImparablesBadge theme="dark" className="mb-5">
+              ALIANZAS & EMPRESAS
+            </ImparablesBadge>
           </motion.div>
 
           <motion.h2 variants={fadeUpVariant} className="font-display font-extrabold text-3xl sm:text-5xl text-white leading-[1.1] tracking-tight mb-4">
@@ -222,7 +224,9 @@ export const ImparablesPartners: React.FC = () => {
           >
             <div className="w-full flex items-center justify-between text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-[#FFB100]">
               <span>ALIANZAS 2026</span>
-              <Sparkle size={14} weight="fill" />
+              <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                ↗
+              </span>
             </div>
 
             <div className="my-auto flex flex-col items-center">
