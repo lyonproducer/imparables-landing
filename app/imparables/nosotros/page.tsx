@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { ImparablesAbout } from "@/components/sections/imparables/ImparablesAbout";
+import { ImparablesFounder } from "@/components/sections/imparables/ImparablesFounder";
 import { ImparablesFooter } from "@/components/sections/imparables/ImparablesFooter";
 import { ImparablesInterlock } from "@/components/ui/imparables";
 import Link from "next/link";
@@ -37,6 +38,9 @@ export default function NosotrosPage() {
 
         {/* Main About Component */}
         <ImparablesAbout />
+
+        {/* Dedicated Founder Component */}
+        <ImparablesFounder />
 
         {/* Navigation Bridge to Formats & Contact */}
         <section className="relative max-w-6xl mx-auto px-6 md:px-12 py-16">
