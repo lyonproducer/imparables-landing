@@ -114,3 +114,10 @@
 
 - **Asset Serving:** Direct CDN static asset delivery (`next.config.ts`: `images: { unoptimized: true }`).
 - **Formats:** Optimized `.webp`, `.png`, and `.jpeg` assets with explicit `sizes` and `priority` flags on above-the-fold heroes.
+
+---
+
+## 7. Component Anti-Patterns & Clean UI Rules
+
+- **No Floating Pill Tags / Badges on Imagery:** Do not place repetitive pill badges (`rounded-full bg-black/70 font-mono uppercase ...`) over flyer artwork, posters, or card visual assets. Artwork must remain clean, uncluttered, and editorial. All categorizations and metadata belong in the clean typography area below the image.
+
