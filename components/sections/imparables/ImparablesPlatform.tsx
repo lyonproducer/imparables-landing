@@ -95,7 +95,7 @@ export const ImparablesPlatform: React.FC = () => {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#004F9E]/5 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-[#FFB100]/5 blur-3xl rounded-full pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 mt-20 sm:px-6 md:px-12 lg:px-16">
         {/* Section Header */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
