@@ -9,7 +9,7 @@ export interface ImparablesTrackDividerProps {
 }
 
 export const ImparablesTrackDivider: React.FC<ImparablesTrackDividerProps> = ({
-  bgColor = "#F0F2F6",
+  bgColor = "#FFFFFF",
   height = 56,
   className = "",
 }) => {

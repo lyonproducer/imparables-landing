@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Handshake } from "@phosphor-icons/react";
-import { ImparablesBadge } from "@/components/ui/imparables";
+import { ImparablesInterlock } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 interface PartnerItem {
@@ -245,10 +245,11 @@ export const ImparablesPartners: React.FC = () => {
           variants={staggerContainer}
           className="text-center max-w-3xl mx-auto px-6 mb-14 sm:mb-18"
         >
-          <motion.div variants={fadeUpVariant}>
-            <ImparablesBadge theme="dark" className="mb-5">
+          <motion.div variants={fadeUpVariant} className="flex items-center justify-center gap-2 mb-4">
+            <ImparablesInterlock size="sm" />
+            <span className="text-xs font-sans font-bold tracking-[0.08em] text-[#FFB100] uppercase">
               ALIANZAS & EMPRESAS
-            </ImparablesBadge>
+            </span>
           </motion.div>
 
           <motion.h2 variants={fadeUpVariant} className="font-display font-extrabold text-3xl sm:text-5xl text-white leading-[1.1] tracking-tight mb-4">

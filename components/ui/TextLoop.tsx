@@ -32,37 +32,38 @@ export interface TextLoopProps {
   style?: React.CSSProperties;
 }
 
-const buildPath = (shape: string, curviness: number, ribbonWidth: number) => {
+const buildPath = (shape: string, curviness: number, ribbonWidth: number, viewH = VIEW_H) => {
   const c = Math.max(0, curviness);
-  const room = Math.max(20, CY - Math.max(0, ribbonWidth) / 2 - EDGE_PAD);
+  const cy = viewH / 2;
+  const room = Math.max(20, cy - Math.max(0, ribbonWidth) / 2 - EDGE_PAD);
 
   switch (shape) {
     case "circle": {
       const r = Math.min(90 + c * 0.95, room);
-      return `M ${CX - r} ${CY} A ${r} ${r} 0 1 1 ${CX + r} ${CY} A ${r} ${r} 0 1 1 ${CX - r} ${CY} Z`;
+      return `M ${CX - r} ${cy} A ${r} ${r} 0 1 1 ${CX + r} ${cy} A ${r} ${r} 0 1 1 ${CX - r} ${cy} Z`;
     }
     case "infinity": {
       const r = 150 + c * 1.4;
       const h = Math.min(60 + c * 0.95, room);
       return [
-        `M ${CX} ${CY}`,
-        `C ${CX + r * 0.55} ${CY - h} ${CX + r} ${CY - h} ${CX + r} ${CY}`,
-        `C ${CX + r} ${CY + h} ${CX + r * 0.55} ${CY + h} ${CX} ${CY}`,
-        `C ${CX - r * 0.55} ${CY - h} ${CX - r} ${CY - h} ${CX - r} ${CY}`,
-        `C ${CX - r} ${CY + h} ${CX - r * 0.55} ${CY + h} ${CX} ${CY}`,
+        `M ${CX} ${cy}`,
+        `C ${CX + r * 0.55} ${cy - h} ${CX + r} ${cy - h} ${CX + r} ${cy}`,
+        `C ${CX + r} ${cy + h} ${CX + r * 0.55} ${cy + h} ${CX} ${cy}`,
+        `C ${CX - r * 0.55} ${cy - h} ${CX - r} ${cy - h} ${CX - r} ${cy}`,
+        `C ${CX - r} ${cy + h} ${CX - r * 0.55} ${cy + h} ${CX} ${cy}`,
         "Z",
       ].join(" ");
     }
     case "arch": {
       const rise = Math.min(120 + c * 1.1, room * 2);
-      return `M 120 ${CY + rise / 2} Q ${CX} ${CY - rise * 1.5} ${VIEW_W - 120} ${CY + rise / 2}`;
+      return `M 120 ${cy + rise / 2} Q ${CX} ${cy - rise * 1.5} ${VIEW_W - 120} ${cy + rise / 2}`;
     }
     case "line":
-      return `M -320 ${CY} L ${VIEW_W + 320} ${CY}`;
+      return `M -320 ${cy} L ${VIEW_W + 320} ${cy}`;
     case "wave":
     default: {
-      const a = Math.min(c * 2.2, room * 2);
-      return `M -320 ${CY} Q -160 ${CY - a} 0 ${CY} T 320 ${CY} T 640 ${CY} T 960 ${CY} T 1280 ${CY} T ${VIEW_W + 320} ${CY}`;
+      const a = Math.min(c * 2.2, Math.max(10, cy - 25));
+      return `M -320 ${cy} Q -160 ${cy - a} 0 ${cy} T 320 ${cy} T 640 ${cy} T 960 ${cy} T 1280 ${cy} T ${VIEW_W + 320} ${cy}`;
     }
   }
 };
@@ -99,7 +100,13 @@ export const TextLoop: React.FC<TextLoopProps> = ({
   const rawId = useId();
   const pathId = `text-loop-${rawId.replace(/:/g, "")}`;
 
-  const d = useMemo(() => path || buildPath(shape, curviness, ribbonWidth), [path, shape, curviness, ribbonWidth]);
+  const isWave = shape === "wave";
+  const viewH = isWave ? 140 : VIEW_H;
+
+  const d = useMemo(
+    () => path || buildPath(shape, curviness, ribbonWidth, viewH),
+    [path, shape, curviness, ribbonWidth, viewH]
+  );
 
   const unit = useMemo(() => {
     const base = uppercase ? String(text).toUpperCase() : String(text);
@@ -197,14 +204,14 @@ export const TextLoop: React.FC<TextLoopProps> = ({
     <div ref={rootRef} className={`text-loop ${className}`.trim()} style={style}>
       <svg
         className="text-loop-svg"
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+        viewBox={`0 0 ${VIEW_W} ${viewH}`}
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label={text}
       >
         {bottomFillColor && (
           <path
-            d={`${d} L ${VIEW_W + 320} ${VIEW_H + 100} L -320 ${VIEW_H + 100} Z`}
+            d={`${d} L ${VIEW_W + 320} ${viewH + 15} L -320 ${viewH + 15} Z`}
             fill={bottomFillColor}
             stroke="none"
           />

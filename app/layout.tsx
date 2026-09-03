@@ -28,6 +28,8 @@ const dmSans = localFont({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://imparable-landing.vercel.app";
+
 export const viewport: Viewport = {
   themeColor: "#030f1c",
   colorScheme: "dark",
@@ -36,49 +38,124 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Imparables Nexus — El futuro de las empresas ya está pasando",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Imparables — Plataforma de Experiencias, Formación y Encuentros",
+    template: "%s | Imparables",
+  },
   description:
-    "Un encuentro de Imparables dedicado a explorar cómo la inteligencia artificial y la tecnología están transformando el mundo empresarial. Noviembre 2026.",
-  authors: [{ name: "Imparables", url: "https://imparables.com" }],
+    "No importa dónde comienza tu historia. Importa lo que decides hacer con ella. Plataforma que conecta personas, ideas y oportunidades para impulsar el crecimiento personal y empresarial. Fundada por Andersong Trocel.",
+  applicationName: "Imparables",
+  authors: [{ name: "Andersong Trocel" }, { name: "Imparables", url: siteUrl }],
+  creator: "Andersong Trocel",
+  publisher: "Imparables",
   keywords: [
     "Imparables",
+    "Andersong Trocel",
     "Nexus",
+    "Conferencias",
+    "Liderazgo",
+    "Storytelling",
+    "Formación Empresarial",
     "Inteligencia Artificial",
-    "Tecnología",
-    "Automatización",
-    "Empresas",
+    "Innovación",
     "Puerto Ordaz",
     "Venezuela",
-    "Innovación",
+    "Crecimiento Empresarial",
+    "Summit Imparables",
   ],
-  metadataBase: new URL("https://nexus.imparables.com"),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
-    title: "Imparables Nexus — El futuro de las empresas ya está pasando",
+    type: "website",
+    locale: "es_VE",
+    url: siteUrl,
+    siteName: "Imparables",
+    title: "Imparables — Triunfos que inspiran, historias que transforman",
     description:
-      "Inteligencia Artificial, automatización e innovación empresarial. Noviembre 2026.",
-    url: "https://nexus.imparables.com",
-    siteName: "Imparables Nexus",
+      "Una plataforma de experiencias, formación y encuentros que conecta personas, ideas y oportunidades para impulsar el crecimiento personal y empresarial.",
     images: [
       {
         url: "/og/imparables-nexus-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Imparables Nexus 2026",
+        alt: "Imparables — Plataforma de Experiencias y Formación",
       },
     ],
-    locale: "es_VE",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Imparables Nexus — El futuro de las empresas ya está pasando",
+    title: "Imparables — Triunfos que inspiran, historias que transforman",
     description:
-      "Explora cómo la IA y la tecnología están transformando el mundo empresarial. Noviembre 2026.",
+      "Plataforma de experiencias, formación y encuentros para impulsar el crecimiento personal y empresarial.",
     images: ["/og/imparables-nexus-og.jpg"],
+    creator: "@imparables",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Imparables",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo/imparables-icon.png`,
+        width: 951,
+        height: 935,
+      },
+      description:
+        "Plataforma de experiencias, formación y encuentros que conecta personas, ideas y oportunidades para impulsar el crecimiento personal y empresarial.",
+      founder: {
+        "@type": "Person",
+        name: "Andersong Trocel",
+        jobTitle: "Creador y Fundador de Imparables",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Puerto Ordaz",
+        addressRegion: "Bolívar",
+        addressCountry: "VE",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Imparables",
+      description: "Plataforma oficial de Imparables y evento Nexus",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      inLanguage: "es-VE",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -88,6 +165,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-VE" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
         <SmoothScrollProvider>
           {children}

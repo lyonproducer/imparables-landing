@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ImparablesBadge } from "@/components/ui/imparables";
+import { ImparablesInterlock } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 interface PillarItem {
@@ -25,95 +25,91 @@ const pillars: PillarItem[] = [
   {
     id: "inspirar",
     number: "01",
-    tag: "Propósito",
-    title: "INSPIRAR",
-    desc: "Historias y testimonios reales que nos recuerdan que sí es posible avanzar.",
-    bgClass: "bg-[#004F9E] text-white border-blue-400/20",
+    tag: "Narrativas & Propósito",
+    title: "Inspirar",
+    desc: "Historias reales y aprendizajes de líderes para transformar tu perspectiva y pasar a la acción.",
+    bgClass: "bg-gradient-to-br from-[#003875] via-[#002855] to-[#001733] text-white border-blue-400/30",
     textClass: "text-blue-100/90",
-    tagClass: "text-blue-200/80",
+    tagClass: "text-blue-200/90",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(0,79,158,0.45)",
+    glowColor: "rgba(0,79,158,0.55)",
     accentBar: "bg-[#FFB100]",
     rightKeyColor: "#FFB100",
   },
   {
     id: "conectar",
     number: "02",
-    tag: "Comunidad",
-    title: "CONECTAR",
-    desc: "Personas, marcas y proyectos que se encuentran para crear nuevas oportunidades.",
-    bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/30",
-    textClass: "text-neutral-900 font-medium",
+    tag: "Networking Estratégico",
+    title: "Conectar",
+    desc: "Círculos de alto nivel donde empresarios, creadores y profesionales cruzan oportunidades.",
+    bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/40 shadow-xl",
+    textClass: "text-neutral-950/85 font-medium",
     tagClass: "text-neutral-950/70",
     numberClass: "text-neutral-950",
-    glowColor: "rgba(255,177,0,0.4)",
+    glowColor: "rgba(255,177,0,0.5)",
     accentBar: "bg-neutral-950",
-    leftKeyColor: "#004F9E",
-    rightKeyColor: "#FFFFFF",
+    leftKeyColor: "#FFB100",
+    rightKeyColor: "#004F9E",
   },
   {
     id: "formar",
     number: "03",
-    tag: "Desarrollo",
-    title: "FORMAR",
-    desc: "Herramientas prácticas para desarrollar habilidades y crecer continuamente.",
-    bgClass: "bg-white text-neutral-950 border-neutral-300/80 shadow-xl",
-    textClass: "text-neutral-700 font-normal",
-    tagClass: "text-neutral-600",
+    tag: "Mastery & Habilidades",
+    title: "Formar",
+    desc: "Programas prácticos de comunicación, storytelling y liderazgo con aplicación directa.",
+    bgClass: "bg-[#F4F4F6] text-neutral-950 border-neutral-300/80 shadow-xl",
+    textClass: "text-neutral-600",
+    tagClass: "text-neutral-500",
     numberClass: "text-[#004F9E]",
-    glowColor: "rgba(255,255,255,0.6)",
+    glowColor: "rgba(255,255,255,0.35)",
     accentBar: "bg-[#004F9E]",
-    leftKeyColor: "#FFB100",
-    rightKeyColor: "#0D0F14",
+    leftKeyColor: "#004F9E",
+    rightKeyColor: "#0E1015",
   },
   {
-    id: "experimentar",
+    id: "transformar",
     number: "04",
-    tag: "Vivencia",
-    title: "EXPERIMENTAR",
-    desc: "Escenarios y eventos diseñados para aprender, compartir y vivir algo diferente.",
-    bgClass: "bg-[#0D0F14] text-white border-white/15",
-    textClass: "text-muted-foreground font-normal",
-    tagClass: "text-white/50",
+    tag: "Evolución Empresarial",
+    title: "Transformar",
+    desc: "Cumbres y summits que integran tecnología, IA y modelos de negocio para el futuro.",
+    bgClass: "bg-[#0E1015] text-white border-white/15",
+    textClass: "text-muted-foreground",
+    tagClass: "text-white/60",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,255,255,0.15)",
+    glowColor: "rgba(255,255,255,0.2)",
     accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#FFFFFF",
+    leftKeyColor: "#0E1015",
   },
 ];
 
 export const ImparablesPlatform: React.FC = () => {
-  const containerRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
     <section
       id="esencia"
-      ref={containerRef}
-      className="relative py-24 md:py-32 bg-[#F0F2F6] text-neutral-950 overflow-hidden"
+      className="relative w-full pb-20 md:pb-28 bg-[#FFFFFF] text-neutral-950 overflow-hidden"
     >
-      {/* Dynamic Light Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[700px] bg-[#004F9E]/08 blur-[180px] rounded-full" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#FFB100]/08 blur-[180px] rounded-full" />
-        <div className="absolute inset-0 bg-[radial-gradient(#0000000a_1px,transparent_1px)] [background-size:28px_28px]" />
-      </div>
+      {/* Subtle brand ambiance glow */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#004F9E]/5 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-[#FFB100]/5 blur-3xl rounded-full pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-12">
-        {/* ================= SECTION HEADER ================= */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+        {/* Section Header */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer}
-          className="flex flex-col items-start text-left max-w-3xl mb-14 md:mb-16"
+          className="max-w-3xl mb-12 sm:mb-16 text-left"
         >
           {/* Kicker */}
           <motion.div variants={fadeUpVariant} className="flex items-center gap-2 mb-4">
-            <ImparablesBadge theme="light">
+            <ImparablesInterlock size="sm" />
+            <span className="text-xs font-sans font-bold tracking-[0.08em] text-[#004F9E] uppercase">
               IMPARABLES NO ES UN SOLO FORMATO
-            </ImparablesBadge>
+            </span>
           </motion.div>
 
           {/* Main Headline */}
@@ -134,7 +130,7 @@ export const ImparablesPlatform: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6"
         >
           {pillars.map((item) => {
             const isHovered = hoveredCard === item.id;
@@ -159,7 +155,7 @@ export const ImparablesPlatform: React.FC = () => {
                     ? `0 25px 50px -12px ${item.glowColor}`
                     : "0 10px 30px -10px rgba(0,0,0,0.5)",
                 }}
-                className={`group relative flex flex-col justify-between p-6 sm:p-8 aspect-square border shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
+                className={`group relative flex flex-col justify-between p-3.5 sm:p-6 md:p-8 aspect-square border shadow-xl sm:shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
               >
                 {/* INTERLOCKING GEOMETRIC KEYS (Sharp, Modern, Non-skeuomorphic) */}
                 {item.rightKeyColor && (
@@ -179,14 +175,14 @@ export const ImparablesPlatform: React.FC = () => {
                 )}
 
                 {/* Card Header Row */}
-                <div className="relative z-10 flex items-center justify-between gap-2">
+                <div className="relative z-10 flex items-center justify-between gap-1.5 sm:gap-2">
                   <span
-                    className={`text-[10px] sm:text-xs font-sans font-bold tracking-widest uppercase ${item.tagClass}`}
+                    className={`text-[9px] sm:text-xs font-sans font-bold tracking-wider sm:tracking-widest uppercase truncate ${item.tagClass}`}
                   >
                     {item.tag}
                   </span>
                   <span
-                    className={`text-[10px] sm:text-xs font-sans font-bold tracking-widest uppercase select-none ${item.numberClass}`}
+                    className={`text-[10px] sm:text-xs font-sans font-bold tracking-wider sm:tracking-widest uppercase select-none shrink-0 ${item.numberClass}`}
                   >
                     {item.number}
                   </span>
@@ -194,15 +190,15 @@ export const ImparablesPlatform: React.FC = () => {
 
                 {/* Card Main Body */}
                 <div className="relative z-10 my-auto py-1 sm:py-2">
-                  <h3 className="font-display font-extrabold text-base sm:text-3xl lg:text-3xl tracking-tight leading-snug sm:leading-none">
+                  <h3 className="font-display font-extrabold text-base sm:text-2xl lg:text-3xl tracking-tight leading-tight sm:leading-none">
                     {item.title}
                   </h3>
 
                   <div
-                    className={`w-8 sm:w-10 h-0.5 sm:h-1 mt-2 sm:mt-3.5 mb-2 sm:mb-4 rounded-full group-hover:w-16 transition-all duration-300 ${item.accentBar}`}
+                    className={`w-6 sm:w-10 h-0.5 sm:h-1 mt-1.5 sm:mt-3.5 mb-1.5 sm:mb-4 rounded-full group-hover:w-12 sm:group-hover:w-16 transition-all duration-300 ${item.accentBar}`}
                   />
                   <p
-                    className={`text-xs sm:text-base leading-tight sm:leading-relaxed flex items-start ${item.textClass}`}
+                    className={`text-[11px] sm:text-sm lg:text-base leading-snug sm:leading-relaxed ${item.textClass}`}
                   >
                     {item.desc}
                   </p>

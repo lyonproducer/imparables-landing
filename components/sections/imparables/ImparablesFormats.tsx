@@ -11,7 +11,6 @@ import {
   Calendar,
   CheckCircle,
 } from "@phosphor-icons/react";
-import { ImparablesBadge } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 export interface FormatItem {
@@ -94,15 +93,39 @@ export const ImparablesFormats: React.FC = () => {
   return (
     <section
       id="formatos"
-      className="relative w-full py-24 md:py-32 bg-[#F4F4F6] text-neutral-900 overflow-hidden border-t border-black/5"
+      className="relative w-full py-24 md:py-32 bg-[#FFFFFF] text-neutral-900 overflow-hidden border-black/5"
     >
       {/* Anchor for nav link #eventos */}
       <div id="eventos" className="absolute -top-20" aria-hidden="true" />
 
-      {/* Directional atmospheric lighting for light surface */}
-      <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[600px] h-[350px] bg-[#004F9E]/5 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-[500px] h-[300px] bg-[#FFB100]/8 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+      {/* SVG Background: Thick Gray Athletic Track Lines */}
+      {/* Subtle Architectural Athletic Track Watermark */}
+       <div className="absolute inset-0 pointer-events-none opacity-20">
+        <svg
+          className="w-full h-full object-cover"
+          viewBox="0 0 1440 600"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          {[...Array(6)].map((_, i) => (
+            <path
+              key={i}
+              d={`M -100 ${50 + i * 80} Q 420 ${-80 + i * 80} 920 ${120 + i * 80} T 1580 ${260 + i * 80}`}
+              stroke="#0E1015"
+              strokeWidth="28"
+              fill="none"
+              strokeLinecap="round"
+            />
+          ))}
+          <path
+            d="M -50 480 C 300 380, 500 620, 750 450 S 1200 240, 1500 340"
+            stroke="#FFFFFF"
+            strokeWidth="3.5"
+            strokeDasharray="10 8"
+            fill="none"
+          />
+        </svg>
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* ================= EDITORIAL 2-COLUMN HEADER (LIGHT THEME) ================= */}

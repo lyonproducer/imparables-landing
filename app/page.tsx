@@ -4,6 +4,7 @@ import { ImparablesHero } from "@/components/sections/imparables/ImparablesHero"
 import { ImparablesPlatform } from "@/components/sections/imparables/ImparablesPlatform";
 import { ImparablesTrackDivider } from "@/components/ui/imparables";
 import { ImparablesFormats } from "@/components/sections/imparables/ImparablesFormats";
+import { ImparablesImpact } from "@/components/sections/imparables/ImparablesImpact";
 import { ImparablesPartners } from "@/components/sections/imparables/ImparablesPartners";
 import { ImparablesCommunity } from "@/components/sections/imparables/ImparablesCommunity";
 import { ImparablesInstagramFeed } from "@/components/sections/imparables/ImparablesInstagramFeed";
@@ -31,8 +32,9 @@ export default function Home() {
         <ImparablesTrackDivider />
         <ImparablesFormats />
         <ImparablesPartners />
-        <ImparablesInstagramFeed />
+        <ImparablesImpact />
         <ImparablesCommunity />
+        <ImparablesInstagramFeed />
       </main>
       <ImparablesFooter />
     </div>
