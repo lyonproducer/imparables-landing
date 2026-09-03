@@ -236,7 +236,7 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
               style={{ opacity: hintOpacity, display: hintDisplay }}
               className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/80 pointer-events-none"
             >
-              <span className="text-xs font-mono tracking-wider uppercase text-amber-300/90 font-medium drop-shadow">
+              <span className="text-xs font-sans tracking-[0.08em] uppercase text-amber-300/90 font-bold drop-shadow">
                 {scrollHint}
               </span>
               <CaretDown size={20} className="animate-bounce text-amber-400" />

@@ -255,7 +255,7 @@ export const FloatingDualNav: React.FC = () => {
                     className="object-contain object-left group-hover:scale-105 transition-transform"
                   />
                 </div>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-wider ml-auto font-mono group-hover:text-foreground transition-colors">
+                <span className="text-[10px] text-muted-foreground uppercase tracking-[0.08em] ml-auto font-sans font-medium group-hover:text-foreground transition-colors">
                   Plataforma Matriz (/)
                 </span>
               </Link>
@@ -284,7 +284,7 @@ export const FloatingDualNav: React.FC = () => {
                 <span className="font-display font-black text-sm tracking-widest text-foreground uppercase group-hover:text-accent transition-colors">
                   NEXUS
                 </span>
-                <span className="text-[10px] text-accent uppercase tracking-wider ml-auto font-mono">
+                <span className="text-[10px] text-accent uppercase tracking-[0.08em] ml-auto font-sans font-medium">
                   Evento (/nexus)
                 </span>
               </Link>

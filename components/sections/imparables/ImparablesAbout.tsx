@@ -38,7 +38,7 @@ export const ImparablesAbout: React.FC = () => {
               {/* Kicker */}
               <motion.div variants={fadeUpVariant} className="flex items-center gap-2 mb-4">
                 <ImparablesInterlock size="sm" />
-                <span className="text-xs font-mono font-bold tracking-[0.25em] text-[#004F9E] uppercase">
+                <span className="text-xs font-sans font-bold tracking-[0.08em] text-[#004F9E] uppercase">
                   UNA MARCA QUE NACIÓ PARA IMPULSAR
                 </span>
               </motion.div>

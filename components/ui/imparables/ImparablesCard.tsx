@@ -67,7 +67,7 @@ export const ImparablesCard: React.FC<ImparablesCardProps> = ({
         <div className="relative z-10 flex items-center justify-between gap-4 mb-6">
           {tag && (
             <span
-              className={`text-xs font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded-md ${
+              className={`text-xs font-sans font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-md ${
                 theme === "amber"
                   ? "bg-neutral-950/10 text-neutral-950"
                   : theme === "light"

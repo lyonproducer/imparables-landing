@@ -44,7 +44,7 @@ export const ImparablesFooter: React.FC = () => {
 
             <div className="flex items-center gap-2 pt-1">
               <ImparablesInterlock size="sm" />
-              <span className="text-[11px] font-mono font-bold text-accent uppercase tracking-widest">
+              <span className="text-[11px] font-sans font-bold text-accent uppercase tracking-[0.08em]">
                 Puerto Ordaz, Venezuela
               </span>
             </div>

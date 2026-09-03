@@ -124,12 +124,11 @@ export const ImparablesHero: React.FC = () => {
                 transition={{ delay: 0.35, duration: 0.6 }}
                 className="absolute bottom-8 left-2 sm:left-4 z-20 px-4 py-3 rounded-2xl bg-[#0E1015]/85 backdrop-blur-xl border border-white/15 shadow-2xl flex items-center gap-3"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB100] shadow-sm shadow-[#FFB100]" />
                 <div>
                   <h4 className="font-display font-bold text-xs sm:text-sm text-white tracking-tight leading-tight">
                     Andersong Trocel
                   </h4>
-                  <p className="text-[10px] sm:text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
+                  <p className="text-[10px] sm:text-[11px] font-sans font-medium text-muted-foreground uppercase tracking-[0.08em]">
                     Creador de Imparables
                   </p>
                 </div>
@@ -147,7 +146,7 @@ export const ImparablesHero: React.FC = () => {
       </div>
 
       {/* Integrated Yellow Wave Text Loop Bottom Separator */}
-      <div className="absolute -bottom-[20%] inset-x-0 z-20 overflow-hidden pointer-events-auto">
+      <div className="absolute lg:-bottom-[20%] md:-bottom-[15%] inset-x-0 z-20 overflow-hidden pointer-events-auto">
         <TextLoop
           text="CRECER ✦ AVANZAR ✦ TRANSFORMAR ✦ INSPIRAR ✦ LIDERAR ✦ PERSEVERAR ✦ TRIUNFAR"
           shape="wave"

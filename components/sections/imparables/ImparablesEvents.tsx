@@ -43,7 +43,7 @@ export const ImparablesEvents: React.FC = () => {
 
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
             <div className="flex-1">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-xs font-bold uppercase mb-4 tracking-wider backdrop-blur-xl hover:bg-accent/30 transition-colors">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-sans text-[11px] font-bold uppercase mb-4 tracking-[0.08em] backdrop-blur-xl hover:bg-accent/30 transition-colors">
                 <span>NUEVO FORMATO · NOVIEMBRE 2026</span>
               </div>
               <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white mb-3">
@@ -144,7 +144,7 @@ export const ImparablesEvents: React.FC = () => {
               </p>
               <div className="mt-auto pt-3 border-t border-white/10 text-xs font-semibold text-accent flex items-center justify-between">
                 <span>Gran Cierre en Vivo:</span>
-                <span className="font-mono">24 de Octubre</span>
+                <span className="font-sans font-bold">24 de Octubre</span>
               </div>
             </ImparablesCard>
           </motion.div>

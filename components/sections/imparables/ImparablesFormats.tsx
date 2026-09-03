@@ -115,26 +115,23 @@ export const ImparablesFormats: React.FC = () => {
         >
           {/* Left Column: Kicker & Display Headline */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-7 flex flex-col items-start text-left">
-            <ImparablesBadge theme="light" className="mb-5">
-              NUESTROS FORMATOS
-            </ImparablesBadge>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.4rem] text-neutral-950 leading-[1.08] tracking-tight">
               Diferentes escenarios.{" "}
               <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#004F9E] via-[#002B5B] to-[#FFB100]">
                 Una misma esencia.
               </span>
             </h2>
+             {/* <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed font-normal">
+              Desde conferencias transformadoras hasta cumbres empresariales y programas de
+              comunicación, cada iniciativa conecta personas, ideas y oportunidades reales.
+            </p> */}
           </motion.div>
 
           {/* Right Column: Paragraph narrative */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-5 flex flex-col justify-end text-left">
-            <p className="text-neutral-700 font-medium text-base sm:text-lg leading-relaxed mb-4">
+            <p className="text-neutral-700 font-medium text-base sm:text-lg leading-relaxed">
               Imparables desarrolla diferentes formatos y experiencias, cada uno diseñado para
               abordar una conversación distinta.
-            </p>
-            <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed font-normal">
-              Desde conferencias transformadoras hasta cumbres empresariales y programas de
-              comunicación, cada iniciativa conecta personas, ideas y oportunidades reales.
             </p>
           </motion.div>
         </motion.div>
@@ -183,7 +180,7 @@ export const ImparablesFormats: React.FC = () => {
                       <span className="font-display font-black text-2xl sm:text-3xl text-white drop-shadow-md leading-none">
                         {item.yearOrMetric}
                       </span>
-                      <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase text-[#FFB100] drop-shadow-sm leading-none">
+                      <span className="text-[10px] sm:text-[11px] font-sans font-bold tracking-[0.06em] uppercase text-[#FFB100] drop-shadow-sm leading-none">
                         {item.metricLabel}
                       </span>
                     </div>
@@ -202,7 +199,7 @@ export const ImparablesFormats: React.FC = () => {
                     </div>
 
                     <div className="pt-4 mt-2 flex items-center justify-between text-xs font-semibold text-[#FFB100]">
-                      <span className="font-mono tracking-wider uppercase">Ver detalle</span>
+                      <span className="font-sans font-bold tracking-[0.06em] uppercase">Ver detalle</span>
                       <ArrowUpRight size={15} weight="bold" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </div>
                   </div>
@@ -224,9 +221,6 @@ export const ImparablesFormats: React.FC = () => {
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent/15 blur-3xl rounded-full pointer-events-none" />
 
           <div className="flex-1 relative z-10">
-            <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono text-[11px] font-bold uppercase mb-2 tracking-wider">
-              <span>FORMATO TECNOLÓGICO · NOVIEMBRE 2026</span>
-            </div>
             <h4 className="font-display font-extrabold text-xl sm:text-2xl text-white mb-1.5">
               Imparables Nexus: Inteligencia Artificial & Empresas
             </h4>
@@ -290,7 +284,7 @@ export const ImparablesFormats: React.FC = () => {
                 {/* Details Column */}
                 <div className="md:col-span-6 flex flex-col justify-between gap-5">
                   <div>
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#FFB100]/20 text-[#FFB100] border border-[#FFB100]/30 mb-3">
+                    <span className="inline-block px-3 py-1 rounded-full text-[11px] font-sans font-bold uppercase tracking-[0.08em] bg-[#FFB100]/20 text-[#FFB100] border border-[#FFB100]/30 mb-3">
                       {selectedFormat.tag}
                     </span>
                     <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-white mb-2 leading-tight">

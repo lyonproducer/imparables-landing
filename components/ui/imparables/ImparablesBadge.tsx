@@ -18,7 +18,7 @@ export const ImparablesBadge: React.FC<ImparablesBadgeProps> = ({
 
   return (
     <div
-      className={`inline-flex items-center justify-center px-4 py-1.5 rounded-full border backdrop-blur-xl text-xs font-mono font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-default select-none ${themeStyles} ${className}`}
+      className={`inline-flex items-center justify-center px-3.5 py-1.5 rounded-full border backdrop-blur-xl text-[11px] font-sans font-bold tracking-[0.08em] uppercase transition-all duration-300 cursor-default select-none ${themeStyles} ${className}`}
     >
       {children}
     </div>

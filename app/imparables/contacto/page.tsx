@@ -73,7 +73,7 @@ export default function ContactoPage() {
                       <WhatsappLogo size={24} weight="fill" />
                     </div>
                     <div>
-                      <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                      <div className="text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground">
                         Atención directa WhatsApp
                       </div>
                       <div className="text-sm font-bold text-white group-hover:text-[#FFB100] transition-colors">
@@ -90,7 +90,7 @@ export default function ContactoPage() {
                       <EnvelopeSimple size={24} weight="fill" />
                     </div>
                     <div>
-                      <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                      <div className="text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground">
                         Correo Corporativo
                       </div>
                       <div className="text-sm font-bold text-white group-hover:text-[#FFB100] transition-colors">
@@ -104,7 +104,7 @@ export default function ContactoPage() {
                       <MapPin size={24} weight="fill" />
                     </div>
                     <div>
-                      <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                      <div className="text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground">
                         Ubicación Central
                       </div>
                       <div className="text-sm font-bold text-white">
@@ -158,7 +158,7 @@ export default function ContactoPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                        <label className="block text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground mb-1.5">
                           Nombre completo *
                         </label>
                         <input
@@ -171,7 +171,7 @@ export default function ContactoPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                        <label className="block text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground mb-1.5">
                           Correo electrónico *
                         </label>
                         <input
@@ -187,7 +187,7 @@ export default function ContactoPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                        <label className="block text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground mb-1.5">
                           Teléfono / WhatsApp *
                         </label>
                         <input
@@ -200,7 +200,7 @@ export default function ContactoPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                        <label className="block text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground mb-1.5">
                           Empresa o Proyecto
                         </label>
                         <input
@@ -214,7 +214,7 @@ export default function ContactoPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1.5">
+                      <label className="block text-xs font-sans font-medium uppercase tracking-[0.08em] text-muted-foreground mb-1.5">
                         Mensaje o Consulta *
                       </label>
                       <textarea

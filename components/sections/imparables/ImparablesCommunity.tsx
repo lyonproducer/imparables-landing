@@ -89,7 +89,7 @@ export const ImparablesCommunity: React.FC = () => {
                 className="object-contain object-center"
               />
             </div>
-            <span className="relative z-10 text-xs font-mono font-bold uppercase tracking-widest text-[#FFB100]">
+            <span className="relative z-10 text-xs font-sans font-bold uppercase tracking-[0.08em] text-[#FFB100]">
               COMUNIDAD & CONTACTO
             </span>
           </div>
@@ -121,7 +121,7 @@ export const ImparablesCommunity: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <ImparablesInterlock size="sm" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FFB100]">
+                    <span className="text-xs font-sans font-bold uppercase tracking-[0.08em] text-[#FFB100]">
                       Confirmación
                     </span>
                   </div>

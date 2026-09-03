@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { ImparablesBadge } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 interface PillarItem {
@@ -110,9 +111,9 @@ export const ImparablesPlatform: React.FC = () => {
         >
           {/* Kicker */}
           <motion.div variants={fadeUpVariant} className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-mono font-bold tracking-[0.25em] text-[#004F9E] uppercase">
+            <ImparablesBadge theme="light">
               IMPARABLES NO ES UN SOLO FORMATO
-            </span>
+            </ImparablesBadge>
           </motion.div>
 
           {/* Main Headline */}
@@ -123,18 +124,17 @@ export const ImparablesPlatform: React.FC = () => {
             Es una plataforma que evoluciona para crear{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#004F9E] via-blue-700 to-[#D98E00]">
               diferentes experiencias
-            </span>{" "}
-            alrededor de una misma esencia:
+            </span>
           </motion.h2>
         </motion.div>
 
-        {/* ================= 2x2 ON MOBILE, 4 IN A ROW ON DESKTOP ================= */}
+        {/* ================= 4 Interactive Columns/Tiles ================= */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5 lg:gap-6 w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {pillars.map((item) => {
             const isHovered = hoveredCard === item.id;
@@ -159,13 +159,13 @@ export const ImparablesPlatform: React.FC = () => {
                     ? `0 25px 50px -12px ${item.glowColor}`
                     : "0 10px 30px -10px rgba(0,0,0,0.5)",
                 }}
-                className={`group relative flex flex-col justify-between p-4 sm:p-8 lg:p-9 aspect-square border shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
+                className={`group relative flex flex-col justify-between p-6 sm:p-8 aspect-square border shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${item.bgClass}`}
               >
-                {/* INTERLOCKING GEOMETRIC KEYS (STATIC BRAND PUZZLE PATTERN IN 1 ROW) */}
+                {/* INTERLOCKING GEOMETRIC KEYS (Sharp, Modern, Non-skeuomorphic) */}
                 {item.rightKeyColor && (
                   <div
                     style={{ backgroundColor: item.rightKeyColor }}
-                    className="hidden lg:block absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 z-20 shadow-md border border-black/10 pointer-events-none"
+                    className="hidden lg:block absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 z-20 shadow-md border border-black/10 pointer-events-none"
                     aria-hidden="true"
                   />
                 )}
@@ -173,7 +173,7 @@ export const ImparablesPlatform: React.FC = () => {
                 {item.leftKeyColor && (
                   <div
                     style={{ backgroundColor: item.leftKeyColor }}
-                    className="hidden lg:block absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 z-20 shadow-md border border-black/10 pointer-events-none"
+                    className="hidden lg:block absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 z-20 shadow-md border border-black/10 pointer-events-none"
                     aria-hidden="true"
                   />
                 )}
@@ -181,12 +181,12 @@ export const ImparablesPlatform: React.FC = () => {
                 {/* Card Header Row */}
                 <div className="relative z-10 flex items-center justify-between gap-2">
                   <span
-                    className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase ${item.tagClass}`}
+                    className={`text-[10px] sm:text-xs font-sans font-bold tracking-widest uppercase ${item.tagClass}`}
                   >
                     {item.tag}
                   </span>
                   <span
-                    className={`text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase select-none ${item.numberClass}`}
+                    className={`text-[10px] sm:text-xs font-sans font-bold tracking-widest uppercase select-none ${item.numberClass}`}
                   >
                     {item.number}
                   </span>
