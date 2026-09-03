@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -14,7 +14,6 @@ import TextLoop from "@/components/ui/TextLoop";
 export const ImparablesHero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const [activeFlyer, setActiveFlyer] = useState<"top" | "bottom">("bottom");
 
   return (
     <section
@@ -35,7 +34,7 @@ export const ImparablesHero: React.FC = () => {
       </div>
 
       {/* Main Content Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-8 sm:py-12">
+      <div className="relative z-10 max-w-7xl mx-auto w-full py-8 sm:py-12">
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
@@ -43,7 +42,7 @@ export const ImparablesHero: React.FC = () => {
           className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-14"
         >
           {/* ================= LEFT COLUMN: TYPOGRAPHY & CTAs ================= */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left gap-6 sm:gap-8">
+          <div className="lg:col-span-6 flex flex-col items-start text-left gap-6 sm:gap-8 mt-16">
             {/* Editorial H1 Headline */}
             <motion.h1
               variants={fadeUpVariant}
@@ -93,71 +92,50 @@ export const ImparablesHero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* ================= RIGHT COLUMN: INTERACTIVE 3D LAYER SWAP DUAL FLYERS ================= */}
-          <div className="lg:col-span-6 relative w-full h-[520px] sm:h-[620px] md:h-[680px] lg:h-[660px] flex items-center justify-center">
-            {/* Top-Right Flyer Card */}
-            <motion.div
-              variants={fadeUpVariant}
-              animate={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      scale: activeFlyer === "top" ? 1.05 : 0.95,
-                      rotate: activeFlyer === "top" ? 0 : 4,
-                      zIndex: activeFlyer === "top" ? 30 : 10,
-                      opacity: activeFlyer === "top" ? 1 : 0.8,
-                    }
-              }
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              onMouseEnter={() => setActiveFlyer("top")}
-              className={`absolute top-0 right-0 sm:right-2 w-[72%] sm:w-[68%] lg:w-[66%] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border transition-colors duration-300 bg-card/70 backdrop-blur-md group cursor-pointer ${
-                activeFlyer === "top"
-                  ? "border-accent/80 shadow-[0_20px_50px_rgba(255,177,0,0.25)]"
-                  : "border-white/15"
-              }`}
-            >
-              <Image
-                src="/flyers/748161065_18598341691059362_4810160585673327155_n.jpg"
-                alt="Imparables Flyer"
-                fill
-                sizes="(max-width: 768px) 65vw, 40vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-            </motion.div>
+          {/* ================= RIGHT COLUMN: FOUNDER HERO PORTRAIT ================= */}
+          <motion.div
+            variants={fadeUpVariant}
+            className="lg:col-span-6 relative w-full h-[540px] sm:h-[640px] md:h-[690px] lg:h-[720px] flex items-end justify-center"
+          >
+            {/* Ambient Backlight Halo */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[460px] h-[340px] sm:h-[460px] rounded-full bg-gradient-to-tr from-[#004F9E]/35 via-[#004F9E]/15 to-[#FFB100]/25 blur-[100px] pointer-events-none" />
 
-            {/* Bottom-Left Flyer Card */}
-            <motion.div
-              variants={fadeUpVariant}
-              animate={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      scale: activeFlyer === "bottom" ? 1.05 : 0.95,
-                      rotate: activeFlyer === "bottom" ? 0 : -4,
-                      zIndex: activeFlyer === "bottom" ? 30 : 10,
-                      opacity: activeFlyer === "bottom" ? 1 : 0.8,
-                    }
-              }
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              onMouseEnter={() => setActiveFlyer("bottom")}
-              className={`absolute bottom-0 left-0 sm:left-2 w-[76%] sm:w-[72%] lg:w-[70%] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border transition-colors duration-300 bg-card/80 backdrop-blur-lg group cursor-pointer ${
-                activeFlyer === "bottom"
-                  ? "border-accent/80 shadow-[0_20px_50px_rgba(0,79,158,0.35)]"
-                  : "border-white/20"
-              }`}
-            >
+            {/* Geometric Architectural Backdrop Frame */}
+            <div className="absolute bottom-6 w-[280px] sm:w-[380px] lg:w-[430px] h-[380px] sm:h-[480px] lg:h-[540px] rounded-[3rem] border border-white/10 bg-gradient-to-b from-white/[0.05] via-white/[0.01] to-transparent pointer-events-none shadow-2xl" />
+
+            {/* Andersong Cutout Image */}
+            <div className="relative w-full h-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] flex items-end justify-center">
               <Image
-                src="/flyers/495451317_18496194547059362_1041185602152418121_n.webp"
-                alt="Imparables Evento Flyer"
+                src="/team/andersong-hero-cutout.png"
+                alt="Andersong Trocel — Creador y Fundador de Imparables"
                 fill
-                sizes="(max-width: 768px) 70vw, 45vw"
                 priority
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 50vw, 45vw"
+                className="object-contain object-bottom select-none drop-shadow-[0_25px_45px_rgba(0,0,0,0.8)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
-            </motion.div>
-          </div>
+
+              {/* Bottom Gradient Fade to merge seamlessly with the floor */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
+
+              {/* Floating Editorial Badge */}
+              <motion.div
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6 }}
+                className="absolute bottom-8 left-2 sm:left-4 z-20 px-4 py-3 rounded-2xl bg-[#0E1015]/85 backdrop-blur-xl border border-white/15 shadow-2xl flex items-center gap-3"
+              >
+                <div className="w-2.5 h-2.5 rounded-full bg-[#FFB100] shadow-sm shadow-[#FFB100]" />
+                <div>
+                  <h4 className="font-display font-bold text-xs sm:text-sm text-white tracking-tight leading-tight">
+                    Andersong Trocel
+                  </h4>
+                  <p className="text-[10px] sm:text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
+                    Creador de Imparables
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
