@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useUIStore } from "@/lib/stores/ui-store";
 import { List, X } from "@phosphor-icons/react";
 
@@ -14,16 +14,58 @@ export const FloatingDualNav: React.FC = () => {
   const isImparables = !isNexus;
 
   const { mobileNavOpen, setMobileNavOpen } = useUIStore();
+  const shouldReduceMotion = useReducedMotion();
   const [hoveredWorld, setHoveredWorld] = useState<"imparables" | "nexus" | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateScrollDirection = () => {
+      const currentScrollY = window.scrollY;
+
+      // Top of page: always keep visible
+      if (currentScrollY <= 60) {
+        setIsVisible(true);
+        setScrolled(currentScrollY > 20);
+        lastScrollY = currentScrollY;
+        ticking = false;
+        return;
+      }
+
+      setScrolled(true);
+
+      const diff = currentScrollY - lastScrollY;
+
+      // Hysteresis threshold to prevent jitter
+      if (Math.abs(diff) > 8) {
+        if (diff > 0) {
+          // Scrolling down -> hide
+          setIsVisible(false);
+        } else {
+          // Scrolling up -> reveal
+          setIsVisible(true);
+        }
+        lastScrollY = currentScrollY;
+      }
+
+      ticking = false;
     };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDirection);
+        ticking = true;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isHidden = !isVisible && !mobileNavOpen;
 
   const imparablesLinks = [
     { label: "Nosotros", href: "/imparables/nosotros" },
@@ -41,7 +83,20 @@ export const FloatingDualNav: React.FC = () => {
   const showNexusSub = hoveredWorld === "nexus" || (hoveredWorld === null && isNexus);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 md:py-6 pointer-events-none">
+    <motion.header
+      initial={false}
+      animate={{
+        y: isHidden ? (shouldReduceMotion ? 0 : -100) : 0,
+        opacity: isHidden ? 0 : 1,
+      }}
+      transition={{
+        duration: isHidden ? 0.22 : 0.32,
+        ease: isHidden ? [0.32, 0, 0.67, 0] : [0.16, 1, 0.3, 1],
+      }}
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 md:py-6 pointer-events-none ${
+        isHidden ? "pointer-events-none" : ""
+      }`}
+    >
       {/* Centered Floating Capsule */}
       <nav
         aria-label="Navegación principal de dos mundos"
@@ -249,6 +304,6 @@ export const FloatingDualNav: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
