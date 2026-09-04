@@ -220,7 +220,7 @@ export const ImparablesPartners: React.FC = () => {
       {/* Background Graphic: Nexus Lines Pattern */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <Image
-          src="/backgrounds/nexus-lines-pattern.jpg"
+          src="/backgrounds/nexus-lines-pattern.webp"
           alt=""
           fill
           sizes="100vw"

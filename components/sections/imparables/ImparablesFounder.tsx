@@ -19,7 +19,7 @@ export const ImparablesFounder: React.FC = () => {
       {/* Background Graphic: Architectural Track Lines */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <Image
-          src="/backgrounds/Screenshot_2026-09-03_at_7.25.39_PM.png_202609031929.jpeg"
+          src="/backgrounds/Screenshot_2026-09-03_at_7.25.39_PM.png_202609031929.webp"
           alt=""
           fill
           priority

@@ -63,7 +63,7 @@ const formatsData: FormatItem[] = [
     headline: "Visión integral, toma de decisiones y liderazgo con propósito",
     description:
       "Conversatorio de alto impacto con líderes y referentes sobre visión estratégica, resiliencia y gestión de equipos.",
-    flyerSrc: "/flyers/649236992_18561148135059362_3506792468321341082_n.jpg",
+    flyerSrc: "/flyers/649236992_18561148135059362_3506792468321341082_n.webp",
     flyerAlt: "Flyer Conversatorio Liderazgo 360 — Andersong Trocel y panel de invitados",
     yearOrMetric: "360°",
     metricLabel: "Visión de liderazgo",
@@ -77,7 +77,7 @@ const formatsData: FormatItem[] = [
     headline: "Comunicación, crecimiento y transformación de impacto",
     description:
       "Nuestro programa de formación en comunicación, crecimiento y liderazgo, diseñado para ayudar a las personas a encontrar su propia voz.",
-    flyerSrc: "/flyers/748161065_18598341691059362_4810160585673327155_n.jpg",
+    flyerSrc: "/flyers/748161065_18598341691059362_4810160585673327155_n.webp",
     flyerAlt: "Flyer Voces Imparables — Comunicación, crecimiento y transformación",
     yearOrMetric: "4+",
     metricLabel: "Habilidades clave",

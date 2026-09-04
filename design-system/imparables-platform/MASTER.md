@@ -88,7 +88,7 @@
   2. Center: Brand logo with smooth hover cross-fade (color/white/gold).
   3. Bottom: Title in `font-display font-extrabold`, expanding accent line (`group-hover:w-16`), and role/description text.
 - **Edge Vignette Masks:** Soft gradient masks on left/right edges (`w-16 sm:w-36 bg-gradient-to-r/l from-[#0066b0] to-transparent`) for seamless enter/exit over the `#0066b0` royal blue canvas.
-- **Background Texture:** `nexus-lines-pattern.jpg` with `opacity-35` and dual gradient vignettes blending into `#0066b0`.
+- **Background Texture:** `nexus-lines-pattern.webp` with `opacity-35` and dual gradient vignettes blending into `#0066b0`.
 
 ### 4.4 Section Kickers & Brand Overlines (No Pill Badges)
 - **Design Decision:** Pill capsules, background boxes, and badge bubbles (`rounded-full border backdrop-blur-xl bg-*`) are completely eliminated for section kickers.

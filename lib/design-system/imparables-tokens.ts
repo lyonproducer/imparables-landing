@@ -53,7 +53,7 @@ export const imparablesTokens = {
       squareBadge: "rounded-lg",
     },
     patterns: {
-      linesUrl: "/backgrounds/nexus-lines-pattern.jpg",
+      linesUrl: "/backgrounds/nexus-lines-pattern.webp",
     },
   },
   layout: {

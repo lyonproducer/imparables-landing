@@ -258,7 +258,7 @@ export const FloatingDualNav: React.FC = () => {
                   />
                 </div>
                 <span className="text-[10px] text-muted-foreground uppercase tracking-[0.08em] ml-auto font-sans font-medium group-hover:text-foreground transition-colors">
-                  Plataforma Matriz (/)
+                  Plataforma Matriz
                 </span>
               </Link>
               <div className="grid grid-cols-3 gap-2 pt-1">
@@ -287,7 +287,7 @@ export const FloatingDualNav: React.FC = () => {
                   NEXUS
                 </span>
                 <span className="text-[10px] text-accent uppercase tracking-[0.08em] ml-auto font-sans font-medium">
-                  Evento (/nexus)
+                  Evento
                 </span>
               </Link>
               <div className="grid grid-cols-3 gap-2 pt-1">

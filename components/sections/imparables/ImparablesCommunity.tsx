@@ -27,7 +27,7 @@ export const ImparablesCommunity: React.FC = () => {
   return (
     <section id="comunidad" className="relative w-full bg-background">
       <ScrollExpand
-        src="/banner/imparables-banner-bg.jpeg"
+        src="/banner/imparables-banner-bg.webp"
         mediaType="image"
         alt="Imparables Banner"
         useWindowScroll={true}
@@ -140,13 +140,18 @@ export const ImparablesCommunity: React.FC = () => {
                   </Button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 relative z-10">
+                <form
+                  data-lpignore="true"
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-4 relative z-10"
+                >
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="nombre-imp" className="text-xs md:text-sm font-semibold text-white">
                       Nombre completo <span className="text-[#FFB100]">*</span>
                     </label>
                     <input
                       id="nombre-imp"
+                      data-lpignore="true"
                       required
                       type="text"
                       placeholder="Tu nombre y apellido"
@@ -164,6 +169,7 @@ export const ImparablesCommunity: React.FC = () => {
                       </label>
                       <input
                         id="correo-imp"
+                        data-lpignore="true"
                         required
                         type="email"
                         placeholder="tu@correo.com"
@@ -180,6 +186,7 @@ export const ImparablesCommunity: React.FC = () => {
                       </label>
                       <input
                         id="telefono-imp"
+                        data-lpignore="true"
                         required
                         type="tel"
                         placeholder="+58 414 0000000"
@@ -197,6 +204,7 @@ export const ImparablesCommunity: React.FC = () => {
                     </label>
                     <input
                       id="empresa-imp"
+                      data-lpignore="true"
                       type="text"
                       placeholder="Nombre de tu emprendimiento u organización"
                       value={formData.empresa}
@@ -212,6 +220,7 @@ export const ImparablesCommunity: React.FC = () => {
                     </label>
                     <textarea
                       id="mensaje-imp"
+                      data-lpignore="true"
                       rows={3}
                       placeholder="Cuéntanos si tienes interés en ser parte de una experiencia, patrocinar, llevar una formación a tu empresa..."
                       value={formData.mensaje}

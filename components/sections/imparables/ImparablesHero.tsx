@@ -36,7 +36,7 @@ export const ImparablesHero: React.FC = () => {
       {/* Main Content Layout */}
       <div className="relative z-10 max-w-7xl mx-auto w-full pt-4 sm:pt-4 pb-20 sm:pb-28 lg:pb-36 xl:pb-44">
         <motion.div
-          initial={shouldReduceMotion ? false : "hidden"}
+          initial={false}
           animate="visible"
           variants={staggerContainer}
           className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14"
@@ -106,7 +106,7 @@ export const ImparablesHero: React.FC = () => {
             {/* Andersong Cutout Image */}
             <div className="relative w-full h-full max-w-[380px] sm:max-w-[480px] lg:max-w-[600px] xl:max-w-[680px] flex items-end justify-center">
               <Image
-                src="/team/andersong-hero-cutout.png"
+                src="/team/andersong-hero-cutout.webp"
                 alt="Andersong Trocel — Creador y Fundador de Imparables"
                 fill
                 priority

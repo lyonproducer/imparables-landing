@@ -77,28 +77,28 @@ const timelineData: TimelineEvent[] = [
         gallery: [
           {
             index: "01",
-            src: "/events/imparables-1/IMG_9903.jpeg",
+            src: "/events/imparables-1/IMG_9903.webp",
             title: "El primer escenario",
             category: "CONFERENCIA PARTE 1",
             aspect: "landscape",
           },
           {
             index: "02",
-            src: "/events/imparables-1/ig-01.jpg",
+            src: "/events/imparables-1/ig-01.webp",
             title: "Comunidad conectada",
             category: "HISTORIAS QUE INSPIRAN",
             aspect: "portrait",
           },
           {
             index: "03",
-            src: "/events/imparables-1/IMG_9870.jpeg",
+            src: "/events/imparables-1/IMG_9870.webp",
             title: "Voces y propósito",
             category: "APERTURA 2024",
             aspect: "landscape",
           },
           {
             index: "04",
-            src: "/events/imparables-1/IMG_9908.jpeg",
+            src: "/events/imparables-1/IMG_9908.webp",
             title: "Energía compartida",
             category: "EXPERIENCIA EN VIVO",
             aspect: "landscape",
@@ -114,14 +114,14 @@ const timelineData: TimelineEvent[] = [
         gallery: [
           {
             index: "01",
-            src: "/events/imparables-2/IMG_5336.jpeg",
+            src: "/events/imparables-2/IMG_5336.webp",
             title: "Encuentro en Barra 3",
             category: "CONFERENCIA PARTE 2",
             aspect: "landscape",
           },
           {
             index: "02",
-            src: "/events/imparables-2/IMG_5401.jpeg",
+            src: "/events/imparables-2/IMG_5401.webp",
             title: "Invitados y cercanía",
             category: "CONEXIÓN INTERNACIONAL",
             aspect: "portrait",
@@ -135,7 +135,7 @@ const timelineData: TimelineEvent[] = [
           },
           {
             index: "04",
-            src: "/events/imparables-2/IMG_5439.jpeg",
+            src: "/events/imparables-2/IMG_5439.webp",
             title: "Comunidad en movimiento",
             category: "CIERRE DE JORNADA",
             aspect: "landscape",
@@ -160,28 +160,28 @@ const timelineData: TimelineEvent[] = [
     gallery: [
       {
         index: "01",
-        src: "/events/business-submit/ig-07.png",
+        src: "/events/business-submit/ig-07.webp",
         title: "El Escenario de las Marcas",
         category: "BUSINESS SUMMIT 2025",
         aspect: "landscape",
       },
       {
         index: "02",
-        src: "/events/business-submit/IMG_20250618_201532_602.jpg",
+        src: "/events/business-submit/IMG_20250618_201532_602.webp",
         title: "Conversación con Fundadores",
         category: "HISTORIAS REALES",
         aspect: "portrait",
       },
       {
         index: "03",
-        src: "/events/business-submit/ig-05.png",
+        src: "/events/business-submit/ig-05.webp",
         title: "Proyectos Emergentes",
         category: "INNOVACIÓN LOCAL",
         aspect: "landscape",
       },
       {
         index: "04",
-        src: "/events/business-submit/IMG_20250618_201539_695.jpg",
+        src: "/events/business-submit/IMG_20250618_201539_695.webp",
         title: "Networking & Comunidad",
         category: "CONEXIÓN EMPRESARIAL",
         aspect: "landscape",
@@ -198,7 +198,7 @@ const timelineData: TimelineEvent[] = [
       "1era edición de Liderazgo 360°. Un conversatorio estratégico enfocado en preparación, visión y herramientas prácticas para empresarios y líderes emergentes.",
     rotation: "rotate-[-0.6deg]",
     accentColor: "#004F9E",
-    flyerSrc: "/flyers/649236992_18561148135059362_3506792468321341082_n.jpg",
+    flyerSrc: "/flyers/649236992_18561148135059362_3506792468321341082_n.webp",
     fullDescription:
       "1era edición de Liderazgo 360*: un espacio de crecimiento y conocimiento. Después de esta experiencia, no cabe duda de que el éxito es seguir aprendiendo porque el cambio real empieza desde nosotros mismos.\n\nEl éxito que queremos construir no nace de la casualidad, nace de la preparación, de la visión y del compromiso de hacer las cosas bien. En Liderazgo 360 quisimos reunir voces que creen en el trabajo bien hecho, en el crecimiento constante y en la idea de que los grandes resultados siempre comienzan con personas dispuestas a dar lo mejor de sí. Porque el verdadero éxito no es llegar primero… es construir el camino correcto para que otros también puedan avanzar. Seguimos apostando por la Venezuela que queremos lograr.\n\nLos tiempos cambian… y los líderes también deben hacerlo. Si eres empresario o emprendedor y quieres fortalecer tu forma de comunicar, vender y liderar, este espacio es para ti.",
     highlights: [
@@ -210,28 +210,28 @@ const timelineData: TimelineEvent[] = [
     gallery: [
       {
         index: "01",
-        src: "/events/liderazgo/IMG_2408.jpeg",
+        src: "/events/liderazgo/IMG_2408.webp",
         title: "Panel de Expertos",
         category: "LIDERAZGO 360°",
         aspect: "landscape",
       },
       {
         index: "02",
-        src: "/events/liderazgo/IMG_2432.JPG",
+        src: "/events/liderazgo/IMG_2432.webp",
         title: "Estrategias en Vivo",
         category: "FORMACIÓN PRÁCTICA",
         aspect: "portrait",
       },
       {
         index: "03",
-        src: "/events/liderazgo/IMG_2436.JPG",
+        src: "/events/liderazgo/IMG_2436.webp",
         title: "Audiencia & Preguntas",
         category: "INTERACCIÓN",
         aspect: "landscape",
       },
       {
         index: "04",
-        src: "/events/liderazgo/IMG_2438.JPG",
+        src: "/events/liderazgo/IMG_2438.webp",
         title: "Visión Transformadora",
         category: "COMPROMISO 360°",
         aspect: "landscape",
@@ -270,7 +270,7 @@ const timelineData: TimelineEvent[] = [
           "Una formación orientada a personas que quieren fortalecer su comunicación, liderazgo y capacidad para presentar sus ideas, historias, proyectos o marcas.",
       },
     ],
-    flyerSrc: "/flyers/748161065_18598341691059362_4810160585673327155_n.jpg",
+    flyerSrc: "/flyers/748161065_18598341691059362_4810160585673327155_n.webp",
   },
   {
     id: "2026-imparables-nexus",
