@@ -5,7 +5,14 @@
 
 export const imparablesTokens = {
   colors: {
+    canvas: {
+      primary: "#0066b0", // Brand primary canvas / main app background
+      elevated: "#081D33", // Elevated section backdrop
+      deep: "#001833", // Deep navy base
+    },
     blue: {
+      canvas: "#0066b0", // Primary application background
+      container: "#005193", // Card / format container background
       core: "#004F9E",
       dark: "#002B5B",
       deep: "#001833",
@@ -25,6 +32,12 @@ export const imparablesTokens = {
       dark: "#0E1015",
       darkCard: "#14171F",
       darkElevated: "#1B202A",
+    },
+    semantic: {
+      background: "#0066b0",
+      backgroundElevated: "#081D33",
+      foreground: "#F4F8FC",
+      mutedForeground: "#9FB4C9",
     },
   },
   typography: {

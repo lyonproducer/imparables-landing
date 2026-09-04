@@ -3,7 +3,7 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ImparablesInterlock } from "@/components/ui/imparables";
-import { NumberTicker } from "@/components/ui/NumberTicker";
+import { NumberTicker } from "@/components/ui/shared/NumberTicker";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 interface StatItem {

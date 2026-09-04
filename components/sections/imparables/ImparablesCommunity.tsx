@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
+import { SectionHeading } from "@/components/ui/shared/SectionHeading";
+import { Button } from "@/components/ui/shared/Button";
 import { ImparablesInterlock } from "@/components/ui/imparables";
 import { PaperPlaneRight, CheckCircle, EnvelopeSimple, WhatsappLogo } from "@phosphor-icons/react";
-import { ScrollExpand } from "@/components/ui/ScrollExpand";
+import { ScrollExpand } from "@/components/ui/shared/ScrollExpand";
 
 export const ImparablesCommunity: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);

@@ -7,6 +7,20 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/imparables",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/imparables/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -10,6 +10,7 @@ import {
   YoutubeLogo,
   LinkedinLogo,
   ArrowUp,
+  ArrowUpRight,
   Sparkle,
 } from "@phosphor-icons/react";
 
@@ -19,7 +20,7 @@ export const ImparablesFooter: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-[#07090D] border-t border-white/10 pt-16 pb-20 md:pb-24 lg:pb-28 overflow-hidden">
+    <footer className="relative bg-[#030f1c] border-t border-white/10 pt-16 pb-20 md:pb-24 lg:pb-28 overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-40 bg-[#004F9E]/08 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
@@ -67,17 +68,17 @@ export const ImparablesFooter: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/imparables/nosotros" className="hover:text-accent transition-colors">
+                <Link href="/nosotros" className="hover:text-accent transition-colors">
                   Nosotros & Andersong Trocel
                 </Link>
               </li>
               <li>
-                <Link href="/imparables/eventos" className="hover:text-accent transition-colors">
+                <Link href="/eventos" className="hover:text-accent transition-colors">
                   Formatos & Trayectoria
                 </Link>
               </li>
               <li>
-                <Link href="/imparables/contacto" className="hover:text-accent transition-colors">
+                <Link href="/contacto" className="hover:text-accent transition-colors">
                   Comunidad & Contacto
                 </Link>
               </li>
@@ -95,10 +96,10 @@ export const ImparablesFooter: React.FC = () => {
             </p>
             <Link
               href="/nexus"
-              className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-xl bg-primary/20 text-foreground border border-primary/40 hover:bg-primary/30 hover:border-accent/50 transition-all w-fit mt-1 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 w-fit px-6 py-3 rounded-full bg-accent text-neutral-950 font-bold text-sm shadow-lg shadow-blue-500/25 hover:bg-accent/90 transition-all cursor-pointer mt-1"
             >
-              <span>Ir a Imparables Nexus</span>
-              <span>→</span>
+              <span>Explorar mundo Nexus</span>
+              <ArrowUpRight size={16} weight="bold" />
             </Link>
           </div>
         </div>

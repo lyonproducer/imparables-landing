@@ -9,9 +9,10 @@
 
 - **Platform:** Imparables — Plataforma de Experiencias, Formación y Encuentros
 - **Core Narrative:** *"No importa dónde comienza tu historia. Importa lo que decides hacer con ella."*
-- **Aesthetic Philosophy:** **Exaggerated Editorial Minimalism & Architectural Geometry**. High-contrast typography, interlocking puzzle structures, directional track curvature lines, and obsidian-to-amber lighting.
+- **Aesthetic Philosophy:** **Exaggerated Editorial Minimalism & Architectural Geometry**. High-contrast typography, interlocking puzzle structures, directional track curvature lines, and a signature **Royal Blue Canvas (`#0066b0`)** framing high-contrast obsidian glass surfaces, golden amber lighting, and off-white editorial blocks.
+- **Primary Canvas Rule:** The global background of the application is **Royal Blue `#0066b0`** (`--color-background`, `--color-canvas`). It establishes brand authority, optimism, and distinct personality. High-contrast dark surfaces (`#0E1015`, `#14171F`) are layered on top of this canvas for focused card containers, forms, and glass elements.
 - **Dual-World Architecture:**
-  - **Mundo Imparables (`/`):** Cultural, inspirational, leadership, and entrepreneurship platform.
+  - **Mundo Imparables (`/`):** Cultural, inspirational, leadership, and entrepreneurship platform anchored on `#0066b0`.
   - **Mundo Nexus (`/nexus`):** AI, automation, and technological enterprise summit.
   - Both worlds are bridged by the top `FloatingDualNav` capsule and unified design token primitives.
 
@@ -23,9 +24,11 @@
 
 | Token | CSS Variable / Class | Hex / Value | Purpose & Contrast |
 |---|---|---|---|
-| **Core Blue** | `--color-imparables-blue` | `#004F9E` | Primary brand authority color |
+| **Primary Canvas** | `--color-background`, `--color-canvas` | `#0066b0` | **Foundational brand background canvas across all pages & sections** |
+| **Canvas Elevated**| `--color-background-elevated` | `#081D33` | Deep blue elevated container & nested section backdrop |
+| **Core Blue** | `--color-imparables-blue` | `#004F9E` | Secondary brand authority blue for accents & icon tiles |
 | **Dark Blue** | `--color-imparables-blue-dark` | `#002B5B` | Dark blue container background |
-| **Deep Blue** | `--color-imparables-blue-deep` | `#001833` | Deep navy base |
+| **Deep Blue** | `--color-imparables-blue-deep` | `#001833` | Deep navy base for rich card gradients |
 | **Blue Gradient** | `bg-gradient-to-br` | `from-[#003875] via-[#002855] to-[#001733]` | Signature brand card gradient (WCAG > 7:1) |
 | **Golden Amber** | `--color-imparables-amber` | `#FFB100` | High-energy focal accent, tags, CTAs, thread line |
 | **Amber Hover** | `--color-imparables-amber-hover` | `#E09800` | Active/hover state on amber elements |
@@ -35,9 +38,7 @@
 | **Divider Base** | `--color-divider-bg` | `#F0F2F6` | Track divider background seam |
 | **Obsidian Dark** | `--color-imparables-dark` | `#0E1015` | Deep dark slate for glass surfaces & forms |
 | **Card Surface** | `--color-imparables-dark-card` | `#14171F` | Elevated dark card container |
-| **Canvas** | `--color-background` | `#030F1C` | Rich obsidian navy canvas |
-| **Canvas Elevated**| `--color-background-elevated` | `#081D33` | Elevated section backdrop |
-| **Foreground Text**| `--color-foreground` | `#F4F8FC` | High-contrast primary copy |
+| **Foreground Text**| `--color-foreground` | `#F4F8FC` | High-contrast primary copy (WCAG AAA on `#0066b0`) |
 | **Muted Text** | `--color-muted-foreground` | `#9FB4C9` | Secondary copy and technical metadata |
 
 ---
@@ -86,16 +87,16 @@
   1. Top header: Category tag (left) + index number with arrow `01 ↗` (right) in `font-sans font-bold tracking-widest uppercase`.
   2. Center: Brand logo with smooth hover cross-fade (color/white/gold).
   3. Bottom: Title in `font-display font-extrabold`, expanding accent line (`group-hover:w-16`), and role/description text.
-- **Edge Vignette Masks:** Soft gradient masks on left/right edges (`w-16 sm:w-36 bg-gradient-to-r/l`) for seamless enter/exit.
-- **Background Texture:** `nexus-lines-pattern.jpg` with `opacity-35` and dual gradient vignettes.
+- **Edge Vignette Masks:** Soft gradient masks on left/right edges (`w-16 sm:w-36 bg-gradient-to-r/l from-[#0066b0] to-transparent`) for seamless enter/exit over the `#0066b0` royal blue canvas.
+- **Background Texture:** `nexus-lines-pattern.jpg` with `opacity-35` and dual gradient vignettes blending into `#0066b0`.
 
 ### 4.4 Section Kickers & Brand Overlines (No Pill Badges)
-- **Design Decision:** Pill capsules and badge bubbles (`rounded-full border backdrop-blur-xl`) are completely eliminated.
+- **Design Decision:** Pill capsules, background boxes, and badge bubbles (`rounded-full border backdrop-blur-xl bg-*`) are completely eliminated for section kickers.
 - **Architectural Standard:** Sections use clean, unboxed typographic kickers paired with the brand geometric glyph (`ImparablesInterlock size="sm"`):
   - Typography: `font-sans font-bold text-xs tracking-[0.08em] uppercase`.
-  - Colors: `#004F9E` on light surfaces; `#FFB100` on dark obsidian surfaces.
+  - Colors: `#004F9E` on light surfaces; `#FFB100` on dark obsidian surfaces; `text-neutral-950` on golden amber surfaces.
   - Structure: `<div className="flex items-center gap-2 mb-4"><ImparablesInterlock size="sm" /><span>...</span></div>`.
-- **Banned Elements:** Never use sparkle, star, or asterisk icons.
+- **Banned Elements:** Never use sparkle, star, or asterisk icons. Never add container borders or background fills to section kickers.
 
 ### 4.5 `ImparablesTrackDivider` (Connecting Golden Thread)
 - **Role:** Visual seam transition between sections.
@@ -115,8 +116,14 @@
 - **Badge:** Central floating circular Instagram badge with interactive gradient ring blur (`group-hover:scale-110`).
 
 ### 4.8 `ProgressiveBlur` & `ImparablesFooter`
+- **Footer Background:** Deep obsidian navy (`#030f1c`) grounding the base of the page with `border-t border-white/10` and atmospheric ambient glow.
 - **Progressive Blur:** Multi-stop CSS gradient backdrop blur pinned at bottom viewport (`pointer-events-none`).
 - **Footer Spacing:** Extended bottom padding (`pb-36 md:pb-44 lg:pb-48`) ensuring footer content and links are never obstructed by the progressive blur or floating navigation capsule.
+
+### 4.9 `ImparablesEventsTimeline` (Dual-Part Expandable Timeline)
+- **Canvas:** Set upon the primary `#0066b0` background canvas with subtle top border `border-white/10` and atmospheric ambient blur glows (`#004F9E/15`).
+- **Node Badges:** Dual-ring nodes (`w-8 h-8 rounded-full border-2 border-[#FFB100] bg-[#0066b0]`) with golden ambient halo shadows (`shadow-[0_0_20px_rgba(255,177,0,0.5)]`).
+- **Interactive Split Cards:** Expandable cards with independent lightbox photo galleries, clean tabs, and smooth motion animations.
 
 ---
 
@@ -142,3 +149,5 @@
    - Do not use generic bubbly rounded corners (`rounded-3xl`) for partner cards. Use sharp 90-degree architectural geometric square tiles (`aspect-square border shadow-2xl overflow-hidden`).
 5. **NO Multi-Row Static Brand Walls:**
    - Do not build crowded multi-row grids for partner logos. Use a single-row infinite autoplay marquee with pause-on-hover and edge gradient vignettes.
+6. **Authoritative Primary Canvas (`#0066b0`):**
+   - Never regress to legacy `#030F1C` or generic desaturated dark grays/blacks (`#000000`, `#111111`) for the global page background or section canvas. The canonical canvas color is Royal Blue `#0066b0` (`--color-background`, `--color-canvas`). Dark obsidian surfaces (`#0E1015`, `#14171F`) exist exclusively as elevated card layers.

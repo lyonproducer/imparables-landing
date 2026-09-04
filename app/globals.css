@@ -22,8 +22,10 @@
   --color-imparables-dark: #0e1015;
   --color-imparables-dark-card: #14171f;
 
-  /* Base oscura */
-  --color-background: #030f1c;
+  /* Canvas Principal (#0066b0) y Superficies */
+  --color-canvas: #0066b0;
+  --color-imparables-canvas: #0066b0;
+  --color-background: #0066b0;
   --color-background-elevated: #081d33;
   --color-foreground: #f4f8fc;
   --color-muted-foreground: #9fb4c9;

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import { ProgressiveBlur } from "@/components/ui/shared/progressive-blur";
 import "./globals.css";
 
 const spaceGrotesk = localFont({
@@ -31,7 +31,7 @@ const dmSans = localFont({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://imparable-landing.vercel.app";
 
 export const viewport: Viewport = {
-  themeColor: "#030f1c",
+  themeColor: "#0066b0",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { LinesBackground } from "@/components/ui/LinesBackground";
+import { LinesBackground } from "@/components/ui/shared/LinesBackground";
 import { ImparablesColorTheme } from "@/lib/design-system/imparables-tokens";
 
 interface ImparablesCardProps {

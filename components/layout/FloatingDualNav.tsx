@@ -10,7 +10,9 @@ import { List, X } from "@phosphor-icons/react";
 
 export const FloatingDualNav: React.FC = () => {
   const pathname = usePathname();
-  const isNexus = pathname?.startsWith("/nexus");
+  const isNexus =
+    pathname?.startsWith("/nexus") ||
+    ["/expertos", "/temas", "/reserva"].some((p) => pathname?.startsWith(p));
   const isImparables = !isNexus;
 
   const { mobileNavOpen, setMobileNavOpen } = useUIStore();
@@ -68,15 +70,15 @@ export const FloatingDualNav: React.FC = () => {
   const isHidden = !isVisible && !mobileNavOpen;
 
   const imparablesLinks = [
-    { label: "Nosotros", href: "/imparables/nosotros" },
-    { label: "Eventos", href: "/imparables/eventos" },
-    { label: "Contacto", href: "/imparables/contacto" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Eventos", href: "/eventos" },
+    { label: "Contacto", href: "/contacto" },
   ];
 
   const nexusLinks = [
-    { label: "Expertos", href: isNexus ? "#expertos" : "/nexus#expertos" },
-    { label: "Temas", href: isNexus ? "#temas" : "/nexus#temas" },
-    { label: "Reserva", href: isNexus ? "#reserva" : "/nexus#reserva" },
+    { label: "Expertos", href: "/expertos" },
+    { label: "Temas", href: "/temas" },
+    { label: "Reserva", href: "/reserva" },
   ];
 
   const showImparablesSub = hoveredWorld === "imparables" || (hoveredWorld === null && isImparables);

@@ -16,11 +16,24 @@ export const ImparablesFounder: React.FC = () => {
       id="creador"
       className="relative py-20 sm:py-28 md:py-36 bg-[#F8F9FA] text-neutral-950 border-b border-neutral-200/80 overflow-hidden"
     >
-      {/* Subtle architectural ambient background */}
+      {/* Background Graphic: Architectural Track Lines */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+        <Image
+          src="/backgrounds/Screenshot_2026-09-03_at_7.25.39_PM.png_202609031929.jpeg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Soft gradient blend for seamless section continuity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/30 via-transparent to-[#F8F9FA]/40" />
+      </div>
+
+      {/* Subtle architectural ambient glows */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#004F9E]/05 blur-[160px] rounded-full" />
         <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-[#FFB100]/06 blur-[160px] rounded-full" />
-        <div className="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] [background-size:28px_28px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
@@ -126,7 +139,7 @@ export const ImparablesFounder: React.FC = () => {
             {/* Action Button (matches reference pill style with design system tokens) */}
             <motion.div variants={fadeUpVariant} className="pt-2">
               <Link
-                href="/imparables/contacto"
+                href="/contacto"
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#0E1015] hover:bg-neutral-800 text-white font-sans font-bold text-sm sm:text-base transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 group cursor-pointer"
               >
                 <span>Conectar con Andersong</span>

@@ -1,8 +1,9 @@
 # Page Specification: Mundo Imparables (`/`)
 
 > **Page Route:** `/`  
-> **Source Component:** `app/page.tsx`  
+> **Source Component:** `app/(imparables)/page.tsx`  
 > **Layout:** Dual-World Landing Architecture
+> **Primary Canvas:** Royal Blue `#0066b0` (`--color-background`)
 
 ---
 
@@ -10,12 +11,12 @@
 
 ```
 1. Header (FloatingDualNav)
-2. ImparablesHero
+2. ImparablesHero (Primary Canvas #0066b0)
 3. ImparablesPlatform (2x2 Mobile, 4x1 Desktop)
-4. ImparablesTrackDivider
-5. ImparablesAbout (Founder & Vision)
-6. ImparablesEvents (Formats & Nexus Spotlight)
-7. ImparablesPartners (Collaborators Grid)
+4. ImparablesTrackDivider (Golden thread seam #F0F2F6)
+5. ImparablesFormats (Conferencias, Formaciones, Summit Spotlight)
+6. ImparablesPartners (Continuous Marquee on #0066b0)
+7. ImparablesImpact (Metrics & Testimonials)
 8. ImparablesCommunity (ScrollExpand Sticky Form)
 9. ImparablesInstagramFeed (Infinite Marquee 75s)
 10. ImparablesFooter
@@ -27,7 +28,7 @@
 ## 2. Section Details & Token Mapping
 
 ### 2.1 Hero (`ImparablesHero`)
-- **Background:** Ambient dark gradient canvas (`#030F1C`), concentric SVG track lines (`LinesBackground`), radial ambient glows (`#004F9E/20`, `#FFB100/15`).
+- **Background:** Primary Royal Blue canvas (`#0066b0`), concentric SVG track lines (`LinesBackground`), radial ambient glows (`#004F9E/20`, `#FFB100/15`).
 - **Layout:** Asymmetric 12-column grid (`lg:grid-cols-12`).
   - Left (6 cols): Editorial H1 with gradient text span (`from-accent via-amber-300 to-amber-500`), descriptive lead paragraph, CTAs with primary button and link to `#comunidad`.
   - Right (6 cols): Dynamic flyer preview with interactive toggle between top and bottom cards.
@@ -48,17 +49,18 @@
 - **Container:** Full-width light seam (`#F0F2F6`, `height={56}`).
 - **Vector Pattern:** Dashed yellow thread (`#FFB100`, `strokeDasharray="10 10"`) with dual white-bordered anchor dots.
 
-### 2.4 About & Brand Story (`ImparablesAbout`)
-- **Content:** Profile of creator Andersong Trocel.
-- **Layout:** Asymmetric dual-photo layout with architectural editorial badge.
-- **Typography:** Display title *"Transformamos historias en proyectos que trascienden"*.
-
-### 2.5 Events & Formats (`ImparablesEvents`)
+### 2.4 Formats & Nexus Spotlight (`ImparablesFormats`)
 - **Featured Card:** Imparables Nexus spotlight card with deep blue gradient (`from-[#003875] via-[#00224a] to-[#0E1015]`), date badges, and direct CTA to `/nexus`.
-- **Format Cards Grid:** 3 cards (`ImparablesCard` components) covering Conferencias, Formaciones, and Summit experiences.
+- **Format Cards Grid:** 3 high-contrast cards (`ImparablesCard` components) layered above the `#0066b0` canvas covering Conferencias, Formaciones, and Summit experiences.
 
-### 2.6 Partners (`ImparablesPartners`)
-- **Layout:** High-contrast logo grid with subtle hover scale effects (`scale-105`) and clean border accents.
+### 2.5 Partners (`ImparablesPartners`)
+- **Background:** Primary Royal Blue canvas (`#0066b0`) with top border `border-white/10` and edge vignette masks (`from-[#0066b0] to-transparent`).
+- **Layout Architecture:** Single continuous horizontal autoplay marquee row (`animate-partner-marquee`) with GPU-accelerated motion and pause on hover.
+- **Card Geometry:** Sharp architectural geometric square tiles (`aspect-square border shadow-2xl`).
+
+### 2.6 Impact & Metrics (`ImparablesImpact`)
+- **Metrics:** Impact numbers and transformational trajectory.
+- **Surface:** Layered above the `#0066b0` canvas with subtle contrast divider accents.
 
 ### 2.7 Community & Contact (`ImparablesCommunity` + `ScrollExpand`)
 - **Scroll Distance:** `3.2` (320vh scroll runway).
@@ -72,5 +74,6 @@
 - **Center Node:** Floating circular Instagram trigger with glowing gradient pulse.
 
 ### 2.9 Footer (`ImparablesFooter`)
+- **Background:** Deep obsidian navy (`#030f1c`) grounding the page with top border `border-white/10` and atmospheric glow.
 - **Padding:** `pt-16 pb-36 md:pb-44 lg:pb-48` to avoid overlap with `ProgressiveBlur` and `FloatingDualNav`.
 - **Content:** Logo, Puerto Ordaz location tag with `ImparablesInterlock`, dual-world directory links, and back-to-top scroll trigger.

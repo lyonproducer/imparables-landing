@@ -4,12 +4,12 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { LinesBackground } from "@/components/ui/LinesBackground";
+import { Button } from "@/components/ui/shared/Button";
+import { LinesBackground } from "@/components/ui/shared/LinesBackground";
 import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
-import TextLoop from "@/components/ui/TextLoop";
+import TextLoop from "@/components/ui/shared/TextLoop";
 
 export const ImparablesHero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -23,13 +23,13 @@ export const ImparablesHero: React.FC = () => {
     >
       {/* Vector SVG Track Lines Background & Ambient Gradients */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 opacity-70">
-          <LinesBackground />
+        <div className="absolute inset-0">
+          <LinesBackground lineColor="#005193" />
         </div>
         {/* Ambient atmospheric gradients */}
         <div className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[650px] h-[450px] bg-[#004F9E]/20 blur-[180px] rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 w-[600px] h-[400px] bg-[#FFB100]/15 blur-[180px] rounded-full pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/40" />
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 

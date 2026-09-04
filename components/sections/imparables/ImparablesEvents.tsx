@@ -3,8 +3,8 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
+import { SectionHeading } from "@/components/ui/shared/SectionHeading";
+import { Button } from "@/components/ui/shared/Button";
 import { ImparablesCard } from "@/components/ui/imparables";
 import { Calendar, ArrowUpRight, Trophy, Users, Megaphone, TrendUp } from "@phosphor-icons/react";
 import { fadeUpVariant, staggerContainer, scaleUpVariant } from "@/lib/motion/motion-variants";

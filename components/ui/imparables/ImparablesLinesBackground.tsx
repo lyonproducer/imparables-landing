@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { LinesBackground } from "@/components/ui/LinesBackground";
+import { LinesBackground } from "@/components/ui/shared/LinesBackground";
 
 interface ImparablesLinesBackgroundProps {
   opacity?: number;

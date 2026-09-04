@@ -100,7 +100,7 @@ export const ImparablesFormats: React.FC = () => {
 
       {/* SVG Background: Thick Gray Athletic Track Lines */}
       {/* Subtle Architectural Athletic Track Watermark */}
-       <div className="absolute inset-0 pointer-events-none opacity-20">
+       <div className="absolute inset-0 pointer-events-none">
         <svg
           className="w-full h-full object-cover"
           viewBox="0 0 1440 600"
@@ -113,6 +113,7 @@ export const ImparablesFormats: React.FC = () => {
               d={`M -100 ${50 + i * 80} Q 420 ${-80 + i * 80} 920 ${120 + i * 80} T 1580 ${260 + i * 80}`}
               stroke="#0E1015"
               strokeWidth="28"
+              strokeOpacity={0.05}
               fill="none"
               strokeLinecap="round"
             />
@@ -172,7 +173,7 @@ export const ImparablesFormats: React.FC = () => {
                   viewport={{ once: true, margin: "-40px" }}
                   variants={fadeUpVariant}
                   transition={{ delay: idx * 0.1 }}
-                  className={`group relative flex flex-col justify-between rounded-4xl overflow-hidden bg-[#0B121E] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_70px_rgba(0,0,0,0.8)] hover:border-[#FFB100]/40 ${
+                  className={`group relative flex flex-col justify-between rounded-4xl overflow-hidden bg-[#005193] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] cursor-pointer transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_70px_rgba(0,0,0,0.8)] hover:border-[#FFB100]/40 ${
                     shouldReduceMotion ? "" : item.rotation
                   } hover:rotate-0`}
                   onClick={() => setSelectedFormat(item)}
@@ -188,8 +189,8 @@ export const ImparablesFormats: React.FC = () => {
                     />
 
                     {/* Ambient Gradient Overlays for optimal typography legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B121E] via-[#0B121E]/30 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent opacity-70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#005193] via-[#005193]/30 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent opacity-0" />
 
                     {/* Top Action Button */}
                     <div className="absolute top-4 right-4 z-10">
@@ -210,7 +211,7 @@ export const ImparablesFormats: React.FC = () => {
                   </div>
 
                   {/* Bottom Text Content & Editorial Divider */}
-                  <div className="p-5 sm:p-6 bg-[#0B121E] flex flex-col justify-between flex-1 relative z-10 border-t border-white/10">
+                  <div className="p-5 sm:p-6 bg-[#005193] flex flex-col justify-between flex-1 relative z-10 border-t border-white/10">
                     <div>
                       <h3 className="font-display font-bold text-lg sm:text-xl text-white group-hover:text-[#FFB100] transition-colors leading-snug mb-2">
                         {item.title}

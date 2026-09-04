@@ -215,7 +215,7 @@ export const ImparablesPartners: React.FC = () => {
   return (
     <section
       id="aliados"
-      className="relative w-full py-24 md:py-32 bg-[#030F1C] overflow-hidden border-t border-white/10"
+      className="relative w-full py-24 md:py-32 bg-[#0066b0] overflow-hidden border-t border-white/10"
     >
       {/* Background Graphic: Nexus Lines Pattern */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
@@ -227,8 +227,8 @@ export const ImparablesPartners: React.FC = () => {
           className="object-cover object-center opacity-35"
         />
         {/* Soft Vignette / Gradient overlays for contrast and smooth section blend */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030F1C] via-[#030F1C]/60 to-[#030F1C]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#030F1C]/80 via-transparent to-[#030F1C]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0066b0] via-[#0066b0]/60 to-[#0066b0]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0066b0]/80 via-transparent to-[#0066b0]/80" />
       </div>
 
       {/* Ambient glow highlights */}
@@ -267,8 +267,8 @@ export const ImparablesPartners: React.FC = () => {
         {/* ================= CONTINUOUS AUTOPLAY SINGLE-ROW MARQUEE ================= */}
         <div className="relative w-full overflow-hidden py-4">
           {/* Edge Vignette Masks for Smooth Left/Right Transitions */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-[#030F1C] to-transparent z-20" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-[#030F1C] to-transparent z-20" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-[#0066b0] to-transparent z-20" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-[#0066b0] to-transparent z-20" />
 
           {/* Autoplay Row Track (Pauses cleanly on hover) */}
           <div className="animate-partner-marquee flex items-center gap-5 sm:gap-7">
@@ -324,7 +324,7 @@ export const ImparablesPartners: React.FC = () => {
                     <div className="relative z-10 pt-1">
                       <div className="w-8 sm:w-10 h-0.5 sm:h-1 mt-2 mb-2 rounded-full bg-[#FFB100] group-hover:w-16 transition-all duration-300" />
                       <Link
-                        href="/imparables/contacto"
+                        href="/contacto"
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFB100] group-hover:underline"
                       >
                         <span>Postular mi empresa</span>
