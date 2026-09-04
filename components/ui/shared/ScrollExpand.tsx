@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, type MotionStyle } from "framer-motion";
 import { CaretDown } from "@phosphor-icons/react";
 
 export interface ScrollExpandProps {
@@ -49,6 +49,11 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Reduced-motion users get the static end state: full-size card with the
+  // content immediately visible and usable — no scrub gating, no scroll-linked
+  // transforms, no infinite animation on the hint caret.
+  const shouldReduceMotion = useReducedMotion() ?? false;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -140,6 +145,39 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
     v < 0.15 ? "flex" : "none"
   );
 
+  // Reduced-motion path: static end-state styles. The normal path keeps the
+  // width/height scrub — a scale conversion was evaluated and rejected because
+  // the card changes aspect ratio (e.g. 40vw x 52vh -> 100vw x 100vh), so a
+  // transform-only version needs non-uniform scale, which visibly distorts the
+  // in-card text, logo and form inputs; counter-scaling those layers would
+  // reintroduce per-frame layout on the exact subtree we want to offload.
+  const reduced = shouldReduceMotion;
+
+  const frameStyle: MotionStyle = reduced
+    ? { width: "100vw", height: "100vh", borderRadius: `${endRadius}px` }
+    : { width: cardWidth, height: cardHeight, borderRadius };
+  const imageStyle: MotionStyle = reduced ? { scale: 1 } : { scale: imageScale };
+  const scrimStyle: MotionStyle = reduced ? { opacity: overlayScrim } : { opacity: scrimOpacity };
+  const titleStyle: MotionStyle = reduced
+    ? { opacity: 0, y: 0, pointerEvents: "none", display: "none" }
+    : {
+        opacity: titleOpacity,
+        y: titleY,
+        pointerEvents: titlePointerEvents,
+        display: titleDisplay,
+      };
+  const hintStyle: MotionStyle = reduced
+    ? { opacity: 0, display: "none" }
+    : { opacity: hintOpacity, display: hintDisplay };
+  const contentStyle: MotionStyle = reduced
+    ? { opacity: 1, y: 0, scale: 1, pointerEvents: "auto" }
+    : {
+        opacity: contentOpacity,
+        y: contentY,
+        scale: contentScale,
+        pointerEvents: contentPointerEvents,
+      };
+
   return (
     <div
       ref={containerRef}
@@ -150,15 +188,11 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-background">
         {/* Animated Expanding Frame */}
         <motion.div
-          style={{
-            width: cardWidth,
-            height: cardHeight,
-            borderRadius: borderRadius,
-          }}
+          style={frameStyle}
           className="relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.5)] border border-white/15 flex items-center justify-center transition-shadow duration-300"
         >
           {/* Background Image with smooth parallax zoom */}
-          <motion.div style={{ scale: imageScale }} className="absolute inset-0 w-full h-full">
+          <motion.div style={imageStyle} className="absolute inset-0 w-full h-full">
             <Image
               src={src}
               alt={alt}
@@ -171,7 +205,7 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
 
           {/* Scrim Overlay */}
           <motion.div
-            style={{ opacity: scrimOpacity }}
+            style={scrimStyle}
             className="absolute inset-0 bg-neutral-950/90 pointer-events-none z-10"
           />
 
@@ -218,12 +252,7 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
           {/* Initial Title Overlay */}
           {title && (
             <motion.div
-              style={{
-                opacity: titleOpacity,
-                y: titleY,
-                pointerEvents: titlePointerEvents,
-                display: titleDisplay,
-              }}
+              style={titleStyle}
               className="relative z-20 px-4"
             >
               {title}
@@ -233,24 +262,19 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
           {/* Scroll Hint */}
           {scrollHint && (
             <motion.div
-              style={{ opacity: hintOpacity, display: hintDisplay }}
+              style={hintStyle}
               className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/80 pointer-events-none"
             >
               <span className="text-xs font-sans tracking-[0.08em] uppercase text-amber-300/90 font-bold drop-shadow">
                 {scrollHint}
               </span>
-              <CaretDown size={20} className="animate-bounce text-amber-400" />
+              <CaretDown size={20} className="text-amber-400" />
             </motion.div>
           )}
 
           {/* Main Form Content */}
           <motion.div
-            style={{
-              opacity: contentOpacity,
-              y: contentY,
-              scale: contentScale,
-              pointerEvents: contentPointerEvents,
-            }}
+            style={contentStyle}
             className="absolute inset-0 z-30 overflow-y-auto flex items-center justify-center py-12 px-4 sm:px-6"
           >
             {children}

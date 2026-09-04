@@ -104,7 +104,7 @@ export const Hero: React.FC = () => {
       </motion.div>
 
       {/* Subtle indicator to scroll */}
-      <div className="relative z-10 pt-8 flex justify-center text-muted-foreground/60 animate-bounce">
+      <div className="relative z-10 pt-8 flex justify-center text-muted-foreground/60">
         <a href="#sobre-el-evento" aria-label="Ir a sección Sobre el evento">
           <CaretDown size={24} weight="bold" />
         </a>

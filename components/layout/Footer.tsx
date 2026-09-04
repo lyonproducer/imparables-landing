@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   InstagramLogo,
@@ -22,16 +23,14 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-border/80">
           {/* Columna Principal: Marca y Tagline */}
           <div className="md:col-span-5 flex flex-col gap-4">
-            <div className="flex items-center gap-2">
-              <span className="flex items-center justify-center bg-accent text-accent-foreground font-black text-sm px-2 py-0.5 rounded-md tracking-tight">
-                im
-              </span>
-              <span className="font-display font-bold text-2xl tracking-tight text-foreground">
-                parables
-              </span>
-              <span className="text-[11px] uppercase font-bold tracking-[0.2em] px-2 py-0.5 rounded bg-primary/30 text-accent border border-primary/40">
-                NEXUS
-              </span>
+            <div className="flex items-center">
+              <Image
+                src="/logo/imparables-nexus.webp"
+                alt="Imparables Nexus"
+                width={2473}
+                height={559}
+                className="h-10 w-auto sm:h-12"
+              />
             </div>
 
             <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">

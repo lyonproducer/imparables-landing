@@ -65,12 +65,30 @@ html {
   html {
     scroll-behavior: auto;
   }
+  /* Spatial motion only: transform/translate/scale/rotate/inset animations and
+     transitions become instant. Feedback animations (opacity, color, height/width
+     expand, fades) keep their authored durations, so state feedback like the
+     timeline accordion expand (0.4s) and the register success fade still works —
+     those are framer-motion driven and honor reduced motion via useReducedMotion.
+     All CSS animations in this codebase are transform-driven (partner marquee,
+     spinners, glow pulse), so the animation override stays unscoped; if a future
+     opacity/height CSS animation is added, it needs a targeted exception here. */
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-property: transform, translate, scale, rotate, inset, top, right, bottom, left !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  /* Restore feedback transitions (color/opacity state changes) at their authored
+     durations (Tailwind duration-* utilities) while spatial suppression stays. */
+  .transition-colors,
+  .transition-opacity {
+    transition-property: all !important;
+    transition-duration: var(--tw-duration, 150ms) !important;
+    transition-delay: var(--tw-delay, 0s) !important;
   }
 }
 
