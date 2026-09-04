@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync": "./sync-landing.sh",
+    "sync:deploy": "./sync-landing.sh --deploy"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
