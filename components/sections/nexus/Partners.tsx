@@ -18,7 +18,16 @@ export const Partners: React.FC = () => {
       ref={sectionRef}
       className="relative py-20 md:py-32 bg-background border-t border-border overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+      {/* Ambient decor — inverted from the obsidian sections for the #0066b0 canvas */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[460px] bg-[#7CC9FF]/30 blur-[150px] rounded-full" />
+        <div className="absolute -bottom-24 -left-24 w-[640px] h-[400px] bg-[#002b5b]/50 blur-[150px] rounded-full" />
+        <div className="absolute bottom-1/3 right-[-10%] w-[520px] h-[320px] bg-accent/12 blur-[150px] rounded-full" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] [background-size:28px_28px] opacity-70" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <SectionHeading
           kicker="ALIANZAS ESTRATÉGICAS"
           title="Creemos en lo que podemos construir juntos"
@@ -40,7 +49,7 @@ export const Partners: React.FC = () => {
               key={index}
               variants={scaleUpVariant}
               whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-              className="group flex flex-col items-center justify-center p-8 rounded-card bg-background-elevated/60 border border-border hover:border-accent/40 transition-colors duration-300 hover:shadow-lg hover:shadow-primary/5"
+              className="group relative flex flex-col items-center justify-center p-8 rounded-2xl md:rounded-3xl bg-[#0D1626]/45 backdrop-blur-2xl backdrop-saturate-200 border border-white/15 hover:border-[#004F9E]/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all duration-300 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent"
             >
               <div className="relative h-20 w-44 flex items-center justify-center filter grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-300">
                 <Image
@@ -70,7 +79,7 @@ export const Partners: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={fadeUpVariant}
-          className="flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/5 max-w-2xl mx-auto"
+          className="flex flex-col items-center justify-center text-center p-8 sm:p-10 rounded-2xl md:rounded-3xl bg-[#0D1626]/45 backdrop-blur-2xl backdrop-saturate-200 border border-white/15 max-w-2xl mx-auto shadow-xl relative overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent"
         >
           <Handshake size={32} weight="duotone" className="text-accent mb-2" aria-hidden="true" />
           <h4 className="font-display font-bold text-lg md:text-xl text-foreground">

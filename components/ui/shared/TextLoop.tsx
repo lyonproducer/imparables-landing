@@ -4,6 +4,8 @@ import React, { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } f
 import { gsap } from "gsap";
 import "./TextLoop.css";
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 const VIEW_W = 1200;
 const VIEW_H = 520;
 const CX = VIEW_W / 2;
@@ -119,7 +121,7 @@ export const TextLoop: React.FC<TextLoopProps> = ({
     [fontSize, fontWeight, letterSpacing]
   );
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const pathEl = pathRef.current;
     const measureEl = measureRef.current;
     if (!pathEl || !measureEl) return undefined;

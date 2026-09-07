@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -43,24 +43,24 @@ const partnersList: PartnerItem[] = [
     logoClassName: "w-40 sm:w-44 h-16 sm:h-18",
     bgClass: "bg-[#004F9E] text-white border-blue-400/30",
     textClass: "text-blue-100/90",
-    tagClass: "text-blue-200/90",
+    tagClass: "text-blue-200/80",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(0,79,158,0.55)",
+    glowColor: "rgba(0,79,158,0.35)",
     accentBar: "bg-[#FFB100]",
     rightKeyColor: "#FFB100",
   },
   {
     id: "lagars",
     number: "02",
-    tag: "Gastronomía",
+    tag: "Moda & Estilo",
     name: "Lagar's",
-    role: "Experiencias Exclusivas & Vinos",
+    role: "Indumentaria & Presencia de Marca",
     theme: "dark",
     primaryLogo: "/partners/lagars.png",
     hoverLogo: "/partners/IMG_20260621_185449_358.png",
     logoAlt: "Lagar's Logo",
     logoClassName: "w-36 sm:w-40 h-16 sm:h-18",
-    bgClass: "bg-[#0D0F14] text-white border-white/15",
+    bgClass: "bg-[#111111] text-white border-white/15",
     textClass: "text-muted-foreground",
     tagClass: "text-white/60",
     numberClass: "text-[#FFB100]",
@@ -80,7 +80,7 @@ const partnersList: PartnerItem[] = [
     hoverLogo: "/partners/eprisma-green.png",
     logoAlt: "Eprisma Logo",
     logoClassName: "w-24 sm:w-28 h-16 sm:h-18",
-    bgClass: "bg-[#0D0F14] text-white border-white/15",
+    bgClass: "bg-[#111111] text-white border-white/15",
     textClass: "text-muted-foreground",
     tagClass: "text-white/60",
     numberClass: "text-[#FFB100]",
@@ -90,103 +90,122 @@ const partnersList: PartnerItem[] = [
     rightKeyColor: "#FFB100",
   },
   {
-    id: "camcaroni",
-    number: "04",
-    tag: "Gremio Empresarial",
-    name: "Camcaroní",
-    role: "Cámara de Comercio e Industrias",
-    theme: "light",
-    primaryLogo: "/partners/camcaroni-color.png",
-    logoAlt: "Camcaroní - Cámara de Comercio e Industrias",
-    logoClassName: "w-28 sm:w-32 h-20 sm:h-22",
-    bgClass: "bg-white text-neutral-950 border-neutral-300/90 shadow-xl",
-    textClass: "text-neutral-600",
-    tagClass: "text-neutral-700",
-    numberClass: "text-[#1F2B48]",
-    glowColor: "rgba(230,168,37,0.45)",
-    accentBar: "bg-[#E6A825]",
-    leftKeyColor: "#FFB100",
-    rightKeyColor: "#FFB100",
-  },
-  {
     id: "rumbapp",
-    number: "05",
-    tag: "Entretenimiento",
+    number: "04",
+    tag: "Entretenimiento & App",
     name: "Rumbapp",
-    role: "Ticketing Oficial & Experiencias",
+    role: "Ticketing & Plataforma Digital Oficial",
     theme: "amber",
     primaryLogo: "/partners/rumbapp.png",
     logoAlt: "Rumbapp Logo",
-    logoClassName: "w-32 sm:w-36 h-16 sm:h-18",
+    logoClassName: "w-36 sm:w-40 h-16 sm:h-18",
     bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/40",
-    textClass: "text-neutral-950/85 font-medium",
-    tagClass: "text-neutral-950/70",
-    numberClass: "text-neutral-950",
-    glowColor: "rgba(255,177,0,0.5)",
+    textClass: "text-neutral-800",
+    tagClass: "text-neutral-700",
+    numberClass: "text-[#004F9E]",
+    glowColor: "rgba(255,177,0,0.4)",
     accentBar: "bg-neutral-950",
     leftKeyColor: "#FFB100",
     rightKeyColor: "#004F9E",
   },
   {
-    id: "troval",
-    number: "06",
-    tag: "Corporativo",
-    name: "Troval Group",
-    role: "Inversiones & Desarrollo Empresarial",
-    theme: "light",
-    primaryLogo: "/partners/troval-blanco.png",
-    logoAlt: "Troval Group Logo",
-    logoClassName: "w-40 sm:w-44 h-16 sm:h-18",
-    bgClass: "bg-white text-neutral-950 border-neutral-300/90 shadow-xl",
-    textClass: "text-neutral-600",
-    tagClass: "text-neutral-700",
-    numberClass: "text-[#004F9E]",
-    glowColor: "rgba(255,255,255,0.45)",
-    accentBar: "bg-[#004F9E]",
-    leftKeyColor: "#004F9E",
-    rightKeyColor: "#FFB100",
-  },
-  {
-    id: "trocel",
-    number: "07",
-    tag: "Liderazgo",
+    id: "andersong-trocel",
+    number: "05",
+    tag: "Fundador & Marca",
     name: "Andersong Trocel",
-    role: "Conferencista & Mentor de Negocios",
+    role: "Firma Personal · Creador de Imparables",
     theme: "dark",
     primaryLogo: "/partners/trocel-blanco.png",
     logoAlt: "Andersong Trocel Firma",
     logoClassName: "w-28 sm:w-32 h-18 sm:h-20",
-    bgClass: "bg-[#0D0F14] text-white border-white/15",
+    bgClass: "bg-[#111111] text-white border-white/15",
     textClass: "text-muted-foreground",
     tagClass: "text-white/60",
     numberClass: "text-[#FFB100]",
+    glowColor: "rgba(255,255,255,0.2)",
+    accentBar: "bg-[#FFB100]",
+    leftKeyColor: "#004F9E",
+    rightKeyColor: "#FFB100",
+  },
+  {
+    id: "lyon-incode",
+    number: "06",
+    tag: "Desarrollo Digital",
+    name: "Lyon Incode",
+    role: "Arquitectura Web & Experiencia de Usuario",
+    theme: "dark",
+    primaryLogo: "/partners/lyon-incode.png",
+    logoAlt: "Lyon Incode Logo",
+    logoClassName: "w-36 sm:w-40 h-14 sm:h-16",
+    bgClass: "bg-[#111111] text-white border-white/15",
+    textClass: "text-muted-foreground",
+    tagClass: "text-white/60",
+    numberClass: "text-accent",
     glowColor: "rgba(255,177,0,0.3)",
     accentBar: "bg-[#FFB100]",
     leftKeyColor: "#FFB100",
     rightKeyColor: "#004F9E",
   },
   {
-    id: "lyon-incode",
-    number: "08",
-    tag: "Desarrollo Digital",
-    name: "Lyon Incode",
-    role: "Ingeniería de Software & Arquitectura",
+    id: "mel-visual-designer",
+    number: "07",
+    tag: "Diseño Visual",
+    name: "Mel Visual Designer",
+    role: "Identidad Visual & Dirección de Arte",
     theme: "dark",
-    primaryLogo: "/partners/lyon-incode.png",
-    logoAlt: "Lyon Incode Logo",
-    logoClassName: "w-36 sm:w-40 h-14 sm:h-16",
-    bgClass: "bg-[#0D0F14] text-white border-white/15",
+    primaryLogo: "/partners/mel-visual-designer.webp",
+    logoAlt: "Mel Visual Designer Logo",
+    logoClassName: "w-32 sm:w-36 h-14 sm:h-16",
+    bgClass: "bg-[#111111] text-white border-white/15",
     textClass: "text-muted-foreground",
     tagClass: "text-white/60",
-    numberClass: "text-accent",
-    glowColor: "rgba(59,130,246,0.3)",
-    accentBar: "bg-blue-400",
+    numberClass: "text-[#FFB100]",
+    glowColor: "rgba(255,255,255,0.25)",
+    accentBar: "bg-[#FFB100]",
+    leftKeyColor: "#004F9E",
+    rightKeyColor: "#FFB100",
+  },
+  {
+    id: "mundo-streaming",
+    number: "08",
+    tag: "Streaming & Medios",
+    name: "Mundo Streaming",
+    role: "Transmisión en Vivo & Cobertura Audiovisual",
+    theme: "dark",
+    primaryLogo: "/partners/mundo-streaming.webp",
+    logoAlt: "Mundo Streaming Logo",
+    logoClassName: "w-40 sm:w-44 h-14 sm:h-16",
+    bgClass: "bg-[#111111] text-white border-white/15",
+    textClass: "text-muted-foreground",
+    tagClass: "text-white/60",
+    numberClass: "text-[#FFB100]",
+    glowColor: "rgba(230,0,126,0.35)",
+    accentBar: "bg-[#E6007E]",
+    leftKeyColor: "#FFB100",
+    rightKeyColor: "#004F9E",
+  },
+  {
+    id: "jmi",
+    number: "09",
+    tag: "Moda & Talento",
+    name: "JMI International",
+    role: "Escuela y Agencia de Modelos",
+    theme: "dark",
+    primaryLogo: "/partners/jmi.webp",
+    logoAlt: "JMI Jhiraldi's Models International Logo",
+    logoClassName: "w-40 sm:w-44 h-14 sm:h-16",
+    bgClass: "bg-[#111111] text-white border-white/15",
+    textClass: "text-muted-foreground",
+    tagClass: "text-white/60",
+    numberClass: "text-[#FFB100]",
+    glowColor: "rgba(255,255,255,0.25)",
+    accentBar: "bg-[#FFB100]",
     leftKeyColor: "#004F9E",
     rightKeyColor: "#FFB100",
   },
   {
     id: "cta-partner",
-    number: "09",
+    number: "10",
     tag: "Convocatoria",
     name: "¿Tu marca aquí?",
     role: "Postúlate como patrocinador oficial",
@@ -194,23 +213,166 @@ const partnersList: PartnerItem[] = [
     primaryLogo: "",
     logoAlt: "Convocatoria Patrocinios",
     logoClassName: "",
-    bgClass: "bg-[#0D0F14]/80 hover:bg-[#0D0F14] text-white border border-dashed border-[#FFB100]/40",
+    bgClass: "bg-[#111111]/80 hover:bg-[#111111] text-white border border-dashed border-[#FFB100]/40",
     textClass: "text-muted-foreground",
     tagClass: "text-[#FFB100]",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,177,0,0.35)",
+    glowColor: "rgba(255,177,0,0.25)",
     accentBar: "bg-[#FFB100]",
     leftKeyColor: "#FFB100",
     isCta: true,
   },
 ];
 
-// Duplicate list for infinite smooth seamless marquee loop
-const infinitePartners = [...partnersList, ...partnersList];
+// Triplicate list for infinite smooth seamless virtual wrap in both directions
+const infinitePartners = [...partnersList, ...partnersList, ...partnersList];
 
 export const ImparablesPartners: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
+  const hasMovedRef = useRef(false);
+  const startXRef = useRef(0);
+  const lastXRef = useRef(0);
+  const currentXRef = useRef(0);
+  const velocityRef = useRef(0);
+  const lastTimeRef = useRef(0);
+  const singleWidthRef = useRef(0);
+
+  // Measure single copy width
+  const updateMetrics = useCallback(() => {
+    if (trackRef.current) {
+      const totalWidth = trackRef.current.scrollWidth;
+      const singleWidth = totalWidth / 3;
+      singleWidthRef.current = singleWidth;
+      if (currentXRef.current === 0 && singleWidth > 0) {
+        currentXRef.current = -singleWidth;
+        trackRef.current.style.transform = `translate3d(${currentXRef.current}px, 0, 0)`;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    updateMetrics();
+    const ro = new ResizeObserver(updateMetrics);
+    ro.observe(track);
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const baseSpeed = 0.045; // ~45px/s autoplay
+
+    const animate = (time: number) => {
+      const dt = Math.min(time - lastTime, 64);
+      lastTime = time;
+
+      const singleWidth = singleWidthRef.current;
+
+      if (!isDraggingRef.current && singleWidth > 0) {
+        // Residual flick momentum with smooth friction decay
+        if (Math.abs(velocityRef.current) > 0.01) {
+          currentXRef.current += velocityRef.current * dt;
+          velocityRef.current *= Math.pow(0.92, dt / 16.6);
+        } else {
+          velocityRef.current = 0;
+          // Normal autoplay (paused when hovered)
+          const speed = hoveredPartner ? 0 : baseSpeed;
+          currentXRef.current -= speed * dt;
+        }
+
+        // Seamless wrap in both directions
+        while (currentXRef.current <= -2 * singleWidth) {
+          currentXRef.current += singleWidth;
+        }
+        while (currentXRef.current > -singleWidth) {
+          currentXRef.current -= singleWidth;
+        }
+
+        track.style.transform = `translate3d(${currentXRef.current}px, 0, 0)`;
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    if (!shouldReduceMotion) {
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [hoveredPartner, shouldReduceMotion, updateMetrics]);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return; // Only primary button
+    isDraggingRef.current = true;
+    hasMovedRef.current = false;
+    startXRef.current = e.clientX;
+    lastXRef.current = e.clientX;
+    lastTimeRef.current = performance.now();
+    velocityRef.current = 0;
+    setIsDragging(true);
+
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // Ignore
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    const now = performance.now();
+    const dt = Math.max(now - lastTimeRef.current, 1);
+    const deltaX = e.clientX - lastXRef.current;
+
+    if (Math.abs(e.clientX - startXRef.current) > 5) {
+      hasMovedRef.current = true;
+    }
+
+    currentXRef.current += deltaX;
+    velocityRef.current = deltaX / dt;
+
+    const singleWidth = singleWidthRef.current;
+    if (singleWidth > 0) {
+      while (currentXRef.current <= -2 * singleWidth) {
+        currentXRef.current += singleWidth;
+      }
+      while (currentXRef.current > -singleWidth) {
+        currentXRef.current -= singleWidth;
+      }
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${currentXRef.current}px, 0, 0)`;
+    }
+
+    lastXRef.current = e.clientX;
+    lastTimeRef.current = now;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignore
+    }
+
+    // Limit maximum flick velocity for natural inertia
+    const maxVelocity = 1.2;
+    velocityRef.current = Math.max(Math.min(velocityRef.current, maxVelocity), -maxVelocity);
+  };
 
   return (
     <section
@@ -264,14 +426,31 @@ export const ImparablesPartners: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* ================= CONTINUOUS AUTOPLAY SINGLE-ROW MARQUEE ================= */}
-        <div className="relative w-full overflow-hidden py-4">
+        {/* ================= CONTINUOUS & DRAGGABLE MARQUEE ================= */}
+        <div
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          onClickCapture={(e) => {
+            if (hasMovedRef.current) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          }}
+          className={`relative w-full overflow-hidden py-4 select-none touch-pan-y ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
+        >
           {/* Edge Vignette Masks for Smooth Left/Right Transitions */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-[#0066b0] to-transparent z-20" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-[#0066b0] to-transparent z-20" />
 
-          {/* Autoplay Row Track (Pauses cleanly on hover) */}
-          <div className="animate-partner-marquee flex items-center gap-5 sm:gap-7">
+          {/* Interactive Row Track */}
+          <div
+            ref={trackRef}
+            className="flex items-center gap-5 sm:gap-7 w-max will-change-transform"
+          >
             {infinitePartners.map((partner, index) => {
               const uniqueKey = `${partner.id}-${index}`;
               const isHovered = hoveredPartner === uniqueKey;
@@ -390,7 +569,8 @@ export const ImparablesPartners: React.FC = () => {
                         alt={partner.logoAlt}
                         fill
                         sizes="180px"
-                        className={`object-contain transition-all duration-300 ${
+                        draggable={false}
+                        className={`object-contain transition-all duration-300 pointer-events-none select-none ${
                           partner.hoverLogo && isHovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
                         } ${partner.theme === "amber" && partner.id === "rumbapp" ? "brightness-95 contrast-125" : ""}`}
                       />
@@ -402,7 +582,8 @@ export const ImparablesPartners: React.FC = () => {
                           alt={`${partner.logoAlt} alterno`}
                           fill
                           sizes="180px"
-                          className={`object-contain transition-all duration-300 absolute inset-0 ${
+                          draggable={false}
+                          className={`object-contain transition-all duration-300 absolute inset-0 pointer-events-none select-none ${
                             isHovered ? "opacity-100 scale-105" : "opacity-0 scale-95"
                           }`}
                         />

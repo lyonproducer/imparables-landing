@@ -33,8 +33,8 @@ export const ImparablesCard: React.FC<ImparablesCardProps> = ({
   const themeClasses: Record<ImparablesColorTheme, string> = {
     blue: "bg-gradient-to-br from-[#003875] via-[#002855] to-[#001733] border-blue-400/20 text-white shadow-blue-950/50",
     amber: "bg-gradient-to-br from-[#FFB100] via-[#E89E00] to-[#C78500] border-amber-300/30 text-neutral-950 shadow-amber-950/30",
-    light: "bg-[#F4F4F6] border-white/80 text-neutral-900 shadow-black/15",
-    dark: "bg-[#0E1015] border-white/15 text-foreground shadow-black/60",
+    light: "bg-[#e8e6eb] border-white/80 text-neutral-900 shadow-black/15",
+    dark: "bg-[#111111] border-white/15 text-foreground shadow-black/60",
     lines: "bg-background-elevated/90 border-white/20 text-foreground shadow-black/40",
   };
 
@@ -58,7 +58,7 @@ export const ImparablesCard: React.FC<ImparablesCardProps> = ({
       {(hasLinesTexture || theme === "lines") && (
         <div className="absolute inset-0 pointer-events-none select-none opacity-20 z-0">
           <LinesBackground />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0E1015] via-transparent to-transparent opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-70" />
         </div>
       )}
 

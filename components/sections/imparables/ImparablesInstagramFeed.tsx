@@ -6,16 +6,16 @@ import { motion, useReducedMotion } from "framer-motion";
 import { InstagramLogo, ArrowUpRight } from "@phosphor-icons/react";
 
 const instagramPhotos = [
-  { id: "ig-01", src: "/ig/ig-01.jpg", alt: "Imparables Instagram 1" },
-  { id: "ig-02", src: "/ig/ig-02.jpeg", alt: "Imparables Instagram 2" },
-  { id: "ig-03", src: "/ig/ig-03.jpg", alt: "Imparables Instagram 3" },
-  { id: "ig-04", src: "/ig/ig-04.jpeg", alt: "Imparables Instagram 4" },
-  { id: "ig-05", src: "/ig/ig-05.png", alt: "Imparables Instagram 5" },
-  { id: "ig-06", src: "/ig/ig-06.png", alt: "Imparables Instagram 6" },
-  { id: "ig-07", src: "/ig/ig-07.png", alt: "Imparables Instagram 7" },
-  { id: "ig-08", src: "/ig/ig-08.png", alt: "Imparables Instagram 8" },
-  { id: "ig-09", src: "/ig/ig-09.png", alt: "Imparables Instagram 9" },
-  { id: "ig-10", src: "/ig/ig-10.png", alt: "Imparables Instagram 10" },
+  { id: "ig-01", src: "/ig/ig-01.webp", alt: "Imparables Instagram 1" },
+  { id: "ig-02", src: "/ig/ig-02.webp", alt: "Imparables Instagram 2" },
+  { id: "ig-03", src: "/ig/ig-03.webp", alt: "Imparables Instagram 3" },
+  { id: "ig-04", src: "/ig/ig-04.webp", alt: "Imparables Instagram 4" },
+  { id: "ig-05", src: "/ig/ig-05.webp", alt: "Imparables Instagram 5" },
+  { id: "ig-06", src: "/ig/ig-06.webp", alt: "Imparables Instagram 6" },
+  { id: "ig-07", src: "/ig/ig-07.webp", alt: "Imparables Instagram 7" },
+  { id: "ig-08", src: "/ig/ig-08.webp", alt: "Imparables Instagram 8" },
+  { id: "ig-09", src: "/ig/ig-09.webp", alt: "Imparables Instagram 9" },
+  { id: "ig-10", src: "/ig/ig-10.webp", alt: "Imparables Instagram 10" },
 ];
 
 // Duplicate array for seamless infinite marquee loop

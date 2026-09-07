@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -22,14 +22,6 @@ interface GalleryPhoto {
   aspect: "landscape" | "portrait";
 }
 
-interface TimelinePart {
-  id: string;
-  badge: string;
-  title: string;
-  description: string;
-  gallery: GalleryPhoto[];
-}
-
 interface TimelineEvent {
   id: string;
   number: string;
@@ -39,7 +31,6 @@ interface TimelineEvent {
   shortSummary: string;
   rotation: string;
   accentColor: string;
-  parts?: TimelinePart[];
   fullDescription?: string;
   highlights?: string[];
   generations?: {
@@ -67,80 +58,92 @@ const timelineData: TimelineEvent[] = [
     rotation: "rotate-[-0.8deg]",
     accentColor: "#004F9E",
     flyerSrc: "/flyers/464917687_18459870139059362_6820635933111071404_n.webp",
-    parts: [
+    fullDescription:
+      "En 2024 comenzó esta historia con dos fechas memorables que marcaron el despertar de Imparables. Creamos una conferencia que nació con una intención clara: recordarnos que no siempre podemos controlar lo que ocurre a nuestro alrededor, pero sí podemos decidir qué hacemos con aquello que nos sucede.\n\nBajo la premisa 'Aunque nada cambie, si yo cambio, todo cambia', vivimos una invitación a mirar hacia adentro y descubrir que el primer cambio que necesitamos no está afuera.\n\nPara esta doble jornada contamos además con invitados especiales desde Colombia y Estados Unidos, quienes compartieron sus procesos y aprendizajes, demostrando cómo una historia auténtica puede convertirse en el empujón que alguien más estaba necesitando.",
+    gallery: [
       {
-        id: "2024-parte-1",
-        badge: "PARTE 1 · PRIMERA FECHA",
-        title: "La primera fecha: El despertar de una convicción",
-        description:
-          "En 2024 comenzó esta historia. Creamos dos fechas de una conferencia que nació con una intención clara: recordarnos que no siempre podemos controlar lo que ocurre a nuestro alrededor, pero sí podemos decidir qué hacemos con aquello que nos sucede.\n\n'Aunque nada cambie, si yo cambio, todo cambia' fue una invitación a mirar hacia adentro y descubrir que muchas veces el primer cambio que necesitamos no está afuera.",
-        gallery: [
-          {
-            index: "01",
-            src: "/events/imparables-1/IMG_9903.webp",
-            title: "El primer escenario",
-            category: "CONFERENCIA PARTE 1",
-            aspect: "landscape",
-          },
-          {
-            index: "02",
-            src: "/events/imparables-1/ig-01.webp",
-            title: "Comunidad conectada",
-            category: "HISTORIAS QUE INSPIRAN",
-            aspect: "portrait",
-          },
-          {
-            index: "03",
-            src: "/events/imparables-1/IMG_9870.webp",
-            title: "Voces y propósito",
-            category: "APERTURA 2024",
-            aspect: "landscape",
-          },
-          {
-            index: "04",
-            src: "/events/imparables-1/IMG_9908.webp",
-            title: "Energía compartida",
-            category: "EXPERIENCIA EN VIVO",
-            aspect: "landscape",
-          },
-        ],
+        index: "01",
+        src: "/events/imparables-1/IMG_9903.webp",
+        title: "El primer escenario",
+        category: "CONFERENCIA 2024",
+        aspect: "landscape",
       },
       {
-        id: "2024-parte-2",
-        badge: "PARTE 2 · SEGUNDA FECHA",
-        title: "La segunda fecha: Conexión sin fronteras",
-        description:
-          "Para estas experiencias contamos con invitados especiales desde Colombia y Estados Unidos, quienes compartieron pequeños mensajes contando sus historias, sus procesos y cómo lograron construir el camino que hoy los llevó a convertirse en dos venezolanos que nos llenan de orgullo.\n\nPorque a veces una historia puede convertirse en el empujón que alguien necesitaba.",
-        gallery: [
-          {
-            index: "01",
-            src: "/events/imparables-2/IMG_5336.webp",
-            title: "Encuentro en Barra 3",
-            category: "CONFERENCIA PARTE 2",
-            aspect: "landscape",
-          },
-          {
-            index: "02",
-            src: "/events/imparables-2/IMG_5401.webp",
-            title: "Invitados y cercanía",
-            category: "CONEXIÓN INTERNACIONAL",
-            aspect: "portrait",
-          },
-          {
-            index: "03",
-            src: "/events/imparables-2/imparables-about-1.webp",
-            title: "Andersong Trocel en vivo",
-            category: "TRANSFORMACIÓN",
-            aspect: "landscape",
-          },
-          {
-            index: "04",
-            src: "/events/imparables-2/IMG_5439.webp",
-            title: "Comunidad en movimiento",
-            category: "CIERRE DE JORNADA",
-            aspect: "landscape",
-          },
-        ],
+        index: "02",
+        src: "/events/imparables-2/IMG_5401.webp",
+        title: "Invitados y cercanía",
+        category: "CONEXIÓN INTERNACIONAL",
+        aspect: "portrait",
+      },
+      {
+        index: "03",
+        src: "/events/imparables-1/IMG_9870.webp",
+        title: "Voces y propósito",
+        category: "APERTURA 2024",
+        aspect: "landscape",
+      },
+      {
+        index: "04",
+        src: "/events/imparables-2/IMG_5439.webp",
+        title: "Comunidad en movimiento",
+        category: "CIERRE DE JORNADA",
+        aspect: "landscape",
+      },
+      {
+        index: "05",
+        src: "/events/imparables-1/ig-01.webp",
+        title: "Comunidad conectada",
+        category: "HISTORIAS QUE INSPIRAN",
+        aspect: "portrait",
+      },
+      {
+        index: "06",
+        src: "/events/imparables-2/IMG_5336.webp",
+        title: "Encuentro presencial",
+        category: "EXPERIENCIA EN VIVO",
+        aspect: "landscape",
+      },
+      {
+        index: "07",
+        src: "/events/imparables-1/IMG_9908.webp",
+        title: "Energía compartida",
+        category: "IMPACTO & EMOCIÓN",
+        aspect: "landscape",
+      },
+      {
+        index: "08",
+        src: "/events/imparables-2/imparables-about-1.webp",
+        title: "Andersong Trocel en vivo",
+        category: "TRANSFORMACIÓN",
+        aspect: "landscape",
+      },
+      {
+        index: "09",
+        src: "/events/imparables-2/IMG_5374.webp",
+        title: "Intercambio de ideas",
+        category: "NETWORKING REAL",
+        aspect: "landscape",
+      },
+      {
+        index: "10",
+        src: "/events/imparables-1/IMG_2024.webp",
+        title: "Momentos compartidos",
+        category: "INSPIRACIÓN",
+        aspect: "landscape",
+      },
+      {
+        index: "11",
+        src: "/events/imparables-2/IMG_5393.webp",
+        title: "Reflexión y aprendizaje",
+        category: "CRECIMIENTO",
+        aspect: "landscape",
+      },
+      {
+        index: "12",
+        src: "/events/imparables-2/IMG_5406.webp",
+        title: "Conexión genuina",
+        category: "ENCUENTRO 2024",
+        aspect: "portrait",
       },
     ],
   },
@@ -296,7 +299,7 @@ const timelineData: TimelineEvent[] = [
         "Videojuegos y nuevas industrias digitales",
         "Estrategia de crecimiento tecnológico",
       ],
-      date: "Primeros días de noviembre 2026 · Puerto Ordaz",
+      date: "7 de noviembre de 2026 · Puerto Ordaz",
       link: "/nexus",
     },
   },
@@ -308,6 +311,7 @@ interface EditorialGalleryGridProps {
   kicker?: string;
   title?: string;
   description?: string;
+  autoShuffle?: boolean;
 }
 
 const EditorialGalleryGrid: React.FC<EditorialGalleryGridProps> = ({
@@ -316,11 +320,130 @@ const EditorialGalleryGrid: React.FC<EditorialGalleryGridProps> = ({
   kicker = "Galería de momentos",
   title = "Momentos Imparables",
   description = "Registro fotográfico curado de las experiencias y conversaciones en vivo.",
+  autoShuffle = true,
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Initialize visible 4 slots
+  const [currentSlots, setCurrentSlots] = useState<GalleryPhoto[]>(() => {
+    return photos.slice(0, 4);
+  });
+
+  // Keep slots in sync if photos array changes
+  useEffect(() => {
+    setCurrentSlots(photos.slice(0, 4));
+  }, [photos]);
+
+  // Periodic random shuffle with smooth in/out transition
+  useEffect(() => {
+    if (!autoShuffle || photos.length <= 4 || shouldReduceMotion || isHovered) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentSlots((prev) => {
+        if (prev.length < 4) return prev;
+
+        // Pick a random slot to swap (0, 1, 2, or 3)
+        const slotIdx = Math.floor(Math.random() * 4);
+        const activeSrcs = new Set(prev.map((p) => p.src));
+        const unusedPhotos = photos.filter((p) => !activeSrcs.has(p.src));
+
+        if (unusedPhotos.length === 0) return prev;
+
+        // For Slot 1 (portrait column), prefer a portrait photo if available
+        let candidate: GalleryPhoto;
+        if (slotIdx === 1) {
+          const portraits = unusedPhotos.filter((p) => p.aspect === "portrait");
+          candidate =
+            portraits.length > 0
+              ? portraits[Math.floor(Math.random() * portraits.length)]
+              : unusedPhotos[Math.floor(Math.random() * unusedPhotos.length)];
+        } else {
+          const landscapes = unusedPhotos.filter((p) => p.aspect === "landscape");
+          candidate =
+            landscapes.length > 0
+              ? landscapes[Math.floor(Math.random() * landscapes.length)]
+              : unusedPhotos[Math.floor(Math.random() * unusedPhotos.length)];
+        }
+
+        const next = [...prev];
+        next[slotIdx] = candidate;
+        return next;
+      });
+    }, 3800);
+
+    return () => clearInterval(interval);
+  }, [photos, autoShuffle, shouldReduceMotion, isHovered]);
+
   if (!photos || photos.length === 0) return null;
 
+  const renderSlot = (photo: GalleryPhoto | undefined, aspectClass: string, sizes: string) => {
+    if (!photo) return null;
+
+    return (
+      <div
+        onClick={() => onPhotoClick(photo)}
+        className="group cursor-pointer flex flex-col gap-2.5"
+      >
+        <div
+          className={`relative ${aspectClass} rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-lg group-hover:border-[#FFB100]/40 group-hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500`}
+        >
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={photo.src}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.title}
+                fill
+                sizes={sizes}
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10 pointer-events-none">
+            <ArrowsOutSimple size={15} weight="bold" />
+          </div>
+        </div>
+        <div className="relative h-6 flex items-baseline overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={photo.src}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex items-baseline gap-2 w-full"
+            >
+              <span className="font-sans font-bold text-xs text-[#FFB100]">
+                [{photo.index}]
+              </span>
+              <h5 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors truncate">
+                {photo.title}
+              </h5>
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.08em] text-muted-foreground ml-auto shrink-0">
+                {photo.category}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="pt-6 sm:pt-8 border-t border-white/10">
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="pt-6 sm:pt-8 border-t border-white/10"
+    >
       <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-6 sm:mb-8">
         <div>
           <div className="flex items-center gap-2 mb-2">
@@ -344,132 +467,14 @@ const EditorialGalleryGrid: React.FC<EditorialGalleryGridProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Left Column (Span 7) */}
         <div className="md:col-span-7 flex flex-col gap-6 sm:gap-8">
-          {photos[0] && (
-            <div
-              onClick={() => onPhotoClick(photos[0])}
-              className="group cursor-pointer flex flex-col gap-2.5"
-            >
-              <div className="relative aspect-16/10 rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-lg group-hover:border-[#FFB100]/40 group-hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500">
-                <Image
-                  src={photos[0].src}
-                  alt={photos[0].title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                  <ArrowsOutSimple size={15} weight="bold" />
-                </div>
-              </div>
-              <div className="flex items-baseline gap-2 pt-1">
-                <span className="font-sans font-bold text-xs text-[#FFB100]">
-                  [{photos[0].index}]
-                </span>
-                <h5 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors">
-                  {photos[0].title}
-                </h5>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.08em] text-muted-foreground ml-auto">
-                  {photos[0].category}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {photos[2] && (
-            <div
-              onClick={() => onPhotoClick(photos[2])}
-              className="group cursor-pointer flex flex-col gap-2.5"
-            >
-              <div className="relative aspect-4/3 rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-lg group-hover:border-[#FFB100]/40 group-hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500">
-                <Image
-                  src={photos[2].src}
-                  alt={photos[2].title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                  <ArrowsOutSimple size={15} weight="bold" />
-                </div>
-              </div>
-              <div className="flex items-baseline gap-2 pt-1">
-                <span className="font-sans font-bold text-xs text-[#FFB100]">
-                  [{photos[2].index}]
-                </span>
-                <h5 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors">
-                  {photos[2].title}
-                </h5>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.08em] text-muted-foreground ml-auto">
-                  {photos[2].category}
-                </span>
-              </div>
-            </div>
-          )}
+          {renderSlot(currentSlots[0], "aspect-16/10", "(max-width: 768px) 100vw, 60vw")}
+          {renderSlot(currentSlots[2], "aspect-4/3", "(max-width: 768px) 100vw, 60vw")}
         </div>
 
         {/* Right Column (Span 5) */}
         <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 md:pt-12">
-          {photos[1] && (
-            <div
-              onClick={() => onPhotoClick(photos[1])}
-              className="group cursor-pointer flex flex-col gap-2.5"
-            >
-              <div className="relative aspect-4/3 sm:aspect-4/5 rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-lg group-hover:border-[#FFB100]/40 group-hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500">
-                <Image
-                  src={photos[1].src}
-                  alt={photos[1].title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                  <ArrowsOutSimple size={15} weight="bold" />
-                </div>
-              </div>
-              <div className="flex items-baseline gap-2 pt-1">
-                <span className="font-sans font-bold text-xs text-[#FFB100]">
-                  [{photos[1].index}]
-                </span>
-                <h5 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors">
-                  {photos[1].title}
-                </h5>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.08em] text-muted-foreground ml-auto">
-                  {photos[1].category}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {photos[3] && (
-            <div
-              onClick={() => onPhotoClick(photos[3])}
-              className="group cursor-pointer flex flex-col gap-2.5"
-            >
-              <div className="relative aspect-16/10 rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-lg group-hover:border-[#FFB100]/40 group-hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] transition-all duration-500">
-                <Image
-                  src={photos[3].src}
-                  alt={photos[3].title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                  <ArrowsOutSimple size={15} weight="bold" />
-                </div>
-              </div>
-              <div className="flex items-baseline gap-2 pt-1">
-                <span className="font-sans font-bold text-xs text-[#FFB100]">
-                  [{photos[3].index}]
-                </span>
-                <h5 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-accent transition-colors">
-                  {photos[3].title}
-                </h5>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.08em] text-muted-foreground ml-auto">
-                  {photos[3].category}
-                </span>
-              </div>
-            </div>
-          )}
+          {renderSlot(currentSlots[1], "aspect-4/3 sm:aspect-4/5", "(max-width: 768px) 100vw, 40vw")}
+          {renderSlot(currentSlots[3], "aspect-16/10", "(max-width: 768px) 100vw, 40vw")}
         </div>
       </div>
     </div>
@@ -487,10 +492,6 @@ export const ImparablesEventsTimeline: React.FC<ImparablesEventsTimelineProps> =
 }) => {
   const shouldReduceMotion = useReducedMotion();
   const [internalExpandedId, setInternalExpandedId] = useState<string | null>("2024-el-comienzo");
-  const [expandedSubParts, setExpandedSubParts] = useState<Record<string, boolean>>({
-    "2024-parte-1": true,
-    "2024-parte-2": false,
-  });
   const [modalPhoto, setModalPhoto] = useState<GalleryPhoto | null>(null);
 
   const currentExpandedId = activeId !== undefined ? activeId : internalExpandedId;
@@ -502,13 +503,6 @@ export const ImparablesEventsTimeline: React.FC<ImparablesEventsTimelineProps> =
     } else {
       setInternalExpandedId(next);
     }
-  };
-
-  const toggleSubPart = (partId: string) => {
-    setExpandedSubParts((prev) => ({
-      ...prev,
-      [partId]: !prev[partId],
-    }));
   };
 
   return (
@@ -594,7 +588,7 @@ export const ImparablesEventsTimeline: React.FC<ImparablesEventsTimelineProps> =
                   <motion.div
                     layout
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-full bg-[#0E1015]/95 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] border transition-all duration-300 overflow-hidden imparables-corner-accent ${
+                    className={`w-full bg-[#111111]/95 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] border transition-all duration-300 overflow-hidden imparables-corner-accent ${
                       isOpen
                         ? "border-[#FFB100]/50 shadow-[0_25px_60px_rgba(0,0,0,0.85)] ring-1 ring-[#FFB100]/25 rotate-0"
                         : `border-white/12 shadow-[0_15px_40px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.7)] hover:border-[#FFB100]/40 ${
@@ -688,112 +682,13 @@ export const ImparablesEventsTimeline: React.FC<ImparablesEventsTimelineProps> =
                           <div className="p-6 sm:p-8 md:p-12 space-y-10">
                             {/* Narrative Section */}
                             <div>
-                              {item.parts ? (
-                                <div className="space-y-6">
-                                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
-                                    <div className="flex items-center gap-2">
-                                      <ImparablesInterlock size="sm" />
-                                      <span className="text-xs font-sans font-bold uppercase tracking-[0.08em] text-[#FFB100]">
-                                        DOS FECHAS · UNA HISTORIA COMPARTIDA
-                                      </span>
-                                    </div>
-                                    <span className="text-xs font-sans text-white/50">
-                                      Ambas fechas expandibles de forma independiente
-                                    </span>
-                                  </div>
-
-                                  <div className="flex flex-col gap-6">
-                                    {item.parts.map((part) => {
-                                      const isPartOpen = expandedSubParts[part.id] ?? false;
-
-                                      return (
-                                        <div
-                                          key={part.id}
-                                          className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden bg-[#14171F] imparables-corner-accent ${
-                                            isPartOpen
-                                              ? "border-[#FFB100]/40 shadow-[0_20px_45px_rgba(0,0,0,0.7)] ring-1 ring-[#FFB100]/20"
-                                              : "border-white/10 hover:border-[#FFB100]/30 shadow-md"
-                                          }`}
-                                        >
-                                          {/* Sub-card Header / Toggle Button */}
-                                          <button
-                                            type="button"
-                                            onClick={() => toggleSubPart(part.id)}
-                                            className="w-full text-left p-5 sm:p-7 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer focus:outline-none group"
-                                          >
-                                            <div className="flex-1 min-w-0">
-                                              <div className="flex items-center gap-2.5 mb-2">
-                                                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-sans font-bold tracking-[0.08em] uppercase text-[#FFB100]">
-                                                  {part.badge}
-                                                </span>
-                                              </div>
-                                              <h4 className="font-display font-extrabold text-lg sm:text-xl md:text-2xl text-white group-hover:text-amber-100 transition-colors">
-                                                {part.title}
-                                              </h4>
-                                              {!isPartOpen && (
-                                                <p className="text-muted-foreground text-xs sm:text-sm mt-1.5 line-clamp-2 font-normal font-sans">
-                                                  {part.description}
-                                                </p>
-                                              )}
-                                            </div>
-
-                                            <div
-                                              className={`shrink-0 flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all duration-300 border ${
-                                                isPartOpen
-                                                  ? "bg-[#FFB100] text-neutral-950 border-[#FFB100] shadow-[0_0_12px_rgba(255,177,0,0.3)]"
-                                                  : "bg-white/5 text-white border-white/15 group-hover:bg-[#FFB100] group-hover:text-neutral-950 group-hover:border-[#FFB100]"
-                                              }`}
-                                            >
-                                              <span>{isPartOpen ? "Cerrar fecha" : "Ver fecha & fotos"}</span>
-                                              <CaretDown
-                                                size={14}
-                                                weight="bold"
-                                                className={`transition-transform duration-300 ${
-                                                  isPartOpen ? "rotate-180" : ""
-                                                }`}
-                                              />
-                                            </div>
-                                          </button>
-
-                                          {/* Sub-card Collapsible Body */}
-                                          <AnimatePresence initial={false}>
-                                            {isPartOpen && (
-                                              <motion.div
-                                                key={`content-${part.id}`}
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: "auto" }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                                                className="border-t border-white/10 bg-[#0B0D12]/80 p-5 sm:p-7 md:p-8 space-y-8"
-                                              >
-                                                <div className="max-w-3xl">
-                                                  <p className="text-white/85 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal font-sans">
-                                                    {part.description}
-                                                  </p>
-                                                </div>
-
-                                                <EditorialGalleryGrid
-                                                  photos={part.gallery}
-                                                  onPhotoClick={setModalPhoto}
-                                                  kicker={part.badge}
-                                                  title={`Momentos · ${part.badge.includes("PARTE 1") ? "Primera Fecha" : "Segunda Fecha"}`}
-                                                  description={`Registro fotográfico de ${part.badge.includes("PARTE 1") ? "la primera fecha de la conferencia" : "la segunda fecha y ponencias internacionales"}.`}
-                                                />
-                                              </motion.div>
-                                            )}
-                                          </AnimatePresence>
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
-                              ) : item.fullDescription ? (
-                                <div className="py-6 sm:py-8 shadow-lg">
-                                  <p className="text-white/85 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal">
+                              {item.fullDescription && (
+                                <div className="py-2 sm:py-4">
+                                  <p className="text-white/85 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal font-sans">
                                     {item.fullDescription}
                                   </p>
                                 </div>
-                              ) : null}
+                              )}
 
                               {/* Highlights Pill Grid (For Liderazgo 360 & Voces Imparables) */}
                               {item.highlights && (
@@ -895,7 +790,7 @@ export const ImparablesEventsTimeline: React.FC<ImparablesEventsTimelineProps> =
         {/* =========================================================================
             BOTTOM BRIDGE TO CONTACT / COMMUNITY (ARCHITECTURAL KICKER)
            ========================================================================= */}
-        <div className="mt-24 p-8 sm:p-12 rounded-3xl bg-[#0E1015] text-white border border-white/15 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl imparables-corner-accent">
+        <div className="mt-24 p-8 sm:p-12 rounded-3xl bg-[#111111] text-white border border-white/15 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl imparables-corner-accent">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <ImparablesInterlock size="sm" />

@@ -111,7 +111,7 @@ export const ImparablesFormats: React.FC = () => {
             <path
               key={i}
               d={`M -100 ${50 + i * 80} Q 420 ${-80 + i * 80} 920 ${120 + i * 80} T 1580 ${260 + i * 80}`}
-              stroke="#0E1015"
+              stroke="#111111"
               strokeWidth="28"
               strokeOpacity={0.05}
               fill="none"
@@ -239,7 +239,7 @@ export const ImparablesFormats: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={fadeUpVariant}
-          className="mt-14 sm:mt-18 rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#003875]/80 via-[#00224a]/80 to-[#0E1015]/90 border border-blue-400/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden"
+          className="mt-14 sm:mt-18 rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#003875]/80 via-[#00224a]/80 to-[#111111]/90 border border-blue-400/30 backdrop-blur-xl shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden"
         >
           {/* Subtle Ambient Radial Glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent/15 blur-3xl rounded-full pointer-events-none" />
@@ -280,7 +280,7 @@ export const ImparablesFormats: React.FC = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 350, damping: 25 }}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0E1015] border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl text-white"
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#111111] border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl text-white"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

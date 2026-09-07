@@ -18,10 +18,10 @@ export const AgendaItem: React.FC<AgendaItemProps> = ({ item }) => {
     <motion.div
       variants={fadeUpVariant}
       whileHover={shouldReduceMotion ? undefined : { x: 4 }}
-      className="agenda-item group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-5 md:p-6 rounded-card bg-background-elevated/60 border border-border hover:border-primary/40 transition-colors duration-300"
+      className="agenda-item group relative flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-5 md:p-6 rounded-2xl bg-[#0D1626]/45 backdrop-blur-2xl backdrop-saturate-200 border border-white/15 hover:border-[#004F9E]/50 shadow-lg transition-all duration-300 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent"
     >
       {/* Badge de Horario */}
-      <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-accent font-mono text-xs md:text-sm font-semibold shrink-0 self-start md:self-center">
+      <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#004F9E]/20 border border-[#004F9E]/35 text-accent font-sans text-xs md:text-sm font-semibold shrink-0 self-start md:self-center backdrop-blur-md">
         <Clock size={16} weight="regular" aria-hidden="true" />
         <span>{item.time}</span>
       </div>

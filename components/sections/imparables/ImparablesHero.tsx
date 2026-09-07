@@ -34,7 +34,7 @@ export const ImparablesHero: React.FC = () => {
       </div>
 
       {/* Main Content Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full pt-4 sm:pt-4 pb-20 sm:pb-28 lg:pb-36 xl:pb-44">
+      <div className="relative z-10 max-w-7xl mx-auto w-full pt-4 sm:pt-4 pb-12 sm:pb-20 md:pb-28 lg:pb-36 xl:pb-44">
         <motion.div
           initial={false}
           animate="visible"
@@ -122,7 +122,7 @@ export const ImparablesHero: React.FC = () => {
                 initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.6 }}
-                className="absolute bottom-6 left-2 sm:left-4 z-20 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl bg-[#0E1015]/90 backdrop-blur-xl border border-white/15 shadow-2xl flex items-center gap-2.5 sm:gap-3"
+                className="absolute bottom-6 left-2 sm:left-4 z-20 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl bg-[#111111]/90 backdrop-blur-xl border border-white/15 shadow-2xl flex items-center gap-2.5 sm:gap-3"
               >
                 <div>
                   <h4 className="font-display font-bold text-xs sm:text-sm text-white tracking-tight leading-tight">
@@ -138,8 +138,8 @@ export const ImparablesHero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Integrated Yellow Wave Text Loop Bottom Separator */}
-      <div className="absolute -bottom-1 sm:-bottom-2 md:-bottom-3 inset-x-0 z-20 overflow-hidden pointer-events-none">
+      {/* Integrated Yellow Wave Text Loop Bottom Separator (Desktop / Tablet only) */}
+      <div className="hidden md:block absolute -bottom-1 sm:-bottom-2 md:-bottom-3 inset-x-0 z-20 overflow-hidden pointer-events-none">
         <TextLoop
           text="CRECER ✦ AVANZAR ✦ TRANSFORMAR ✦ INSPIRAR ✦ LIDERAR ✦ PERSEVERAR ✦ TRIUNFAR"
           shape="wave"
@@ -151,7 +151,7 @@ export const ImparablesHero: React.FC = () => {
           fontWeight={800}
           letterSpacing={1.5}
           uppercase
-          color="#0E1015"
+          color="#111111"
           ribbon
           ribbonColor="#FFB100"
           ribbonWidth={44}

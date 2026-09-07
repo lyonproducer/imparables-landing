@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/shared/Button";
 export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 bg-background text-foreground">
-      <div className="inline-block px-3 py-1 mb-4 rounded-full bg-accent/15 text-accent font-mono text-xs font-semibold uppercase">
+      <div className="inline-block px-3.5 py-1 mb-4 rounded-full bg-accent/15 text-accent font-sans text-xs font-semibold uppercase tracking-wider">
         Error 404
       </div>
       <h1 className="font-display text-4xl sm:text-5xl font-extrabold mb-3">

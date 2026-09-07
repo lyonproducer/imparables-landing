@@ -17,10 +17,11 @@
   --color-imparables-blue-deep: #001833;
   --color-imparables-amber: #ffb100;
   --color-imparables-amber-hover: #e09800;
-  --color-imparables-light: #f4f4f6;
-  --color-imparables-light-muted: #e2e2e8;
-  --color-imparables-dark: #0e1015;
-  --color-imparables-dark-card: #14171f;
+  --color-imparables-light: #e8e6eb;
+  --color-imparables-light-muted: #dcd9e0;
+  --color-imparables-light-text: #545454;
+  --color-imparables-dark: #111111;
+  --color-imparables-dark-card: #161616;
 
   /* Canvas Principal (#0066b0) y Superficies */
   --color-canvas: #0066b0;

@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { GlassCard } from "@/components/ui/shared/GlassCard";
 import { RegisterForm } from "@/components/ui/nexus/RegisterForm";
 import { LinesBackground } from "@/components/ui/shared/LinesBackground";
-import { Sparkle, ShieldCheck, Ticket } from "@phosphor-icons/react";
+import { ShieldCheck, Ticket } from "@phosphor-icons/react";
 import { fadeUpVariant } from "@/lib/motion/motion-variants";
 
 export const RegisterCTA: React.FC = () => {
@@ -38,10 +38,9 @@ export const RegisterCTA: React.FC = () => {
           variants={fadeUpVariant}
           className="text-center mb-10 flex flex-col items-center gap-3"
         >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs font-semibold uppercase tracking-wider">
-            <Sparkle size={14} weight="fill" aria-hidden="true" />
-            <span>LISTA DE ESPERA EXCLUSIVA</span>
-          </div>
+          <span className="text-accent font-display text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
+            Lista de espera prioritaria
+          </span>
 
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight">
             El escenario también te está esperando.
@@ -71,7 +70,7 @@ export const RegisterCTA: React.FC = () => {
           viewport={{ once: true, margin: "-40px" }}
           variants={fadeUpVariant}
         >
-          <GlassCard className="shadow-2xl border-white/20">
+          <GlassCard className="bg-[#0D1626]/75 backdrop-blur-2xl backdrop-saturate-150 border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <RegisterForm />
           </GlassCard>
         </motion.div>

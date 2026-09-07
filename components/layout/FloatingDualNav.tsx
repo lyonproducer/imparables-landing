@@ -81,6 +81,11 @@ export const FloatingDualNav: React.FC = () => {
     { label: "Reserva", href: "/reserva" },
   ];
 
+  const isLinkActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname?.startsWith(`${href}/`);
+  };
+
   const showImparablesSub = hoveredWorld === "imparables" || (hoveredWorld === null && isImparables);
   const showNexusSub = hoveredWorld === "nexus" || (hoveredWorld === null && isNexus);
 
@@ -148,7 +153,7 @@ export const FloatingDualNav: React.FC = () => {
                 >
                   <span className="text-white/20 text-xs select-none">→</span>
                   {imparablesLinks.map((link) => {
-                    const isActive = pathname === link.href;
+                    const isActive = isLinkActive(link.href);
                     return (
                       <Link
                         key={link.label}
@@ -180,15 +185,22 @@ export const FloatingDualNav: React.FC = () => {
             isNexus ? "bg-primary/25 border border-primary/40" : "hover:bg-white/[0.04]"
           }`}
         >
-          {/* Nexus Badge Trigger */}
+          {/* Nexus Logo Trigger */}
           <Link
             href="/nexus"
-            className="flex items-center px-3 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="flex items-center px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:bg-white/[0.06] transition-colors"
             aria-label="Mundo Nexus - Ir a evento Nexus"
           >
-            <span className="font-display font-extrabold text-xs tracking-[0.2em] uppercase text-foreground group-hover:text-accent transition-colors">
-              NEXUS
-            </span>
+            <div className="relative h-5 w-[84px] sm:w-[92px] flex items-center">
+              <Image
+                src="/logo/nexus-logo.webp"
+                alt="Nexus"
+                fill
+                priority
+                sizes="100px"
+                className="object-contain object-left group-hover:scale-105 transition-transform"
+              />
+            </div>
           </Link>
 
           {/* Submenú deslizable hacia la derecha (Desktop) */}
@@ -204,15 +216,22 @@ export const FloatingDualNav: React.FC = () => {
                   className="flex items-center gap-1 pl-1 pr-2 whitespace-nowrap overflow-hidden"
                 >
                   <span className="text-white/20 text-xs select-none">→</span>
-                  {nexusLinks.map((link) => (
-                    <Link
-                      key={link.label}
-                      href={link.href}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {nexusLinks.map((link) => {
+                    const isActive = isLinkActive(link.href);
+                    return (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        className={`text-xs font-medium px-2.5 py-1 rounded-full transition-colors ${
+                          isActive
+                            ? "bg-white/15 text-[#FFB100] font-semibold"
+                            : "text-muted-foreground hover:text-foreground hover:bg-white/10"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -262,16 +281,23 @@ export const FloatingDualNav: React.FC = () => {
                 </span>
               </Link>
               <div className="grid grid-cols-3 gap-2 pt-1">
-                {imparablesLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileNavOpen(false)}
-                    className="text-center py-2 px-3 rounded-xl bg-white/[0.04] text-xs font-medium text-foreground hover:bg-white/10 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {imparablesLinks.map((link) => {
+                  const isActive = isLinkActive(link.href);
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileNavOpen(false)}
+                      className={`text-center py-2 px-3 rounded-xl text-xs font-medium transition-colors ${
+                        isActive
+                          ? "bg-white/20 text-[#FFB100] font-semibold border border-white/20"
+                          : "bg-white/[0.04] text-foreground hover:bg-white/10 hover:text-accent"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
@@ -283,24 +309,37 @@ export const FloatingDualNav: React.FC = () => {
                 className="flex items-center gap-2 pb-2 border-b border-white/10 group"
                 aria-label="Ir a inicio de Nexus"
               >
-                <span className="font-display font-black text-sm tracking-widest text-foreground uppercase group-hover:text-accent transition-colors">
-                  NEXUS
-                </span>
+                <div className="relative h-5 w-24">
+                  <Image
+                    src="/logo/nexus-logo.webp"
+                    alt="Nexus"
+                    fill
+                    sizes="100px"
+                    className="object-contain object-left group-hover:scale-105 transition-transform"
+                  />
+                </div>
                 <span className="text-[10px] text-accent uppercase tracking-[0.08em] ml-auto font-sans font-medium">
                   Evento
                 </span>
               </Link>
               <div className="grid grid-cols-3 gap-2 pt-1">
-                {nexusLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileNavOpen(false)}
-                    className="text-center py-2 px-3 rounded-xl bg-primary/20 text-xs font-medium text-foreground hover:bg-primary/30 hover:text-accent border border-primary/30 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {nexusLinks.map((link) => {
+                  const isActive = isLinkActive(link.href);
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileNavOpen(false)}
+                      className={`text-center py-2 px-3 rounded-xl text-xs font-medium border transition-colors ${
+                        isActive
+                          ? "bg-primary/40 text-[#FFB100] font-semibold border-primary/60"
+                          : "bg-primary/20 text-foreground hover:bg-primary/30 hover:text-accent border-primary/30"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </motion.div>

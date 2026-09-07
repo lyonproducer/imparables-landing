@@ -41,7 +41,7 @@ export const ImparablesCommunity: React.FC = () => {
         overlayScrim={0.75}
         scrollHint="Desliza para contactarnos"
         title={
-          <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-[#0E1015]/95 shadow-2xl border border-white/20 backdrop-blur-xl text-center max-w-sm mx-auto hover:scale-105 transition-transform duration-300 overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-[#111111]/95 shadow-2xl border border-white/20 backdrop-blur-xl text-center max-w-sm mx-auto hover:scale-105 transition-transform duration-300 overflow-hidden">
             {/* Decorative track lines */}
             <svg
               className="absolute inset-0 w-full h-full pointer-events-none select-none opacity-40"
@@ -105,7 +105,7 @@ export const ImparablesCommunity: React.FC = () => {
             className="mb-6 text-white"
           />
 
-          <div className="rounded-3xl bg-[#0E1015]/90 border border-white/15 p-5 sm:p-8 shadow-2xl backdrop-blur-xl imparables-corner-accent relative overflow-hidden text-left">
+          <div className="rounded-3xl bg-[#111111]/90 border border-white/15 p-5 sm:p-8 shadow-2xl backdrop-blur-xl imparables-corner-accent relative overflow-hidden text-left">
             {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#004F9E]/20 rounded-full blur-3xl pointer-events-none" />
 

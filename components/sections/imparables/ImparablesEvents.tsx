@@ -36,7 +36,7 @@ export const ImparablesEvents: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUpVariant}
-          className="mb-14 relative overflow-hidden rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#003875] via-[#00224a] to-[#0E1015] border border-blue-400/30 shadow-2xl shadow-blue-950/60 imparables-corner-accent"
+          className="mb-14 relative overflow-hidden rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#003875] via-[#00224a] to-[#111111] border border-blue-400/30 shadow-2xl shadow-blue-950/60 imparables-corner-accent"
         >
           {/* Ambient inner glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent/15 blur-3xl rounded-full pointer-events-none" />
@@ -44,7 +44,7 @@ export const ImparablesEvents: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
             <div className="flex-1">
               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-sans text-[11px] font-bold uppercase mb-4 tracking-[0.08em] backdrop-blur-xl hover:bg-accent/30 transition-colors">
-                <span>NUEVO FORMATO · NOVIEMBRE 2026</span>
+                <span>NUEVO FORMATO · 7 DE NOVIEMBRE 2026</span>
               </div>
               <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white mb-3">
                 Imparables Nexus: El futuro ya está pasando
@@ -56,7 +56,7 @@ export const ImparablesEvents: React.FC = () => {
               <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-medium text-white/90">
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md">
                   <Calendar size={16} weight="duotone" className="text-accent" />
-                  Primeros días de noviembre 2026
+                  7 de noviembre de 2026
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md">
                   <Trophy size={16} weight="duotone" className="text-accent" />

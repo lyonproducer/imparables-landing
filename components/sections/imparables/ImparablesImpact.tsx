@@ -35,7 +35,7 @@ const stats: StatItem[] = [
   },
   {
     id: "allies",
-    numberValue: 5,
+    numberValue: 20,
     prefix: "+",
     label: "Aliados comerciales",
     sublabel: "Empresas que respaldan la visión",

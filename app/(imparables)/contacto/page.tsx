@@ -66,7 +66,7 @@ export default function ContactoPage() {
                   href="https://wa.me/584120000000"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#0E1015] border border-white/12 hover:border-[#FFB100]/40 transition-all group cursor-pointer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#111111] border border-white/12 hover:border-[#FFB100]/40 transition-all group cursor-pointer"
                 >
                   <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
                     <WhatsappLogo size={24} weight="fill" />
@@ -83,7 +83,7 @@ export default function ContactoPage() {
 
                 <a
                   href="mailto:contacto@imparables.com"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#0E1015] border border-white/12 hover:border-[#FFB100]/40 transition-all group cursor-pointer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#111111] border border-white/12 hover:border-[#FFB100]/40 transition-all group cursor-pointer"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
                     <EnvelopeSimple size={24} weight="fill" />
@@ -98,7 +98,7 @@ export default function ContactoPage() {
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#0E1015] border border-white/12">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#111111] border border-white/12">
                   <div className="w-12 h-12 rounded-xl bg-[#FFB100]/10 text-[#FFB100] flex items-center justify-center shrink-0">
                     <MapPin size={24} weight="fill" />
                   </div>
@@ -124,7 +124,7 @@ export default function ContactoPage() {
 
           {/* Right Column: Contact Form */}
           <motion.div variants={fadeUpVariant} className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#0E1015]/95 border border-white/15 p-7 sm:p-10 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div className="rounded-3xl bg-[#111111]/95 border border-white/15 p-7 sm:p-10 shadow-2xl backdrop-blur-xl relative overflow-hidden">
               {submitted ? (
                 <div className="py-16 flex flex-col items-center justify-center text-center">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">

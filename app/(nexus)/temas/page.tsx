@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Topics } from "@/components/sections/nexus/Topics";
 import { Audience } from "@/components/sections/nexus/Audience";
+import { RegisterCTA } from "@/components/sections/nexus/RegisterCTA";
 
 export const metadata: Metadata = {
   title: "Temas e Innovación — Imparables Nexus",
@@ -10,9 +11,10 @@ export const metadata: Metadata = {
 
 export default function TemasPage() {
   return (
-    <div className="pt-20 md:pt-28">
+    <div className="pt-16 md:pt-24 bg-[#080808]">
       <Topics />
       <Audience />
+      <RegisterCTA />
     </div>
   );
 }

@@ -33,11 +33,11 @@
 | **Golden Amber** | `--color-imparables-amber` | `#FFB100` | High-energy focal accent, tags, CTAs, thread line |
 | **Amber Hover** | `--color-imparables-amber-hover` | `#E09800` | Active/hover state on amber elements |
 | **Amber Gradient**| `bg-gradient-to-br` | `from-[#FFB100] via-[#E89E00] to-[#C78500]` | High-contrast energetic card surface |
-| **Neutral Light** | `--color-imparables-light` | `#F4F4F6` | Off-white structural card surface |
-| **Light Muted** | `--color-imparables-light-muted` | `#E2E2E8` | Border and secondary light tone |
-| **Divider Base** | `--color-divider-bg` | `#F0F2F6` | Track divider background seam |
-| **Obsidian Dark** | `--color-imparables-dark` | `#0E1015` | Deep dark slate for glass surfaces & forms |
-| **Card Surface** | `--color-imparables-dark-card` | `#14171F` | Elevated dark card container |
+| **Neutral Light** | `--color-imparables-light` | `#e8e6eb` | Off-white / light gray structural card surface (Brand Official) |
+| **Light Muted** | `--color-imparables-light-muted` | `#dcd9e0` | Border and secondary light tone |
+| **Divider Base** | `--color-divider-bg` | `#e8e6eb` | Track divider background seam |
+| **Obsidian Dark** | `--color-imparables-dark` | `#111111` | Pure brand black for glass surfaces, forms & dark cards (Brand Official) |
+| **Card Surface** | `--color-imparables-dark-card` | `#161616` | Elevated dark card container |
 | **Foreground Text**| `--color-foreground` | `#F4F8FC` | High-contrast primary copy (WCAG AAA on `#0066b0`) |
 | **Muted Text** | `--color-muted-foreground` | `#9FB4C9` | Secondary copy and technical metadata |
 

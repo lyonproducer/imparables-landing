@@ -27,11 +27,12 @@ export const imparablesTokens = {
       gradient: "from-[#FFB100] via-[#E89E00] to-[#C78500]",
     },
     neutral: {
-      light: "#F4F4F6",
-      lightMuted: "#E2E2E8",
-      dark: "#0E1015",
-      darkCard: "#14171F",
-      darkElevated: "#1B202A",
+      light: "#e8e6eb", // Official brand light gray (from brand palette)
+      lightMuted: "#dcd9e0",
+      lightText: "#545454", // Body/secondary text over light gray
+      dark: "#111111", // Official brand black (from brand palette)
+      darkCard: "#161616",
+      darkElevated: "#1c1c1c",
     },
     semantic: {
       background: "#0066b0",
@@ -43,7 +44,7 @@ export const imparablesTokens = {
   typography: {
     fontDisplay: "var(--font-display)",
     fontBody: "var(--font-body)",
-    fontMono: "var(--font-mono, monospace)",
+    fontSans: "var(--font-sans)",
   },
   geometry: {
     rounded: {

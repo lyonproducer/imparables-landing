@@ -14,7 +14,7 @@ export const ImparablesFounder: React.FC = () => {
   return (
     <section
       id="creador"
-      className="relative py-20 sm:py-28 md:py-36 bg-[#F8F9FA] text-neutral-950 border-b border-neutral-200/80 overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-36 bg-[#e8e6eb] text-neutral-950 border-b border-neutral-200/80 overflow-hidden"
     >
       {/* Background Graphic: Architectural Track Lines */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
@@ -27,7 +27,7 @@ export const ImparablesFounder: React.FC = () => {
           className="object-cover object-center"
         />
         {/* Soft gradient blend for seamless section continuity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/30 via-transparent to-[#F8F9FA]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e8e6eb]/30 via-transparent to-[#e8e6eb]/40" />
       </div>
 
       {/* Subtle architectural ambient glows */}
@@ -51,7 +51,7 @@ export const ImparablesFounder: React.FC = () => {
           >
             <div className="relative w-full max-w-[540px] aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-3xl sm:rounded-[2.25rem] overflow-hidden shadow-2xl border border-neutral-200/90 group bg-neutral-200">
               <Image
-                src="/ig/ig-02.jpeg"
+                src="/ig/ig-08.webp"
                 alt="Andersong Trocel — Creador y Fundador de Imparables"
                 fill
                 priority
@@ -63,7 +63,7 @@ export const ImparablesFounder: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 pointer-events-none" />
 
               {/* Floating role badge */}
-              <div className="absolute bottom-5 left-5 sm:bottom-6 sm:left-6 z-10 px-4 py-2.5 rounded-2xl bg-[#0E1015]/90 backdrop-blur-md border border-white/15 shadow-xl text-white">
+              <div className="absolute bottom-5 left-5 sm:bottom-6 sm:left-6 z-10 px-4 py-2.5 rounded-2xl bg-[#111111]/90 backdrop-blur-md border border-white/15 shadow-xl text-white">
                 <span className="font-display font-bold text-sm sm:text-base block leading-tight">
                   Andersong Trocel
                 </span>
@@ -98,14 +98,14 @@ export const ImparablesFounder: React.FC = () => {
             {/* Narrative Body Copy */}
             <motion.p
               variants={fadeUpVariant}
-              className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed mb-5"
+              className="text-base sm:text-lg text-[#545454] font-normal leading-relaxed mb-5"
             >
               Andersong Trocel concibió <strong className="text-neutral-900 font-semibold">Imparables</strong> a partir de una convicción innegociable: el crecimiento personal y empresarial no se logra desde la inercia, sino desde la decisión consciente de convertir cualquier punto de partida en un motor de avance.
             </motion.p>
 
             <motion.p
               variants={fadeUpVariant}
-              className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed mb-8"
+              className="text-base sm:text-lg text-[#545454] font-normal leading-relaxed mb-8"
             >
               Como conferencista, estratega y articulador de experiencias, ha impulsado escenarios de alto impacto como el encuentro Nexus, conectando líderes, creadores y marcas en torno al aprendizaje estratégico, la tecnología y el liderazgo del futuro.
             </motion.p>
@@ -121,7 +121,7 @@ export const ImparablesFounder: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-sm text-neutral-900 leading-tight">Keynote Speaker</h4>
-                  <p className="text-xs text-neutral-500 mt-0.5">Conferencias de alto impacto</p>
+                  <p className="text-xs text-[#545454] mt-0.5">Conferencias de alto impacto</p>
                 </div>
               </div>
 
@@ -131,7 +131,7 @@ export const ImparablesFounder: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-sm text-neutral-900 leading-tight">Estrategia & Visión</h4>
-                  <p className="text-xs text-neutral-500 mt-0.5">Desarrollo de marcas e ideas</p>
+                  <p className="text-xs text-[#545454] mt-0.5">Desarrollo de marcas e ideas</p>
                 </div>
               </div>
             </motion.div>
@@ -140,7 +140,7 @@ export const ImparablesFounder: React.FC = () => {
             <motion.div variants={fadeUpVariant} className="pt-2">
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#0E1015] hover:bg-neutral-800 text-white font-sans font-bold text-sm sm:text-base transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#111111] hover:bg-neutral-900 text-white font-sans font-bold text-sm sm:text-base transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 group cursor-pointer"
               >
                 <span>Conectar con Andersong</span>
                 <ArrowUpRight
