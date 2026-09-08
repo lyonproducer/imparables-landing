@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared/SectionHeading";
+import { LogoCloud } from "@/components/ui/logo-cloud";
 import { eventConfig } from "@/lib/content/event.config";
 import { ArrowUpRight, Handshake } from "@phosphor-icons/react";
-import { staggerContainer, scaleUpVariant, fadeUpVariant } from "@/lib/motion/motion-variants";
+import { fadeUpVariant } from "@/lib/motion/motion-variants";
 
 export const Partners: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,41 +36,20 @@ export const Partners: React.FC = () => {
           className="mb-12 md:mb-16"
         />
 
-        {/* Logos Grid with Framer Motion Stagger */}
+        {/* Logo Cloud with Framer Motion reveal */}
         <motion.div
-          variants={staggerContainer}
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12"
+          variants={fadeUpVariant}
+          className="max-w-4xl mx-auto mb-12"
         >
-          {eventConfig.partners.map((partner, index) => (
-            <motion.div
-              key={index}
-              variants={scaleUpVariant}
-              whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-              className="group relative flex flex-col items-center justify-center p-8 rounded-2xl md:rounded-3xl bg-[#0D1626]/45 backdrop-blur-2xl backdrop-saturate-200 border border-white/15 hover:border-[#004F9E]/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] transition-all duration-300 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent"
-            >
-              <div className="relative h-20 w-44 flex items-center justify-center filter grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-300">
-                <Image
-                  src={partner.logoUrl}
-                  alt={partner.name}
-                  fill
-                  sizes="176px"
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="mt-4 text-center">
-                <span className="text-xs font-semibold text-accent/90 uppercase tracking-wider block">
-                  {partner.category}
-                </span>
-                <span className="text-sm font-medium text-foreground/80 mt-1 block">
-                  {partner.name}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+          <LogoCloud
+            logos={eventConfig.partners.map((partner) => ({
+              src: partner.logoUrl,
+              alt: partner.name,
+            }))}
+          />
         </motion.div>
 
         {/* Secondary Partner CTA with Framer Motion reveal */}
