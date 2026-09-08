@@ -11,6 +11,7 @@ import WarpText from "@/components/ui/WarpText";
 import EventCountdown from "@/components/ui/EventCountdown";
 import Scanner from "@/components/ui/Scanner";
 
+
 export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const ticketContainerRef = useRef<HTMLDivElement>(null);
