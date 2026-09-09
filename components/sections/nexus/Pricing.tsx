@@ -53,6 +53,17 @@ export const Pricing: React.FC = () => {
             </span>
           </motion.div>
 
+          <motion.div
+            initial={shouldReduceMotion ? false : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUpVariant}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFB100]/15 border border-[#FFB100]/35 text-[#FFB100] text-xs font-sans font-bold tracking-wide uppercase mb-4"
+          >
+            <Clock size={15} weight="fill" />
+            <span>Fase de preventa activa · Ahorra 20% por tiempo limitado</span>
+          </motion.div>
+
           <motion.h2
             initial={shouldReduceMotion ? false : "hidden"}
             whileInView="visible"
@@ -73,7 +84,7 @@ export const Pricing: React.FC = () => {
             variants={fadeUpVariant}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
           >
-            Tarifas preferenciales por fases en USDT y tasa oficial BCV. Cupos limitados para la experiencia presencial en Puerto Ordaz.
+            Tarifas preferenciales de lanzamiento en USDT (físico/cripto) y tasa oficial BCV. Cupos asignados limitados por fase antes del ajuste a precio regular.
           </motion.p>
 
           {/* Currency Toggle (USDT vs BCV) */}
@@ -122,10 +133,28 @@ export const Pricing: React.FC = () => {
 
             // Formatted price string based on toggle
             const primaryPrice = currency === "USDT" ? `${tier.priceUsdt} USDT` : `${tier.priceBcv} BCV`;
+            const originalPrimaryPrice =
+              currency === "USDT"
+                ? tier.originalPriceUsdt
+                  ? `${tier.originalPriceUsdt} USDT`
+                  : null
+                : tier.originalPriceBcv
+                  ? `${tier.originalPriceBcv} BCV`
+                  : null;
+
             const secondaryPrice =
               currency === "USDT"
-                ? `Equivalente: ${tier.priceBcv} BCV (Tasa Oficial)`
-                : `Equivalente: ${tier.priceUsdt} USDT`;
+                ? `Equivalente en Bs: $${tier.priceBcv} (Tasa Oficial BCV)`
+                : `Tarifa USD / USDT: $${tier.priceUsdt} (Físico o Cripto)`;
+
+            const secondaryRegular =
+              currency === "USDT"
+                ? tier.originalPriceBcv
+                  ? ` · Regular: $${tier.originalPriceBcv} BCV`
+                  : ""
+                : tier.originalPriceUsdt
+                  ? ` · Regular: $${tier.originalPriceUsdt} USD`
+                  : "";
 
             if (isHighlighted) {
               /* ================= HIGHLIGHTED CARD (IMAGE 2 RIGHT CARD ILLUMINATED STYLE) ================= */
@@ -150,15 +179,33 @@ export const Pricing: React.FC = () => {
                       {tier.name}
                     </div>
 
-                    {/* Big Price Display */}
-                    <div className="flex items-baseline gap-1 mt-3 mb-1">
+                    {/* Big Price Display with Strikethrough & Discount */}
+                    <div className="flex flex-wrap items-baseline gap-2.5 mt-3 mb-1">
                       <span className="font-display font-black text-4xl sm:text-5xl text-[#081528] tracking-tight">
                         {primaryPrice}
                       </span>
+                      {originalPrimaryPrice && (
+                        <span className="text-lg sm:text-xl font-bold text-neutral-400 line-through">
+                          {originalPrimaryPrice}
+                        </span>
+                      )}
+                      {tier.discountPercentage && (
+                        <span className="text-xs font-sans font-extrabold px-2.5 py-0.5 rounded-full bg-[#004F9E]/15 text-[#004F9E] border border-[#004F9E]/30 uppercase tracking-wide">
+                          -{tier.discountPercentage}% OFF
+                        </span>
+                      )}
                     </div>
                     <div className="text-xs font-medium text-neutral-600 mb-4">
-                      {secondaryPrice}
+                      {secondaryPrice}{secondaryRegular}
                     </div>
+
+                    {/* Urgency Note Box */}
+                    {tier.urgencyNote && (
+                      <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#004F9E]/8 border border-[#004F9E]/20 text-xs text-[#003875] font-semibold mb-5">
+                        <Clock size={16} weight="fill" className="text-[#004F9E] shrink-0" />
+                        <span>{tier.urgencyNote}</span>
+                      </div>
+                    )}
 
                     {/* Subtitle / Description */}
                     <p className="text-sm font-normal text-neutral-700 leading-relaxed mb-6">
@@ -229,10 +276,10 @@ export const Pricing: React.FC = () => {
                   <div className="absolute -top-3.5 left-8 px-4 py-1.5 rounded-full bg-[#0A1628] text-white/90 border border-white/20 font-sans font-bold text-xs tracking-wider uppercase shadow-lg shadow-black/50 flex items-center gap-1.5 z-10 whitespace-nowrap">
                     {tier.id === "acceso-streaming" ? (
                       <Broadcast size={13} weight="bold" className="text-sky-400" />
-                    ) : tier.id === "segunda-preventa" ? (
-                      <Clock size={13} weight="bold" className="text-[#FFB100]" />
+                    ) : tier.id === "reservacion-general-regular" ? (
+                      <Clock size={13} weight="bold" className="text-white/60" />
                     ) : (
-                      <Sparkle size={13} weight="bold" className="text-white/60" />
+                      <Sparkle size={13} weight="bold" className="text-[#FFB100]" />
                     )}
                     <span>{tier.badge}</span>
                   </div>
@@ -244,15 +291,33 @@ export const Pricing: React.FC = () => {
                     {tier.name}
                   </div>
 
-                  {/* Big Price Display */}
-                  <div className="flex items-baseline gap-1 mt-3 mb-1">
+                  {/* Big Price Display with Strikethrough & Discount */}
+                  <div className="flex flex-wrap items-baseline gap-2.5 mt-3 mb-1">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
                       {primaryPrice}
                     </span>
+                    {originalPrimaryPrice && (
+                      <span className="text-base sm:text-lg font-bold text-white/40 line-through">
+                        {originalPrimaryPrice}
+                      </span>
+                    )}
+                    {tier.discountPercentage && (
+                      <span className="text-xs font-sans font-extrabold px-2.5 py-0.5 rounded-full bg-[#FFB100]/20 text-[#FFB100] border border-[#FFB100]/40 uppercase tracking-wide">
+                        -{tier.discountPercentage}% OFF
+                      </span>
+                    )}
                   </div>
                   <div className="text-xs font-medium text-white/50 mb-4">
-                    {secondaryPrice}
+                    {secondaryPrice}{secondaryRegular}
                   </div>
+
+                  {/* Urgency Note Box */}
+                  {tier.urgencyNote && (
+                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-xs text-white/80 font-medium mb-5">
+                      <Clock size={16} weight="fill" className="text-[#FFB100] shrink-0" />
+                      <span>{tier.urgencyNote}</span>
+                    </div>
+                  )}
 
                   {/* Subtitle / Description */}
                   <p className="text-sm font-normal text-muted-foreground leading-relaxed mb-6">

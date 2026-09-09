@@ -18,6 +18,7 @@ export interface SpeakerItem {
   name?: string;
   role?: string;
   company?: string;
+  badge?: string;
   bio?: string;
   photoUrl?: string;
   isConfirmed: boolean;
@@ -45,6 +46,10 @@ export interface TicketTier {
   isFeatured?: boolean;
   priceUsdt: number;
   priceBcv: number;
+  originalPriceUsdt?: number;
+  originalPriceBcv?: number;
+  discountPercentage?: number;
+  urgencyNote?: string;
   description: string;
   features: string[];
   ctaText: string;
@@ -141,29 +146,14 @@ export const eventConfig = {
       id: "leonardo-hernandez",
       name: "Leonardo Hernández",
       role: "Arquitectura Cloud & Software",
-      company: "Eprisma",
       photoUrl: "/speakers/leonardo.webp",
-      isConfirmed: true,
-    },
-    {
-      id: "jesus",
-      name: "Jesús",
-      role: "Inteligencia Artificial & Automatización",
-      photoUrl: "/speakers/jesus.webp",
       isConfirmed: true,
     },
     {
       id: "ezequiel-bermudez",
       name: "Ezequiel Bermúdez",
-      role: "Ingeniería de Software & Plataformas",
+      role: "Automatización e IA para Negocios · Fundador de Eprisma Group",
       photoUrl: "/speakers/ezequiel.webp",
-      isConfirmed: true,
-    },
-    {
-      id: "yuselen-rivero",
-      name: "Yuselen Rivero",
-      role: "Estrategia Empresarial & Operaciones",
-      photoUrl: "/speakers/yuselen.webp",
       isConfirmed: true,
     },
     {
@@ -171,6 +161,20 @@ export const eventConfig = {
       name: "René Vallejo",
       role: "Innovación & Crecimiento de Negocios",
       photoUrl: "/speakers/rene.webp",
+      isConfirmed: true,
+    },
+    {
+      id: "josmel-baena",
+      name: "Josmel Baena",
+      role: "Abogado Corporativo · Tech Law & Gestión de Riesgos Legales",
+      photoUrl: "/speakers/josmel.webp",
+      isConfirmed: true,
+    },
+    {
+      id: "victor-leon",
+      name: "Víctor León",
+      role: "Líder Técnico de Desarrollo (Tech Lead) · Ingeniero en Informática",
+      photoUrl: "/speakers/victor.webp",
       isConfirmed: true,
     },
   ] as SpeakerItem[],
@@ -265,34 +269,39 @@ export const eventConfig = {
 
   tickets: [
     {
-      id: "primera-preventa",
-      name: "Primera Preventa",
-      type: "Entrada Preferencial Anticipada",
-      badge: "Preventa Activa",
+      id: "reservacion-general-preventa",
+      name: "Reservación General · Preventa",
+      type: "Entrada Presencial Preferencial",
+      badge: "Preventa Activa · 20% OFF",
       isFeatured: true,
-      priceUsdt: 30,
-      priceBcv: 45,
-      description: "Entrada preferencial anticipada con acceso total a todas las conferencias, paneles y espacios de vinculación.",
+      priceUsdt: 40,
+      priceBcv: 52,
+      originalPriceUsdt: 50,
+      originalPriceBcv: 65,
+      discountPercentage: 20,
+      urgencyNote: "Cupos asignados a preventa limitados. Al agotarse pasará a tarifa regular ($50 / $65 BCV).",
+      description: "Entrada presencial preferencial con 20% de descuento de lanzamiento. Acceso total a conferencias, paneles y networking.",
       features: [
-        "Acceso completo a todas las conferencias y paneles",
-        "Networking presencial guiado con fundadores y speakers",
+        "Acceso completo a todas las conferencias y paneles plenarios",
+        "Networking presencial guiado con fundadores, especialistas y speakers",
         "Coffee break & espacio de vinculación empresarial",
         "Kit oficial de bienvenida Nexus 2026",
         "Certificado digital de participación",
         "Acceso prioritario al recinto",
       ],
-      ctaText: "Asegurar primera preventa",
+      ctaText: "Asegurar preventa (-20%)",
       ctaLink: "#registro",
     },
     {
-      id: "segunda-preventa",
-      name: "Segunda Preventa",
-      type: "Entrada General Regular",
-      badge: "Próxima Fase",
+      id: "reservacion-general-regular",
+      name: "Reservación General · Regular",
+      type: "Entrada Presencial Regular",
+      badge: "Próxima Etapa · Tarifa Normal",
       isFeatured: false,
-      priceUsdt: 45,
+      priceUsdt: 50,
       priceBcv: 65,
-      description: "Entrada general regular para la jornada completa de innovación, IA y negocios.",
+      urgencyNote: "Tarifa oficial regular aplicable una vez culminada la fase de preventa.",
+      description: "Entrada general regular para la jornada completa de innovación, IA y negocios al culminar la etapa de preventa.",
       features: [
         "Acceso completo a conferencias y paneles",
         "Networking presencial en áreas comunes",
@@ -300,26 +309,30 @@ export const eventConfig = {
         "Kit oficial de bienvenida Nexus 2026",
         "Certificado digital de participación",
       ],
-      ctaText: "Pre-reservar fase 2",
+      ctaText: "Pre-reservar fase regular",
       ctaLink: "#registro",
     },
     {
       id: "acceso-streaming",
-      name: "Acceso Streaming",
+      name: "Acceso Streaming · Preventa",
       type: "Transmisión en Vivo Online",
-      badge: "100% Digital",
+      badge: "100% Digital · 20% OFF",
       isFeatured: false,
-      priceUsdt: 30,
-      priceBcv: 45,
-      description: "Transmisión en vivo online para vivir la experiencia desde cualquier lugar de Venezuela o el mundo.",
+      priceUsdt: 24,
+      priceBcv: 36,
+      originalPriceUsdt: 30,
+      originalPriceBcv: 45,
+      discountPercentage: 20,
+      urgencyNote: "Tarifa de preventa exclusiva con 20% de descuento antes del paso a precio normal ($30 / $45 BCV).",
+      description: "Transmisión en vivo online en alta definición para vivir la experiencia desde cualquier lugar de Venezuela o el mundo.",
       features: [
-        "Transmisión en vivo en alta definición (1080p)",
+        "Transmisión en vivo en alta definición (1080p sin cortes)",
         "Acceso remoto a conferencias y paneles plenarios",
-        "Chat interactivo y preguntas a los ponentes",
+        "Chat interactivo y preguntas a los ponentes en directo",
         "Grabación de las charlas disponible por 30 días",
         "Certificado digital de participación",
       ],
-      ctaText: "Adquirir acceso online",
+      ctaText: "Adquirir streaming preventa",
       ctaLink: "#registro",
     },
   ] as TicketTier[],

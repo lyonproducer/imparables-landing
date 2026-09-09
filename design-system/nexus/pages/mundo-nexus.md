@@ -34,21 +34,22 @@
 - **Background:** WebGL `<Scanner />` with electric blue (`#004F9E`), amber (`#FFB100`), and white peaks over `#080808`.
 
 ### 2.2 Pricing & Preventa (`#entradas`)
-- **Visual Design:** Adapted from high-converting SaaS & conference pricing patterns.
+- **Visual Design:** Adapted from high-converting SaaS & conference pricing patterns with scarcity and price-anchor urgency.
 - **Tiers:**
-  1. **Primera Preventa (Featured / Illuminated):**
-     - Price: 30 USDT / 45 BCV (Tasa Oficial).
+  1. **Reservación General · Preventa (Featured / Illuminated):**
+     - Price: 40 USDT / 52 BCV (Tasa Oficial) — Strikethrough regular: 50 USDT / 65 BCV (-20% OFF).
      - Surface: High-contrast light card (`bg-[#E8F1FA]`), deep navy CTA button.
-     - Details: Entrada preferencial anticipada, cupos limitados.
-  2. **Segunda Preventa:**
-     - Price: 45 USDT / 65 BCV (Tasa Oficial).
-     - Surface: Obsidian dark glass card (`bg-[#0D1626]/80`).
-     - Details: Entrada general regular.
-  3. **Acceso Streaming:**
-     - Price: 30 USDT / 45 BCV (Tasa Oficial).
-     - Surface: Obsidian dark glass card.
-     - Details: Transmisión en vivo 1080p online con grabaciones por 30 días.
-- **Currency Switcher:** Interactive toggle between Dólares / USDT and Bolívares (Tasa BCV).
+     - Details: Entrada presencial preferencial anticipada con 20% de ahorro, cupos asignados limitados por fase.
+  2. **Reservación General · Regular:**
+     - Price: 50 USDT / 65 BCV (Tasa Oficial).
+     - Surface: Obsidian dark glass card (`bg-white/[0.04]`).
+     - Details: Tarifa general para la jornada completa al culminar la etapa de preventa.
+  3. **Acceso Streaming · Preventa:**
+     - Price: 24 USDT / 36 BCV (Tasa Oficial) — Strikethrough regular: 30 USDT / 45 BCV (-20% OFF).
+     - Surface: Obsidian dark glass card (`bg-white/[0.04]`).
+     - Details: Transmisión en vivo 1080p online con grabaciones por 30 días y tarifa especial de preventa.
+- **Urgency Mechanism:** Price-anchoring with strike-through regular amounts, `-20% OFF` tag, and limited-seat warning without exposing calendar cutoff dates.
+- **Currency Switcher:** Interactive toggle between Dólares / USDT (físico/cripto) and Bolívares (Tasa BCV).
 
 ### 2.3 Planes de Patrocinio (`#patrocinios`)
 - **Visual Design:** High-impact 4-column corporate grid with dedicated currency toggle (USD vs BCV).
@@ -70,7 +71,7 @@
 - **Card Geometry & Lighting:**
   - Ratio: `aspect-[4/5]`, rounded corners (`rounded-3xl`).
   - Surface: Nocturnal gradient (`from-[#14233F]/75 via-[#0A1324]/90 to-[#060B14]`) with top radial blue spotlight glow (`rgba(0,79,158,0.3)`).
-  - Image: Transparent cutout WebP (`leonardo.webp`, `jesus.webp`, `ezequiel.webp`, `yuselen.webp`, `rene.webp`) with hover scale transition.
+  - Image: Transparent cutout WebP (`leonardo.webp`, `ezequiel.webp`, `rene.webp`, `josmel.webp`, `victor.webp`) with hover scale transition.
   - Typography: Name in bold white font (`font-display text-xl`) with role and company tags positioned cleanly directly beneath the photo container.
 - **Host Spotlight:** Andersong Trocel highlighted as official moderator & founder of Imparables with microphone badge in amber `#FFB100`.
 

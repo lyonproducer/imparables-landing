@@ -58,17 +58,17 @@ export const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, index }) => {
 
       {/* External Typography (Directly below card as in reference design) */}
       <div className="mt-3.5 px-1 flex flex-col">
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
           <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
             {isConfirmed ? speaker.name : "Panelista Invitado"}
           </h3>
-          {speaker.company && (
-            <span className="text-xs font-sans font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#FFB100]/10 border border-[#FFB100]/30 text-[#FFB100] shrink-0">
-              {speaker.company}
+          {(speaker.badge || speaker.company) && (
+            <span className="text-[10px] sm:text-xs font-sans font-semibold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 rounded-md bg-[#FFB100]/10 border border-[#FFB100]/30 text-[#FFB100] shrink-0 whitespace-nowrap">
+              {speaker.badge || speaker.company}
             </span>
           )}
         </div>
-        <p className="text-xs sm:text-sm text-neutral-400 mt-1 leading-snug">
+        <p className="text-xs sm:text-sm text-neutral-400 mt-1 leading-snug line-clamp-2">
           {speaker.role || "Especialista invitado"}
         </p>
       </div>
