@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Handshake } from "@phosphor-icons/react";
 import { ImparablesInterlock } from "@/components/ui/imparables";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
+import { trackSponsorClick, trackEvent } from "@/lib/analytics";
 
 interface PartnerItem {
   id: string;
@@ -19,6 +20,8 @@ interface PartnerItem {
   hoverLogo?: string;
   logoAlt: string;
   logoClassName: string;
+  logoFilter?: string;
+  hoverLogoFilter?: string;
   bgClass: string;
   textClass: string;
   tagClass: string;
@@ -47,7 +50,8 @@ const partnersList: PartnerItem[] = [
     numberClass: "text-[#FFB100]",
     glowColor: "rgba(0,79,158,0.35)",
     accentBar: "bg-[#FFB100]",
-    rightKeyColor: "#FFB100",
+    leftKeyColor: "#004F9E",
+    rightKeyColor: "#111111",
   },
   {
     id: "lagars",
@@ -66,8 +70,8 @@ const partnersList: PartnerItem[] = [
     numberClass: "text-[#FFB100]",
     glowColor: "rgba(255,255,255,0.2)",
     accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#FFB100",
-    rightKeyColor: "#004F9E",
+    leftKeyColor: "#111111",
+    rightKeyColor: "#e8e6eb",
   },
   {
     id: "eprisma",
@@ -75,18 +79,20 @@ const partnersList: PartnerItem[] = [
     tag: "Tecnología & IA",
     name: "Eprisma",
     role: "Software, Plataformas & Estrategia",
-    theme: "dark",
+    theme: "light",
     primaryLogo: "/partners/eprisma-white.png",
     hoverLogo: "/partners/eprisma-green.png",
     logoAlt: "Eprisma Logo",
     logoClassName: "w-24 sm:w-28 h-16 sm:h-18",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
-    numberClass: "text-[#FFB100]",
-    glowColor: "rgba(34,197,94,0.3)",
-    accentBar: "bg-emerald-400",
-    leftKeyColor: "#004F9E",
+    logoFilter: "brightness-0 opacity-85",
+    hoverLogoFilter: "brightness-95 contrast-125",
+    bgClass: "bg-[#e8e6eb] text-neutral-900 border-neutral-300/80 shadow-md",
+    textClass: "text-neutral-700",
+    tagClass: "text-neutral-600 font-semibold",
+    numberClass: "text-[#004F9E] font-bold",
+    glowColor: "rgba(0,79,158,0.25)",
+    accentBar: "bg-[#004F9E]",
+    leftKeyColor: "#e8e6eb",
     rightKeyColor: "#FFB100",
   },
   {
@@ -94,15 +100,16 @@ const partnersList: PartnerItem[] = [
     number: "04",
     tag: "Entretenimiento & App",
     name: "Rumbapp",
-    role: "Ticketing & Plataforma Digital Oficial",
+    role: "Ticketing y Plataforma de Eventos",
     theme: "amber",
     primaryLogo: "/partners/rumbapp.png",
     logoAlt: "Rumbapp Logo",
     logoClassName: "w-36 sm:w-40 h-16 sm:h-18",
-    bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/40",
-    textClass: "text-neutral-800",
-    tagClass: "text-neutral-700",
-    numberClass: "text-[#004F9E]",
+    logoFilter: "brightness-95 contrast-125",
+    bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/40 shadow-md",
+    textClass: "text-neutral-900/85 font-medium",
+    tagClass: "text-neutral-900/70 font-semibold",
+    numberClass: "text-[#004F9E] font-bold",
     glowColor: "rgba(255,177,0,0.4)",
     accentBar: "bg-neutral-950",
     leftKeyColor: "#FFB100",
@@ -114,18 +121,18 @@ const partnersList: PartnerItem[] = [
     tag: "Fundador & Marca",
     name: "Andersong Trocel",
     role: "Firma Personal · Creador de Imparables",
-    theme: "dark",
+    theme: "blue",
     primaryLogo: "/partners/trocel-blanco.png",
     logoAlt: "Andersong Trocel Firma",
     logoClassName: "w-28 sm:w-32 h-18 sm:h-20",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
+    bgClass: "bg-[#004F9E] text-white border-blue-400/30",
+    textClass: "text-blue-100/90",
+    tagClass: "text-blue-200/80",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,255,255,0.2)",
+    glowColor: "rgba(0,79,158,0.35)",
     accentBar: "bg-[#FFB100]",
     leftKeyColor: "#004F9E",
-    rightKeyColor: "#FFB100",
+    rightKeyColor: "#e8e6eb",
   },
   {
     id: "lyon-incode",
@@ -133,18 +140,19 @@ const partnersList: PartnerItem[] = [
     tag: "Desarrollo Digital",
     name: "Lyon Incode",
     role: "Arquitectura Web & Experiencia de Usuario",
-    theme: "dark",
+    theme: "light",
     primaryLogo: "/partners/lyon-incode.png",
     logoAlt: "Lyon Incode Logo",
     logoClassName: "w-36 sm:w-40 h-14 sm:h-16",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
-    numberClass: "text-accent",
-    glowColor: "rgba(255,177,0,0.3)",
-    accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#FFB100",
-    rightKeyColor: "#004F9E",
+    logoFilter: "brightness-0 opacity-80",
+    bgClass: "bg-[#e8e6eb] text-neutral-900 border-neutral-300/80 shadow-md",
+    textClass: "text-neutral-700",
+    tagClass: "text-neutral-600 font-semibold",
+    numberClass: "text-[#004F9E] font-bold",
+    glowColor: "rgba(0,79,158,0.25)",
+    accentBar: "bg-[#004F9E]",
+    leftKeyColor: "#e8e6eb",
+    rightKeyColor: "#FFB100",
   },
   {
     id: "mel-visual-designer",
@@ -152,18 +160,19 @@ const partnersList: PartnerItem[] = [
     tag: "Diseño Visual",
     name: "Mel Visual Designer",
     role: "Identidad Visual & Dirección de Arte",
-    theme: "dark",
+    theme: "amber",
     primaryLogo: "/partners/mel-visual-designer.webp",
     logoAlt: "Mel Visual Designer Logo",
     logoClassName: "w-32 sm:w-36 h-14 sm:h-16",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
-    numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,255,255,0.25)",
-    accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#004F9E",
-    rightKeyColor: "#FFB100",
+    logoFilter: "brightness-0 opacity-90",
+    bgClass: "bg-[#FFB100] text-neutral-950 border-amber-300/40 shadow-md",
+    textClass: "text-neutral-900/85 font-medium",
+    tagClass: "text-neutral-900/70 font-semibold",
+    numberClass: "text-[#004F9E] font-bold",
+    glowColor: "rgba(255,177,0,0.4)",
+    accentBar: "bg-neutral-950",
+    leftKeyColor: "#FFB100",
+    rightKeyColor: "#111111",
   },
   {
     id: "mundo-streaming",
@@ -181,7 +190,7 @@ const partnersList: PartnerItem[] = [
     numberClass: "text-[#FFB100]",
     glowColor: "rgba(230,0,126,0.35)",
     accentBar: "bg-[#E6007E]",
-    leftKeyColor: "#FFB100",
+    leftKeyColor: "#111111",
     rightKeyColor: "#004F9E",
   },
   {
@@ -190,18 +199,18 @@ const partnersList: PartnerItem[] = [
     tag: "Moda & Talento",
     name: "JMI International",
     role: "Escuela y Agencia de Modelos",
-    theme: "dark",
+    theme: "blue",
     primaryLogo: "/partners/jmi.webp",
     logoAlt: "JMI Jhiraldi's Models International Logo",
     logoClassName: "w-40 sm:w-44 h-14 sm:h-16",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
+    bgClass: "bg-[#004F9E] text-white border-blue-400/30",
+    textClass: "text-blue-100/90",
+    tagClass: "text-blue-200/80",
     numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,255,255,0.25)",
+    glowColor: "rgba(0,79,158,0.35)",
     accentBar: "bg-[#FFB100]",
     leftKeyColor: "#004F9E",
-    rightKeyColor: "#FFB100",
+    rightKeyColor: "#e8e6eb",
   },
   {
     id: "eiker-melendez",
@@ -209,18 +218,19 @@ const partnersList: PartnerItem[] = [
     tag: "Audiovisual & Cine",
     name: "Eiker Meléndez",
     role: "Filmmaker Oficial · Cobertura & Producción Audiovisual",
-    theme: "dark",
+    theme: "light",
     primaryLogo: "/partners/eiker-melendez.webp",
     logoAlt: "Eiker Meléndez Filmmaker Logo",
     logoClassName: "w-36 sm:w-40 h-14 sm:h-16",
-    bgClass: "bg-[#111111] text-white border-white/15",
-    textClass: "text-muted-foreground",
-    tagClass: "text-white/60",
-    numberClass: "text-[#FFB100]",
-    glowColor: "rgba(255,255,255,0.25)",
-    accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#FFB100",
-    rightKeyColor: "#004F9E",
+    logoFilter: "brightness-0 opacity-85",
+    bgClass: "bg-[#e8e6eb] text-neutral-900 border-neutral-300/80 shadow-md",
+    textClass: "text-neutral-700",
+    tagClass: "text-neutral-600 font-semibold",
+    numberClass: "text-[#004F9E] font-bold",
+    glowColor: "rgba(0,79,158,0.25)",
+    accentBar: "bg-[#004F9E]",
+    leftKeyColor: "#e8e6eb",
+    rightKeyColor: "#111111",
   },
   {
     id: "cta-partner",
@@ -238,7 +248,8 @@ const partnersList: PartnerItem[] = [
     numberClass: "text-[#FFB100]",
     glowColor: "rgba(255,177,0,0.25)",
     accentBar: "bg-[#FFB100]",
-    leftKeyColor: "#004F9E",
+    leftKeyColor: "#111111",
+    rightKeyColor: "#004F9E",
     isCta: true,
   },
 ];
@@ -488,11 +499,22 @@ export const ImparablesPartners: React.FC = () => {
                     className={`group relative flex flex-col justify-between p-6 sm:p-7 w-[270px] sm:w-[310px] aspect-square shrink-0 shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer ${partner.bgClass}`}
                   >
                     {/* Left key tab to connect with previous tile */}
-                    <div
-                      style={{ backgroundColor: "#FFB100" }}
-                      className="hidden lg:block absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-11 lg:h-11 z-20 shadow-md border border-black/10 pointer-events-none"
-                      aria-hidden="true"
-                    />
+                    {partner.leftKeyColor && (
+                      <div
+                        style={{ backgroundColor: partner.leftKeyColor }}
+                        className="hidden lg:block absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-11 lg:h-11 z-20 shadow-md border border-black/10 pointer-events-none"
+                        aria-hidden="true"
+                      />
+                    )}
+
+                    {/* Right key tab to connect when looping */}
+                    {partner.rightKeyColor && (
+                      <div
+                        style={{ backgroundColor: partner.rightKeyColor }}
+                        className="hidden lg:block absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-11 lg:h-11 z-20 shadow-md border border-black/10 pointer-events-none"
+                        aria-hidden="true"
+                      />
+                    )}
 
                     {/* Header Row */}
                     <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-xs font-sans font-bold tracking-widest uppercase text-[#FFB100]">
@@ -523,6 +545,7 @@ export const ImparablesPartners: React.FC = () => {
                       <div className="w-8 sm:w-10 h-0.5 sm:h-1 mt-2 mb-2 rounded-full bg-[#FFB100] group-hover:w-16 transition-all duration-300" />
                       <Link
                         href="/contacto"
+                        onClick={() => trackEvent("partner_cta_apply_click", { source: "partners_carousel" })}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFB100] group-hover:underline"
                       >
                         <span>Postular mi empresa</span>
@@ -538,6 +561,7 @@ export const ImparablesPartners: React.FC = () => {
                   key={uniqueKey}
                   onMouseEnter={() => setHoveredPartner(uniqueKey)}
                   onMouseLeave={() => setHoveredPartner(null)}
+                  onClick={() => trackSponsorClick(partner.id, partner.name)}
                   style={{
                     boxShadow: isHovered
                       ? `0 25px 50px -12px ${partner.glowColor}`
@@ -591,7 +615,7 @@ export const ImparablesPartners: React.FC = () => {
                         draggable={false}
                         className={`object-contain transition-all duration-300 pointer-events-none select-none ${
                           partner.hoverLogo && isHovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                        } ${partner.theme === "amber" && partner.id === "rumbapp" ? "brightness-95 contrast-125" : ""}`}
+                        } ${partner.logoFilter || ""}`}
                       />
 
                       {/* Optional Hover Alternate Logo */}
@@ -604,7 +628,7 @@ export const ImparablesPartners: React.FC = () => {
                           draggable={false}
                           className={`object-contain transition-all duration-300 absolute inset-0 pointer-events-none select-none ${
                             isHovered ? "opacity-100 scale-105" : "opacity-0 scale-95"
-                          }`}
+                          } ${partner.hoverLogoFilter || partner.logoFilter || ""}`}
                         />
                       )}
                     </div>

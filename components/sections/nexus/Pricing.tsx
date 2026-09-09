@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle, ArrowUpRight, Sparkle, ShieldCheck, Ticket, Broadcast, Clock } from "@phosphor-icons/react";
 import { eventConfig, TicketTier } from "@/lib/content/event.config";
 import { staggerContainer, fadeUpVariant, scaleUpVariant } from "@/lib/motion/motion-variants";
+import { trackTicketClick, trackEvent } from "@/lib/analytics";
 
 export const Pricing: React.FC = () => {
   const [currency, setCurrency] = useState<"USDT" | "BCV">("USDT");
@@ -84,7 +85,7 @@ export const Pricing: React.FC = () => {
             variants={fadeUpVariant}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
           >
-            Tarifas preferenciales de lanzamiento en USDT (físico/cripto) y tasa oficial BCV. Cupos asignados limitados por fase antes del ajuste a precio regular.
+            Tarifas preferenciales de lanzamiento en USD / USDT (físico o cripto) y tasa oficial BCV. Cupos asignados limitados por fase antes del ajuste a precio regular.
           </motion.p>
 
           {/* Currency Toggle (USDT vs BCV) */}
@@ -97,7 +98,10 @@ export const Pricing: React.FC = () => {
           >
             <button
               type="button"
-              onClick={() => setCurrency("USDT")}
+              onClick={() => {
+                setCurrency("USDT");
+                trackEvent("pricing_currency_toggle", { currency: "USDT" });
+              }}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 currency === "USDT"
                   ? "bg-[#004F9E] text-white shadow-md shadow-blue-500/25"
@@ -108,7 +112,10 @@ export const Pricing: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => setCurrency("BCV")}
+              onClick={() => {
+                setCurrency("BCV");
+                trackEvent("pricing_currency_toggle", { currency: "BCV" });
+              }}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 currency === "BCV"
                   ? "bg-[#004F9E] text-white shadow-md shadow-blue-500/25"
@@ -132,11 +139,11 @@ export const Pricing: React.FC = () => {
             const isHighlighted = tier.isFeatured;
 
             // Formatted price string based on toggle
-            const primaryPrice = currency === "USDT" ? `${tier.priceUsdt} USDT` : `${tier.priceBcv} BCV`;
+            const primaryPrice = currency === "USDT" ? `${tier.priceUsdt} USD` : `${tier.priceBcv} BCV`;
             const originalPrimaryPrice =
               currency === "USDT"
                 ? tier.originalPriceUsdt
-                  ? `${tier.originalPriceUsdt} USDT`
+                  ? `${tier.originalPriceUsdt} USD`
                   : null
                 : tier.originalPriceBcv
                   ? `${tier.originalPriceBcv} BCV`
@@ -144,13 +151,13 @@ export const Pricing: React.FC = () => {
 
             const secondaryPrice =
               currency === "USDT"
-                ? `Equivalente en Bs: $${tier.priceBcv} (Tasa Oficial BCV)`
-                : `Tarifa USD / USDT: $${tier.priceUsdt} (Físico o Cripto)`;
+                ? `Equivalente en Bs: ${tier.priceBcv} (Tasa Oficial BCV)`
+                : `Tarifa USD: $${tier.priceUsdt} USD (Físico o USDT)`;
 
             const secondaryRegular =
               currency === "USDT"
                 ? tier.originalPriceBcv
-                  ? ` · Regular: $${tier.originalPriceBcv} BCV`
+                  ? ` · Regular: ${tier.originalPriceBcv} BCV`
                   : ""
                 : tier.originalPriceUsdt
                   ? ` · Regular: $${tier.originalPriceUsdt} USD`
@@ -215,6 +222,7 @@ export const Pricing: React.FC = () => {
                     {/* Action Button (Image 2 Deep Navy Button) */}
                     <a
                       href={tier.ctaLink}
+                      onClick={() => trackTicketClick(tier.id, tier.name, tier.priceUsdt)}
                       className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#004F9E] hover:bg-[#003875] text-white font-display font-bold text-sm tracking-wide shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40 transition-all duration-300 mb-8 cursor-pointer"
                     >
                       <span>{tier.ctaText}</span>
@@ -327,6 +335,7 @@ export const Pricing: React.FC = () => {
                   {/* Action Button */}
                   <a
                     href={tier.ctaLink}
+                    onClick={() => trackTicketClick(tier.id, tier.name, tier.priceUsdt)}
                     className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-white/[0.06] hover:bg-white/10 backdrop-blur-md border border-white/12 hover:border-[#004F9E]/50 text-white font-display font-bold text-sm tracking-wide transition-all duration-300 mb-8 cursor-pointer shadow-sm"
                   >
                     <span>{tier.ctaText}</span>

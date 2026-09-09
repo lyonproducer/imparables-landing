@@ -13,6 +13,7 @@ import {
   Sparkle,
 } from "@phosphor-icons/react";
 import WarpText from "@/components/ui/WarpText";
+import { trackWorldSwitch, trackContactClick } from "@/lib/analytics";
 
 export const ImparablesFooter: React.FC = () => {
   const scrollToTop = () => {
@@ -112,6 +113,7 @@ export const ImparablesFooter: React.FC = () => {
 
             <Link
               href="/nexus"
+              onClick={() => trackWorldSwitch("nexus", "imparables_footer_card")}
               className="relative z-10 inline-flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full bg-accent text-neutral-950 font-bold text-sm shadow-lg shadow-accent/20 hover:bg-accent/90 hover:shadow-accent/35 active:scale-[0.98] transition-all cursor-pointer mt-1 group/btn"
             >
               <span>Explorar Mundo Nexus</span>
@@ -130,6 +132,7 @@ export const ImparablesFooter: React.FC = () => {
               href="https://www.instagram.com/imparables.ia/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackContactClick("instagram", "https://www.instagram.com/imparables.ia/")}
               className="p-2 rounded-xl bg-white/5 hover:text-accent hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Instagram"
             >
@@ -139,6 +142,7 @@ export const ImparablesFooter: React.FC = () => {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackContactClick("youtube", "https://youtube.com")}
               className="p-2 rounded-xl bg-white/5 hover:text-accent hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="YouTube"
             >
@@ -147,6 +151,7 @@ export const ImparablesFooter: React.FC = () => {
 
             <a
               href="mailto:Imparablesve@gmail.com"
+              onClick={() => trackContactClick("email", "Imparablesve@gmail.com")}
               className="p-2 rounded-xl bg-white/5 hover:text-accent hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Email"
               title="Imparablesve@gmail.com"

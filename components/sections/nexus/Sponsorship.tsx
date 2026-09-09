@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle, ArrowUpRight, Crown, Sparkle, Handshake } from "@phosphor-icons/react";
 import { eventConfig, SponsorshipTier } from "@/lib/content/event.config";
 import { staggerContainer, fadeUpVariant, scaleUpVariant } from "@/lib/motion/motion-variants";
+import { trackSponsorshipInterest, trackEvent } from "@/lib/analytics";
 
 export const Sponsorship: React.FC = () => {
   const [currency, setCurrency] = useState<"USD" | "BCV">("USD");
@@ -73,7 +74,10 @@ export const Sponsorship: React.FC = () => {
           >
             <button
               type="button"
-              onClick={() => setCurrency("USD")}
+              onClick={() => {
+                setCurrency("USD");
+                trackEvent("sponsorship_currency_toggle", { currency: "USD" });
+              }}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 currency === "USD"
                   ? "bg-[#FFB100] text-neutral-950 shadow-md shadow-amber-500/25"
@@ -84,7 +88,10 @@ export const Sponsorship: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => setCurrency("BCV")}
+              onClick={() => {
+                setCurrency("BCV");
+                trackEvent("sponsorship_currency_toggle", { currency: "BCV" });
+              }}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                 currency === "BCV"
                   ? "bg-[#FFB100] text-neutral-950 shadow-md shadow-amber-500/25"
@@ -170,6 +177,7 @@ export const Sponsorship: React.FC = () => {
                   {/* Dark Action Button (Image 2 Pill Button Style) */}
                   <a
                     href={tier.ctaLink}
+                    onClick={() => trackSponsorshipInterest(tier.name)}
                     className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#111111] hover:bg-black text-white font-display font-bold text-sm tracking-wide shadow-lg shadow-black/25 hover:shadow-black/40 transition-all duration-300 cursor-pointer"
                   >
                     <span>{tier.ctaText}</span>
@@ -228,6 +236,7 @@ export const Sponsorship: React.FC = () => {
                 {/* Outline Action Button (Image 2 Rounded Pill Style) */}
                 <a
                   href={tier.ctaLink}
+                  onClick={() => trackSponsorshipInterest(tier.name)}
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/[0.06] hover:bg-white/12 backdrop-blur-md border border-white/12 hover:border-[#FFB100]/40 text-white font-display font-bold text-sm tracking-wide transition-all duration-300 cursor-pointer shadow-sm"
                 >
                   <span>{tier.ctaText}</span>

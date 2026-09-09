@@ -10,6 +10,7 @@ import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
 import { fadeUpVariant, staggerContainer } from "@/lib/motion/motion-variants";
 
 import TextLoop from "@/components/ui/shared/TextLoop";
+import { trackWorldSwitch, trackEvent } from "@/lib/analytics";
 
 export const ImparablesHero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -68,7 +69,11 @@ export const ImparablesHero: React.FC = () => {
               variants={fadeUpVariant}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2 w-full sm:w-auto"
             >
-              <a href="#esencia" className="w-full sm:w-auto">
+              <a
+                href="#esencia"
+                onClick={() => trackEvent("hero_cta_click", { target: "esencia" })}
+                className="w-full sm:w-auto"
+              >
                 <Button
                   variant="primary"
                   size="lg"
@@ -79,7 +84,11 @@ export const ImparablesHero: React.FC = () => {
                 </Button>
               </a>
 
-              <Link href="/nexus" className="w-full sm:w-auto">
+              <Link
+                href="/nexus"
+                onClick={() => trackWorldSwitch("nexus", "imparables_hero_button")}
+                className="w-full sm:w-auto"
+              >
                 <Button
                   variant="outline"
                   size="lg"

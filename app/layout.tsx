@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { ProgressiveBlur } from "@/components/ui/shared/progressive-blur";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const spaceGrotesk = localFont({
@@ -163,6 +164,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId =
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ||
+    "G-Z3DF0P1ET2";
+
   return (
     <html lang="es-VE" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
@@ -176,6 +182,7 @@ export default function RootLayout({
           {children}
           <ProgressiveBlur height="140px" position="bottom" className="fixed bottom-0 z-40 pointer-events-none" />
         </SmoothScrollProvider>
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );

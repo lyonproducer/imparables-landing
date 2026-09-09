@@ -236,43 +236,61 @@ export function CinematicFooter() {
 
     const ctx = gsap.context(() => {
       // Background Parallax
-      gsap.fromTo(
-        giantTextRef.current,
-        { y: "10vh", scale: 0.85, opacity: 0 },
-        {
-          y: "0vh",
-          scale: 1,
-          opacity: 1,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: wrapperRef.current,
-            start: "top 85%",
-            end: "bottom bottom",
-            scrub: 1,
-          },
-        }
-      );
+      if (giantTextRef.current) {
+        gsap.fromTo(
+          giantTextRef.current,
+          { y: "10vh", scale: 0.85, opacity: 0.3 },
+          {
+            y: "0vh",
+            scale: 1,
+            opacity: 1,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: wrapperRef.current,
+              start: "top 90%",
+              end: "bottom bottom",
+              scrub: 1,
+            },
+          }
+        );
+      }
 
-      // Staggered Content Reveal
-      gsap.fromTo(
-        [headingRef.current, linksRef.current],
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: wrapperRef.current,
-            start: "top 55%",
-            end: "bottom bottom",
-            scrub: 1,
-          },
-        }
-      );
+      // Staggered Content Reveal - clean entrance that triggers reliably
+      const animElements = [headingRef.current, linksRef.current].filter(Boolean);
+      if (animElements.length > 0) {
+        gsap.fromTo(
+          animElements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: wrapperRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+          }
+        );
+      }
+
+      ScrollTrigger.refresh();
     }, wrapperRef);
 
-    return () => ctx.revert();
+    // Fallback safety: guarantee text & CTAs are 100% visible even on direct deep link or short pages
+    const fallbackTimer = setTimeout(() => {
+      if (headingRef.current && getComputedStyle(headingRef.current).opacity === "0") {
+        gsap.to([headingRef.current, linksRef.current], { opacity: 1, y: 0, duration: 0.35 });
+      }
+    }, 600);
+
+    return () => {
+      clearTimeout(fallbackTimer);
+      ctx.revert();
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -344,16 +362,16 @@ export function CinematicFooter() {
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-16 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-12 sm:mt-16 w-full max-w-5xl mx-auto py-4">
             <h2
               ref={headingRef}
-              className="text-4xl sm:text-6xl md:text-7xl font-display font-black footer-text-glow tracking-tighter mb-10 text-center text-white"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black footer-text-glow tracking-tighter mb-6 sm:mb-8 text-center text-white"
             >
               ¿Listo para ser parte de Nexus?
             </h2>
 
             {/* Interactive Glassmorphism CTAs Layout */}
-            <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
+            <div ref={linksRef} className="flex flex-col items-center gap-5 sm:gap-6 w-full">
               {/* WhatsApp Direct CTA */}
               <div className="flex justify-center w-full">
                 <MagneticButton
@@ -361,7 +379,7 @@ export function CinematicFooter() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-glass-pill px-10 py-5 rounded-full text-white font-bold text-base md:text-lg flex items-center gap-3 group"
+                  className="footer-glass-pill px-8 py-4 sm:px-10 sm:py-5 rounded-full text-white font-bold text-base md:text-lg flex items-center gap-3 group"
                 >
                   <WhatsappLogo size={24} weight="fill" className="text-emerald-400 group-hover:scale-110 transition-transform" />
                   <span>Contáctanos (+58 422-0160021)</span>
@@ -369,7 +387,7 @@ export function CinematicFooter() {
               </div>
 
               {/* Secondary Legal & Navigation Links */}
-              <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-1">
                 <MagneticButton
                   as={Link}
                   href="/politica-de-privacidad"
@@ -389,7 +407,7 @@ export function CinematicFooter() {
           </div>
 
           {/* 3. Bottom Bar / Credits */}
-          <div className="relative z-20 w-full pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="relative z-20 w-full pb-8 sm:pb-12 md:pb-14 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
             
             {/* Logo + Copyright */}
             <div className="flex flex-col items-center md:items-start gap-3 order-2 md:order-1">

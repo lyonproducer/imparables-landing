@@ -143,9 +143,16 @@ export const eventConfig = {
 
   speakers: [
     {
+      id: "rene-vallejo",
+      name: "René Vallejo",
+      role: "Innovación & Crecimiento de Negocios",
+      photoUrl: "/speakers/rene.webp",
+      isConfirmed: true,
+    },
+    {
       id: "leonardo-hernandez",
       name: "Leonardo Hernández",
-      role: "Arquitectura Cloud & Software",
+      role: "Fundador de Rumbapp, Ingeniero en Informática",
       photoUrl: "/speakers/leonardo.webp",
       isConfirmed: true,
     },
@@ -157,10 +164,10 @@ export const eventConfig = {
       isConfirmed: true,
     },
     {
-      id: "rene-vallejo",
-      name: "René Vallejo",
-      role: "Innovación & Crecimiento de Negocios",
-      photoUrl: "/speakers/rene.webp",
+      id: "victor-leon",
+      name: "Víctor León",
+      role: "Líder Técnico de Desarrollo (Tech Lead) · Ingeniero en Informática",
+      photoUrl: "/speakers/victor.webp",
       isConfirmed: true,
     },
     {
@@ -168,13 +175,6 @@ export const eventConfig = {
       name: "Josmel Baena",
       role: "Abogado Corporativo · Tech Law & Gestión de Riesgos Legales",
       photoUrl: "/speakers/josmel.webp",
-      isConfirmed: true,
-    },
-    {
-      id: "victor-leon",
-      name: "Víctor León",
-      role: "Líder Técnico de Desarrollo (Tech Lead) · Ingeniero en Informática",
-      photoUrl: "/speakers/victor.webp",
       isConfirmed: true,
     },
   ] as SpeakerItem[],

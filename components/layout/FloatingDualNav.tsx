@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useUIStore } from "@/lib/stores/ui-store";
 import { List, X } from "@phosphor-icons/react";
+import { trackWorldSwitch, trackEvent } from "@/lib/analytics";
 
 export const FloatingDualNav: React.FC = () => {
   const pathname = usePathname();
@@ -122,6 +123,7 @@ export const FloatingDualNav: React.FC = () => {
   const showNexusSub = hoveredWorld === "nexus" || (hoveredWorld === null && isNexus);
 
   const handleMobileWorldClick = (world: "imparables" | "nexus") => {
+    trackWorldSwitch(world, "mobile_capsule");
     if (mobileNavOpen && activeMobileWorld === world) {
       setMobileNavOpen(false);
     } else {
@@ -213,6 +215,7 @@ export const FloatingDualNav: React.FC = () => {
             {/* Desktop Link: navigates to / */}
             <Link
               href="/"
+              onClick={() => trackWorldSwitch("imparables", "desktop_capsule")}
               className="hidden md:flex items-center px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:bg-white/[0.06] transition-colors"
               aria-label="Mundo Imparables - Ir a la raíz del sitio"
             >
@@ -298,6 +301,7 @@ export const FloatingDualNav: React.FC = () => {
             {/* Desktop Link: navigates to /nexus */}
             <Link
               href="/nexus"
+              onClick={() => trackWorldSwitch("nexus", "desktop_capsule")}
               className="hidden md:flex items-center px-2.5 py-1 rounded-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:bg-white/[0.06] transition-colors"
               aria-label="Mundo Nexus - Ir a evento Nexus"
             >
@@ -377,7 +381,10 @@ export const FloatingDualNav: React.FC = () => {
               <div className="flex items-center p-1 rounded-2xl bg-black/30 border border-white/10">
                 <button
                   type="button"
-                  onClick={() => setActiveMobileWorld("imparables")}
+                  onClick={() => {
+                    setActiveMobileWorld("imparables");
+                    trackWorldSwitch("imparables", "drawer_switcher");
+                  }}
                   className={`flex-1 flex items-center justify-center py-2 px-3 rounded-xl transition-all cursor-pointer ${
                     activeMobileWorld === "imparables"
                       ? "bg-white/20 text-white shadow-md border border-white/20"
@@ -397,7 +404,10 @@ export const FloatingDualNav: React.FC = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveMobileWorld("nexus")}
+                  onClick={() => {
+                    setActiveMobileWorld("nexus");
+                    trackWorldSwitch("nexus", "drawer_switcher");
+                  }}
                   className={`flex-1 flex items-center justify-center py-2 px-3 rounded-xl transition-all cursor-pointer ${
                     activeMobileWorld === "nexus"
                       ? "bg-white/20 text-white shadow-md border border-white/20"
@@ -434,7 +444,10 @@ export const FloatingDualNav: React.FC = () => {
                       </span>
                       <Link
                         href="/"
-                        onClick={() => setMobileNavOpen(false)}
+                        onClick={() => {
+                          setMobileNavOpen(false);
+                          trackEvent("nav_link_click", { label: "Inicio", href: "/", world: "imparables" });
+                        }}
                         className="text-[11px] font-medium text-white/80 hover:text-white underline underline-offset-2"
                       >
                         Ir al inicio →
@@ -447,7 +460,10 @@ export const FloatingDualNav: React.FC = () => {
                           <Link
                             key={link.label}
                             href={link.href}
-                            onClick={() => setMobileNavOpen(false)}
+                            onClick={() => {
+                              setMobileNavOpen(false);
+                              trackEvent("nav_link_click", { label: link.label, href: link.href, world: "imparables" });
+                            }}
                             className={`text-center py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${
                               isActive
                                 ? "bg-white text-neutral-950 shadow-md font-bold"
@@ -475,7 +491,10 @@ export const FloatingDualNav: React.FC = () => {
                       </span>
                       <Link
                         href="/nexus"
-                        onClick={() => setMobileNavOpen(false)}
+                        onClick={() => {
+                          setMobileNavOpen(false);
+                          trackEvent("nav_link_click", { label: "Nexus Home", href: "/nexus", world: "nexus" });
+                        }}
                         className="text-[11px] font-medium text-white/80 hover:text-white underline underline-offset-2"
                       >
                         Ir al evento →
@@ -488,7 +507,10 @@ export const FloatingDualNav: React.FC = () => {
                           <Link
                             key={link.label}
                             href={link.href}
-                            onClick={() => setMobileNavOpen(false)}
+                            onClick={() => {
+                              setMobileNavOpen(false);
+                              trackEvent("nav_link_click", { label: link.label, href: link.href, world: "nexus" });
+                            }}
                             className={`text-center py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${
                               isActive
                                 ? "bg-white text-neutral-950 shadow-md font-bold"

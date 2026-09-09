@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { User, Sparkle } from "@phosphor-icons/react";
 import type { SpeakerItem } from "@/lib/content/event.config";
+import { trackSpeakerClick } from "@/lib/analytics";
 
 export interface SpeakerCardProps {
   speaker: SpeakerItem;
@@ -19,6 +20,11 @@ export const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, index }) => {
     <motion.div
       whileHover={shouldReduceMotion ? undefined : { y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
+      onClick={() => {
+        if (isConfirmed && speaker.name && speaker.id) {
+          trackSpeakerClick(speaker.id, speaker.name);
+        }
+      }}
       className="speaker-card group relative flex flex-col cursor-pointer select-none"
     >
       {/* Portrait Photo Container */}
